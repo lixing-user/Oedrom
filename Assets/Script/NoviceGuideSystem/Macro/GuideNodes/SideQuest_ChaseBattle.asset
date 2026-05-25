@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 178c9f3dcd387b24fa0db4efc9528f87, type: 3}
+  m_Name: SideQuest_ChaseBattle
+  m_EditorClassIdentifier: Assembly-CSharp::QuestSO
+  questId: Quest_ChaseBattle
+  questType: 2
+  unlockConditions:
+  - {fileID: 11400000, guid: c0a6d8fdc278f3e44a5214aa34906ad9, type: 2}
+  - {fileID: 11400000, guid: 0227200ae47b9364596cad79f6b80b7a, type: 2}
+  actionsOnStart:
+  - {fileID: 11400000, guid: 180491d7cb992714cbfa8d075bbaa1f4, type: 2}
+  completionConditions:
+  - {fileID: 11400000, guid: d74e099b623ac9b4797b76bdf08b1dad, type: 2}
+  actionsOnComplete:
+  - {fileID: 11400000, guid: bb9d5ad7f3ce7f0458ba1458d60fae4c, type: 2}

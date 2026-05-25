@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0beb13a7d5391d24d83bbac89a076028, type: 3}
+  m_Name: Rook
+  m_EditorClassIdentifier: 
+  type: 2
+  defaultIcon: {fileID: 833844819, guid: 8b49d996f3326864a86984e303d5b705, type: 3}
+  baseCost: 500
+  prefab3D: {fileID: 8219697086392233969, guid: ff30f66e68a854b1893ea58015e7ac28, type: 3}
+  prefab2D: {fileID: 5595832172315771151, guid: a738292991dc70f44b33a57c44832aba, type: 3}
+  previewPrefab: {fileID: 114028, guid: 42d1e443ba178214a86190f0fc34701c, type: 3}

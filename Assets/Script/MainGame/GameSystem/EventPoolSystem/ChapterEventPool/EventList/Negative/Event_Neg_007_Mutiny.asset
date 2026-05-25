@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecaadf22ca8226f48a641dcdafa4d701, type: 3}
+  m_Name: Event_Neg_007_Mutiny
+  m_EditorClassIdentifier: Assembly-CSharp::RandomEventData
+  eventId: Neg007
+  eventName: Mutiny
+  description: "\uFF08\u8ECD\u5FC3\u4F4E\u65BC\u5F8C\u52A0\u5165\u4E8B\u4EF6\uFF1B\u8D85\u984D\u6301\u6709>6\uFF09\u89F8\u767C\u6230\u9B25\uFF1B\u6211\u65B9\u640D\u5931\u73FE\u670930%\u7684\u5175\u529B\u3001\u8CC7\u6E90"
+  weight: 1
+  eventIcon: {fileID: 0}
+  eventType: 0
+  conditions:
+  - conditionType: 1
+    threshold: 3
+  - conditionType: 4
+    threshold: 10
+  options:
+  - optionId: Event_Confirm
+    optionName: "\u8FCE\u6230"
+    description: 
+    effects:
+    - effectType: 2
+      targetResource: 0
+      sourceResource: 0
+      targetPieceType: 0
+      targetTeam: 0
+      targetBattleType: 0
+      targetBattleId: 
+      combatModifierType: 0
+      statusType: 0
+      flatAmount: 0
+      percentAmount: 0
+      duration: 0
+    - effectType: 5
+      targetResource: 0
+      sourceResource: 0
+      targetPieceType: 0
+      targetTeam: 0
+      targetBattleType: 0
+      targetBattleId: 
+      combatModifierType: 0
+      statusType: 0
+      flatAmount: 0
+      percentAmount: -30
+      duration: 0

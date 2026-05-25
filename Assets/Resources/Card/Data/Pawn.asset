@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0beb13a7d5391d24d83bbac89a076028, type: 3}
+  m_Name: Pawn
+  m_EditorClassIdentifier: 
+  type: 1
+  defaultIcon: {fileID: -666858493, guid: 23d19714080fc1f439e52efdcc505568, type: 3}
+  baseCost: 100
+  prefab3D: {fileID: 2942877940916266640, guid: f8d1e6fa15d474b4f8dcb19587e1e4e6, type: 3}
+  prefab2D: {fileID: 4505654354677610383, guid: a0a09f15b4704f44ab06c1edde4a25ac, type: 3}
+  previewPrefab: {fileID: 104878, guid: 621ba57c6791f1e43bc7f84c5ec68c0f, type: 3}

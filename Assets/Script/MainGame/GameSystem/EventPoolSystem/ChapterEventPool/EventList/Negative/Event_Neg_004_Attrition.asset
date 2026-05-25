@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecaadf22ca8226f48a641dcdafa4d701, type: 3}
+  m_Name: Event_Neg_004_Attrition
+  m_EditorClassIdentifier: 
+  eventId: Neg004
+  eventName: Attrition
+  description: "\u6575\u8ECD\u9810\u85CF\u57CB\u4F0F\uFF0C\u5728\u6B64\u5730\u89F8\u767C\u6D88\u8017\u6230"
+  weight: 1
+  eventIcon: {fileID: 0}
+  eventType: 2
+  conditions: []
+  options:
+  - optionId: Neg_Choice001
+    optionName: "\u8207\u5176\u5468\u65CB"
+    description: "\u89F8\u767C\u8A72\u4E8B\u4EF6\u7684\u68CB\u5B50\u7121\u6CD5\u884C\u52D53\u56DE\u5408"
+    effects:
+    - effectType: 3
+      targetResource: 0
+      sourceResource: 0
+      targetPieceType: 0
+      targetTeam: 0
+      targetBattleType: 0
+      targetBattleId: 
+      combatModifierType: 0
+      statusType: 1
+      flatAmount: 0
+      percentAmount: 0
+      duration: 3
+  - optionId: Neg_Choice002
+    optionName: "\u65B7\u5C3E\u6C42\u751F"
+    description: "\u6E1B\u5C112\u679A\u68CB\u5B50\u62B5\u6D88\u6548\u679C"
+    effects:
+    - effectType: 5
+      targetResource: 0
+      sourceResource: 0
+      targetPieceType: 0
+      targetTeam: 0
+      targetBattleType: 0
+      targetBattleId: 
+      combatModifierType: 0
+      statusType: 1
+      flatAmount: -2
+      percentAmount: 0
+      duration: 3

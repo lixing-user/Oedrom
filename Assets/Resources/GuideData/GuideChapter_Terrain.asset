@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2e2c5f2b448a54b902f6a1d4240c1c, type: 3}
+  m_Name: GuideChapter_Terrain
+  m_EditorClassIdentifier: Assembly-CSharp::GuideChapterSO
+  chapterId: guide_C002
+  chapterName: TerrainRule
+  chapterIcon: {fileID: 440355882, guid: d638e9ef88c10a44789152e748f0f622, type: 3}
+  pages:
+  - title: Plain
+    description: plainrule
+    illustration: {fileID: 0}
+  - title: Mountain
+    description: mountainrule
+    illustration: {fileID: 0}
+  - title: Water
+    description: waterrule
+    illustration: {fileID: 0}

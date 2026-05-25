@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4914bdbc68b22a441bebc68986b17a06, type: 3}
+  m_Name: CardRegistryInstaller
+  m_EditorClassIdentifier: Assembly-CSharp::CardRegistryInstaller
+  cardConfigs:
+  - {fileID: 11400000, guid: a3b9b6f3f8897e4469de3a0b19c351dc, type: 2}
+  - {fileID: 11400000, guid: 37878a5feb979a346b34bf4f64047a73, type: 2}
+  - {fileID: 11400000, guid: 00c11587b7006e848b8db36b9e2075af, type: 2}
+  - {fileID: 11400000, guid: 0cf5ac340928adf42b33cc9c351aa124, type: 2}
+  - {fileID: 11400000, guid: cdeb0694124334149a3e9948de99cde3, type: 2}
+  - {fileID: 11400000, guid: 6023f1aa58a839740967e15ee8b4f6e0, type: 2}

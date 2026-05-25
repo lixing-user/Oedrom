@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecaadf22ca8226f48a641dcdafa4d701, type: 3}
+  m_Name: Event_Neg_005_Supply Interception
+  m_EditorClassIdentifier: Assembly-CSharp::RandomEventData
+  eventId: Neg005
+  eventName: Supply Interception
+  description: "\u4E2D\u65B7\u6211\u65B9\u6BCF\u56DE\u5408\u7684\u88DC\u7D663\u56DE\u5408"
+  weight: 1
+  eventIcon: {fileID: 0}
+  eventType: 1
+  conditions: []
+  options:
+  - optionId: Event_Confirm
+    optionName: "\u78BA\u8A8D"
+    description: 
+    effects:
+    - effectType: 1
+      targetResource: 2
+      sourceResource: 0
+      targetPieceType: 0
+      targetTeam: 0
+      targetBattleType: 0
+      targetBattleId: 
+      combatModifierType: 0
+      statusType: 0
+      flatAmount: 0
+      percentAmount: -1
+      duration: 3

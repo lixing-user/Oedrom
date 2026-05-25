@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bf600d0a3ea3c4792ec239ea90d378, type: 3}
+  m_Name: Step2
+  m_EditorClassIdentifier: 
+  stepId: Step_002Cmd
+  objective: "\u5C07\u201CKnight\u201D\u5361\u724C\u79FB\u52D5\u5230\u6307\u5B9A\u7684\u683C\u5B50\u5167"
+  _actionsOnStart:
+  - {fileID: 11400000, guid: 0b9a8e83913ef314286f6945f35a4d67, type: 2}
+  - {fileID: 11400000, guid: 4524c2e05d3c1f74aae777dbcb8bb7e9, type: 2}
+  _completionConditions:
+  - {fileID: 11400000, guid: 0684ed209b6b0ab49a2d3deeddc64002, type: 2}
+  _actionsOnCompletion:
+  - {fileID: 11400000, guid: 34b272cf684f32842ab1067c5ed74925, type: 2}

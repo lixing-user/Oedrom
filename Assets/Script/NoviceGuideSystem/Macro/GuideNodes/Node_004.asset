@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 178c9f3dcd387b24fa0db4efc9528f87, type: 3}
+  m_Name: Node_004
+  m_EditorClassIdentifier: Assembly-CSharp::OnboardingNodeSO
+  questId: Quest_04
+  questType: 0
+  unlockConditions:
+  - {fileID: 11400000, guid: 3ac8e9775315e564d9b6bb7e52e7f49b, type: 2}
+  actionsOnStart:
+  - {fileID: 11400000, guid: b6c8d35d8c567124e8e0b069e15ea2a1, type: 2}
+  - {fileID: 11400000, guid: b440287f59724324991762bb89f573ac, type: 2}
+  completionConditions:
+  - {fileID: 11400000, guid: 46e881b2b4fde094e8302e752457fc3f, type: 2}
+  actionsOnComplete: []

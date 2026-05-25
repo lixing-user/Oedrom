@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d54b3cc221e0e42b7c1cb08ff4eed8, type: 3}
+  m_Name: ShowDialogue_14TriggerLoot
+  m_EditorClassIdentifier: Assembly-CSharp::ShowDialogueAction
+  dialogueLines:
+  - speaker: {fileID: 11400000, guid: 9331a4f5fa421eb4db22bc3808f4000a, type: 2}
+    emotion: 0
+    content: "\u5C31\u662F\u591A\u4E86\u500B\u5927\u584A\u982D\u7AD9\u54E8\u3002\u9019\u4E5F\u8DDF\u5E73\u5E38\u6C92\u5DEE\u591A\u5C11\u561B\uFF01"
+    anchor: 3
+    pauseAfterThisLine: 0
+  - speaker: {fileID: 11400000, guid: 9331a4f5fa421eb4db22bc3808f4000a, type: 2}
+    emotion: 0
+    content: "\u5225\u6025\u8457\u770B\u5546\u54C1\u554A\uFF0C\u54B1\u5011\u5F97\u7AD9\u8457\u628A\u7269\u8CC7\u7D66\u6574\u4F86\u3002"
+    anchor: 3
+    pauseAfterThisLine: 0
+  - speaker: {fileID: 11400000, guid: 9331a4f5fa421eb4db22bc3808f4000a, type: 2}
+    emotion: 0
+    content: "\u5225\u64D4\u5FC3\uFF0C\u82B1\u4E0D\u4E86\u591A\u5C11\u9322\u3002"
+    anchor: 3
+    pauseAfterThisLine: 0
+  - speaker: {fileID: 11400000, guid: 9331a4f5fa421eb4db22bc3808f4000a, type: 2}
+    emotion: 0
+    content: "\u628A\u68CB\u5B50\u5F80\u4ED6\u5011\u81C9\u4E0A\u7838\u904E\u53BB\uFF01"
+    anchor: 3
+    pauseAfterThisLine: 0

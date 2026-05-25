@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47fb68bdb6bdfd34b9f883210e8d02bf, type: 3}
+  m_Name: PlaySequenceAction_nodeE11
+  m_EditorClassIdentifier: Assembly-CSharp::PlayTutorialSequenceAction
+  SequenceId: EscapeBattle_Sequence
+  Steps:
+  - {fileID: 11400000, guid: d9e178d52dacb44418b411ce55ddb192, type: 2}
+  - {fileID: 11400000, guid: f39aad561f980304a8a6921204e8b357, type: 2}
+  - {fileID: 11400000, guid: 2ec596d008ee5f04e846ee927d3ab7cc, type: 2}

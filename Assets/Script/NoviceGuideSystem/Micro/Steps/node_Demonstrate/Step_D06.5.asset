@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bf600d0a3ea3c4792ec239ea90d378, type: 3}
+  m_Name: Step_D06.5
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialStep
+  stepId: Step_D006.5Cmd
+  objective: "\u68CB\u5B50\u4ECB\u7D39\u2014\u2014\u570B\u738B"
+  _actionsOnStart:
+  - {fileID: 11400000, guid: 0525ebb38cad51d48934c1ffd8336575, type: 2}
+  - {fileID: 11400000, guid: 2f8403d070d0b6f49a7e6e029401833f, type: 2}
+  - {fileID: 11400000, guid: a26d40ef7aa344f4494b5bd60127a8ed, type: 2}
+  - {fileID: 11400000, guid: 965e66d176cfc874a91085c48c9ba5b7, type: 2}
+  _completionConditions:
+  - {fileID: 11400000, guid: a9c2ae3057457d84f9a1e6bd73de7773, type: 2}
+  _failureConditions: []
+  _actionsOnCompletion:
+  - {fileID: 11400000, guid: 34b272cf684f32842ab1067c5ed74925, type: 2}
+  _actionsOnFailure: []

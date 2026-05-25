@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d54b3cc221e0e42b7c1cb08ff4eed8, type: 3}
+  m_Name: ShowDialogue_D01_Intro
+  m_EditorClassIdentifier: Assembly-CSharp::ShowDialogueAction
+  dialogueLines:
+  - speaker: {fileID: 11400000, guid: 81aea06fad86aa54f8460e7faea9602d, type: 2}
+    emotion: 0
+    content: "\u300C\u4ED6\u5011\u300D\u5927\u6982\u5DEE\u4E0D\u591A\u8981\u4F86\u4E86\u3002"
+    anchor: 3
+    pauseAfterThisLine: 0
+  - speaker: {fileID: 11400000, guid: 81aea06fad86aa54f8460e7faea9602d, type: 2}
+    emotion: 0
+    content: "\u4FDD\u96AA\u8D77\u898B\uFF0C\u8D81\u73FE\u5728\u91CD\u65B0\u5FA9\u76E4\u4E00\u6B21\u7B56\u7565\u3002"
+    anchor: 3
+    pauseAfterThisLine: 0
+  - speaker: {fileID: 11400000, guid: a4480f420e45c634daa0dec9fe5b7bb1, type: 2}
+    emotion: 0
+    content: "\u55EF\uFF1F\u5728\u8166\u529B\u6FC0\u8569\u554A\uFF0C\u9700\u8981\u5E6B\u5FD9\u55CE\uFF1F"
+    anchor: 3
+    pauseAfterThisLine: 0
+  - speaker: {fileID: 11400000, guid: 81aea06fad86aa54f8460e7faea9602d, type: 2}
+    emotion: 0
+    content: "\u6709\u52DE\u3002"
+    anchor: 3
+    pauseAfterThisLine: 0

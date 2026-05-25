@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47fb68bdb6bdfd34b9f883210e8d02bf, type: 3}
+  m_Name: PlaySequenceAction_SideQuestSBZ
+  m_EditorClassIdentifier: Assembly-CSharp::PlayTutorialSequenceAction
+  SequenceId: SideQuest_StandbyZone_Sequence
+  Steps:
+  - {fileID: 11400000, guid: a14402287aa310642857a32165831396, type: 2}
+  - {fileID: 11400000, guid: 157113fe7e5bb224ba13ff54cb0f1231, type: 2}
+  - {fileID: 11400000, guid: 7bd542ca422c3144fa0be17b26f20316, type: 2}
+  - {fileID: 11400000, guid: 7824fe82b570dd64eb3f1542422dbb9e, type: 2}
+  - {fileID: 11400000, guid: 7ef3177c55343324bb1511c0b5ae7ecb, type: 2}
+  - {fileID: 11400000, guid: ab464e34852dca542bc335c30ee82da0, type: 2}
+  - {fileID: 11400000, guid: 7f719e9bd88907a419e024afd61931f3, type: 2}

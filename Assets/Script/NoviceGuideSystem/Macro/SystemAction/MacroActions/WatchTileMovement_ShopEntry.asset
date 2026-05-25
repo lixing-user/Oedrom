@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0799b9f817c9e4d4e9d11c8e72bb5792, type: 3}
+  m_Name: WatchTileMovement_ShopEntry
+  m_EditorClassIdentifier: Assembly-CSharp::MacroAction_WatchTileMovement
+  TargetPosition: {x: 2, y: 6}
+  FlagToSetOnComplete: Flag_Reached_Shop_Tile

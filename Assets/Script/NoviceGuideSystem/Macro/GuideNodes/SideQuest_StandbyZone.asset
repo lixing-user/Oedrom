@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 178c9f3dcd387b24fa0db4efc9528f87, type: 3}
+  m_Name: SideQuest_StandbyZone
+  m_EditorClassIdentifier: Assembly-CSharp::QuestSO
+  questId: Quest_StandbyZone
+  questType: 2
+  unlockConditions:
+  - {fileID: 11400000, guid: f11f157deff749e4583d18fd760b067c, type: 2}
+  - {fileID: 11400000, guid: d6177ea9a0b42484caa4d453ff01b319, type: 2}
+  - {fileID: 11400000, guid: c072e71a93fd4bf47a80b2abb0940fe2, type: 2}
+  - {fileID: 11400000, guid: 1fd11a16d60026943917eba05bde541d, type: 2}
+  actionsOnStart:
+  - {fileID: 11400000, guid: 36bb619cdd1764342babbcfd24f6a572, type: 2}
+  completionConditions:
+  - {fileID: 11400000, guid: be07ce992f078cf47a6416f580e3a560, type: 2}
+  actionsOnComplete:
+  - {fileID: 11400000, guid: 926cc2de47bc3fc4dbb58d5ce71e24ae, type: 2}

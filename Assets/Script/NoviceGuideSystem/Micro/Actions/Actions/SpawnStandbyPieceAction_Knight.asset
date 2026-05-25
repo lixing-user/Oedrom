@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49a95ed7d21c063449f4874c4bcc6b6d, type: 3}
+  m_Name: SpawnStandbyPieceAction_Knight
+  m_EditorClassIdentifier: Assembly-CSharp::SpawnStandbyPieceActionSO
+  pieceTypeToSpawn: 3
+  team: 0
+  count: 2

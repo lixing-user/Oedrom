@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3c2c7490d554e547949c9367d2a96ff, type: 3}
+  m_Name: Prologue01
+  m_EditorClassIdentifier: Assembly-CSharp::StoryChapterConfig
+  chapterId: Prologue_Script_01
+  chapterName: Prologue01
+  dialogueFile: {fileID: 4900000, guid: 4dd60f33c0d38f34386180a58ec0d724, type: 3}
+  initialBackground: Forrest_01
+  backgroundSprite:
+  - backgroundName: Forrest_01
+    sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  - backgroundName: Battlefield_01
+    sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  - backgroundName: BaseCamp_01
+    sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  characterProfiles:
+  - {fileID: 11400000, guid: a4480f420e45c634daa0dec9fe5b7bb1, type: 2}
+  - {fileID: 11400000, guid: 81aea06fad86aa54f8460e7faea9602d, type: 2}
+  - {fileID: 11400000, guid: 9331a4f5fa421eb4db22bc3808f4000a, type: 2}
+  - {fileID: 11400000, guid: b5e7d3320f11a4f4eb58cafe3778ed4b, type: 2}
+  - {fileID: 11400000, guid: b3b0a100bdaf3224cbd36d28632f976a, type: 2}
+  - {fileID: 11400000, guid: bf0dc16cfff57bd49adc9f319e3a04a8, type: 2}
+  - {fileID: 11400000, guid: 4ab9ba7044a9fe543939b03d9563b938, type: 2}
+  cgSprites:
+  - cgName: CG_Dark
+    sprite: {fileID: 21300000, guid: 2109cc5e62a9feb4694fba9c7e45d8db, type: 3}
+  phaseSequence: 00000000
+  nextChapter: {fileID: 11400000, guid: 69285182213e8e0489b8bc62d1716c5c, type: 2}

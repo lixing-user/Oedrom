@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecaadf22ca8226f48a641dcdafa4d701, type: 3}
+  m_Name: Event_Neg_test
+  m_EditorClassIdentifier: Assembly-CSharp::RandomEventData
+  eventId: testNeg001
+  eventName: DecreaseMP&PP
+  description: Decrease Morale or Popularity 1 point.
+  weight: 1
+  eventIcon: {fileID: 637041938, guid: 303cac5f601e7cf4ca4391eb3bcef15f, type: 3}
+  eventType: 2
+  conditions: []
+  options:
+  - optionId: testNegChoice_001
+    optionName: test_Choice01
+    description: Decrease Morale for 1.
+    effects:
+    - effectType: 0
+      targetResource: 0
+      sourceResource: 0
+      flatAmount: -1
+      percentAmount: 0
+      duration: 1
+  - optionId: testNegChoice_002
+    optionName: test_Choice02
+    description: Decrease Popularity for 1.
+    effects:
+    - effectType: 0
+      targetResource: 1
+      sourceResource: 0
+      flatAmount: -1
+      percentAmount: 0
+      duration: 1

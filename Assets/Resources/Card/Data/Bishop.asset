@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0beb13a7d5391d24d83bbac89a076028, type: 3}
+  m_Name: Bishop
+  m_EditorClassIdentifier: 
+  type: 4
+  defaultIcon: {fileID: -1904323730, guid: b85c7513d33010842bec85737d9a8beb, type: 3}
+  baseCost: 300
+  prefab3D: {fileID: 6154871698864353577, guid: 513666de2fc3e4b29b5105947b6adc0c, type: 3}
+  prefab2D: {fileID: 7887066558398708830, guid: 28cc634e4d6e8ba4487e8a975219cddb, type: 3}
+  previewPrefab: {fileID: 190264, guid: 02b2bf20374abfd478de24e1dada55ab, type: 3}

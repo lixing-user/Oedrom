@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecaadf22ca8226f48a641dcdafa4d701, type: 3}
+  m_Name: Event_Pos_006_Guerrilla Warfare
+  m_EditorClassIdentifier: Assembly-CSharp::RandomEventData
+  eventId: Pos006
+  eventName: Guerrilla Warfare
+  description: "3\u5834\u6230\u9B25\u5167\u5E03\u9663\u7BC4\u570D\u64F4\u5927"
+  weight: 1
+  eventIcon: {fileID: 0}
+  eventType: 0
+  conditions:
+  - conditionType: 0
+    threshold: 8
+  options:
+  - optionId: Event_Confirm
+    optionName: "\u78BA\u8A8D"
+    description: 
+    effects:
+    - effectType: 7
+      targetResource: 0
+      sourceResource: 0
+      targetPieceType: 0
+      targetTeam: 0
+      targetBattleType: 0
+      targetBattleId: 
+      combatModifierType: 2
+      statusType: 0
+      flatAmount: 0
+      percentAmount: 0
+      duration: 3

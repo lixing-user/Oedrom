@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8d7dc9a1abf534993623c66482c740, type: 3}
+  m_Name: EscTest
+  m_EditorClassIdentifier: Assembly-CSharp::QuestDatabaseSO
+  allQuests:
+  - {fileID: 11400000, guid: df29738ac61460c40a8ea739c0b4bc04, type: 2}
+  - {fileID: 11400000, guid: 38961fe836726754aa2a2d0d4b6e99dd, type: 2}

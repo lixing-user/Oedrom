@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ad1d5d00b4e7a34a98bee3bf4005488, type: 3}
+  m_Name: CharaSO_Adjutant
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterProfileSO
+  characterName: "\u526F\u5B98"
+  aliases:
+  - "\u526F\u5B98"
+  - "\u526F\u968A\u9577"
+  storySprite: {fileID: 440355882, guid: d638e9ef88c10a44789152e748f0f622, type: 3}
+  defaultAvatar: {fileID: 440355882, guid: d638e9ef88c10a44789152e748f0f622, type: 3}
+  avatarVariants: []

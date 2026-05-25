@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47fb68bdb6bdfd34b9f883210e8d02bf, type: 3}
+  m_Name: PlaySequenceAction_nodeDemo
+  m_EditorClassIdentifier: Assembly-CSharp::PlayTutorialSequenceAction
+  SequenceId: DemonstrationBoard_Sequence
+  Steps:
+  - {fileID: 11400000, guid: 2a7f5def331f5cf4b96f0dad14b99b80, type: 2}
+  - {fileID: 11400000, guid: 7bc8397b32e63cf4ba5892756a147184, type: 2}
+  - {fileID: 11400000, guid: da2b4bc71cd06ea489647736a4f5eb2c, type: 2}
+  - {fileID: 11400000, guid: c6565b7b339c5a741ae3d6af2ff1c92e, type: 2}
+  - {fileID: 11400000, guid: d2fb2fbe34722a84c89d7c668594dc00, type: 2}
+  - {fileID: 11400000, guid: 7f411a2535db14d469026d13a2f67047, type: 2}
+  - {fileID: 11400000, guid: 6e890a9ca0b8cda46ad8ba3c3d175c29, type: 2}
+  - {fileID: 11400000, guid: ffcc30d8682346f4ea811da7f160c0ec, type: 2}
+  - {fileID: 11400000, guid: 40ab56e07e69a9d428473a068099168f, type: 2}
+  - {fileID: 11400000, guid: f893ce04d5b112e42a3ab3702d3973e5, type: 2}
+  - {fileID: 11400000, guid: 589200de0db80f148be77f5d350fb9f4, type: 2}
+  - {fileID: 11400000, guid: 58ca4c4c818601545a553b4d1319ffd3, type: 2}
+  - {fileID: 11400000, guid: 15bb1bbd81537e24ab7100c462441f24, type: 2}
+  - {fileID: 11400000, guid: 3953e138f58ce3b4fb80abc790d49eb0, type: 2}

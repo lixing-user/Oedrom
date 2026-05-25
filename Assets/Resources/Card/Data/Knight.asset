@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0beb13a7d5391d24d83bbac89a076028, type: 3}
+  m_Name: Knight
+  m_EditorClassIdentifier: 
+  type: 3
+  defaultIcon: {fileID: 440355882, guid: d638e9ef88c10a44789152e748f0f622, type: 3}
+  baseCost: 300
+  prefab3D: {fileID: 1583574167742991774, guid: 06c52ae69888d41399001422b9e30d0f, type: 3}
+  prefab2D: {fileID: 7298444741019534893, guid: ce2905d52b9a9ae40a66278e5fb87034, type: 3}
+  previewPrefab: {fileID: 107724, guid: b74e165df95c9e04fb28f4ac23c27562, type: 3}

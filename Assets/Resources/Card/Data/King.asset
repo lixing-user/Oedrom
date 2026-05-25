@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0beb13a7d5391d24d83bbac89a076028, type: 3}
+  m_Name: King
+  m_EditorClassIdentifier: 
+  type: 6
+  defaultIcon: {fileID: -1545431140, guid: ff649c69a6aba704d878728436277a19, type: 3}
+  baseCost: 0
+  prefab3D: {fileID: 2254573151814923478, guid: 4f7e7711c53da402f92851dd30f100f5, type: 3}
+  prefab2D: {fileID: 8696891541936616626, guid: 990ad26db2bc67949b9bf390cbc950ab, type: 3}
+  previewPrefab: {fileID: 119820, guid: 63d3174dfb541e34eaa26e5caa536dea, type: 3}

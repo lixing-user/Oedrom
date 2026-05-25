@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d54b3cc221e0e42b7c1cb08ff4eed8, type: 3}
+  m_Name: ShowDialogue_07PieceAttack
+  m_EditorClassIdentifier: Assembly-CSharp::ShowDialogueAction
+  dialogueLines:
+  - speaker: {fileID: 11400000, guid: a4480f420e45c634daa0dec9fe5b7bb1, type: 2}
+    emotion: 0
+    content: "\u5371\u6A5F\u89E3\u9664\uFF0C\u525B\u90E8\u5C6C\u7684\u58EB\u5175\u5DF2\u7D93\u5F7C\u6B64\u727D\u5236\u3001\u7121\u6CD5\u884C\u52D5\u3002"
+    anchor: 3
+    pauseAfterThisLine: 0
+  - speaker: {fileID: 11400000, guid: a4480f420e45c634daa0dec9fe5b7bb1, type: 2}
+    emotion: 0
+    content: "\u4F46\u56DE\u5408\u9084\u6C92\u6709\u7D50\u675F\uFF0C\u90E8\u7F72\u5F8C\u4F9D\u7136\u6709\u4E00\u6B21\u884C\u52D5\u6A5F\u6703\u3002"
+    anchor: 3
+    pauseAfterThisLine: 0
+  - speaker: {fileID: 11400000, guid: a4480f420e45c634daa0dec9fe5b7bb1, type: 2}
+    emotion: 0
+    content: "\u90A3\u9EBC\uFF0C\u7E7C\u7E8C\u6307\u63EE\u300C\u9A0E\u5175\u300D\u767C\u8D77\u653B\u52E2\u5427\uFF01"
+    anchor: 3
+    pauseAfterThisLine: 0

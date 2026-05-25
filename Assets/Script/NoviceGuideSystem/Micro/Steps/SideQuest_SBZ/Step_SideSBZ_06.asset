@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bf600d0a3ea3c4792ec239ea90d378, type: 3}
+  m_Name: Step_SideSBZ_06
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialStep
+  stepId: Step_SideSBZ_06Conv
+  objective: "\u6307\u793A\u73A9\u5BB6\u9078\u64C7\u6230\u9B25\u7D50\u675F\u5F8C\u7684standbyzone\u4FD8\u865C\u68CB\u5B50"
+  _actionsOnStart:
+  - {fileID: 11400000, guid: ab5173d711bda2640aad9ae0fc1566dd, type: 2}
+  _completionConditions:
+  - {fileID: 11400000, guid: a9c2ae3057457d84f9a1e6bd73de7773, type: 2}
+  _failureConditions: []
+  _actionsOnCompletion:
+  - {fileID: 11400000, guid: 34b272cf684f32842ab1067c5ed74925, type: 2}
+  _actionsOnFailure: []

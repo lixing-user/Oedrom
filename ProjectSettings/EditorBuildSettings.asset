@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scene/Core.unity
+    guid: 115062c2ec46bf743a1ba12ff278c4a3
+  - enabled: 1
+    path: Assets/Scene/Visual&Audio/Cinematic.unity
+    guid: c8301b0dc39998342be267de2aaf873e
+  - enabled: 1
+    path: Assets/Scene/GameStarter/Lobby.unity
+    guid: 24e3294ee755845cc9366968c1605b71
+  - enabled: 1
+    path: Assets/Scene/Story/StoryScene.unity
+    guid: 0966388b7f90d4daeba15830cb5a49a2
+  - enabled: 1
+    path: Assets/Scene/GameMap/MainGameField.unity
+    guid: 981fec62e8d3f4402beef6d3f330218e
+  - enabled: 1
+    path: Assets/Scene/GameMap/NormalBattle.unity
+    guid: 72ca7f98aa2c14016850b39d627b0c87
+  - enabled: 1
+    path: Assets/Scene/GameMap/FinalBattle.unity
+    guid: 54c65b0d763ce66459a2a67cbb64f848
+  - enabled: 1
+    path: Assets/Scene/GameMap/ChaseBattle.unity
+    guid: f7e0be8272e25ad47aa05c82fe37b6a0
+  - enabled: 1
+    path: Assets/Scene/GameMap/EscapeBattle.unity
+    guid: 28736ceeb4be08643b9d6999d9790da4
+  - enabled: 1
+    path: Assets/Scene/Shop/Shop.unity
+    guid: 8d02d686c96ca054b8593e27bfb08a0f
+  - enabled: 1
+    path: Assets/Scene/Credits_Scene.unity
+    guid: 3326cd9cbc188be479157314dc6a773c
+  m_configObjects:
+    com.unity.addressableassets: {fileID: 11400000, guid: 3595183a1f750cf4d8e94e6051339205, type: 2}
+    com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f, type: 2}
+    com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_UseUCBPForAssetBundles: 0

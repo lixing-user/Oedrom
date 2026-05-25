@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bf600d0a3ea3c4792ec239ea90d378, type: 3}
+  m_Name: Step13
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialStep
+  stepId: Step_013Conv
+  objective: "\u89C0\u770B\u6559\u5B78\u8207\u5C0D\u8A71\u6846\uFF0C\u6307\u793A\u73A9\u5BB6\u4E0B\u4E00\u500B\u904A\u6232\u76EE\u6A19\uFF08\u524D\u5F80\u6751\u838A\uFF09"
+  _actionsOnStart:
+  - {fileID: 11400000, guid: 3047498d8c0132840a264445e414c5b3, type: 2}
+  - {fileID: 11400000, guid: a26d40ef7aa344f4494b5bd60127a8ed, type: 2}
+  - {fileID: 11400000, guid: 870309db9fcd79948a8e330c3e1a92b9, type: 2}
+  _completionConditions:
+  - {fileID: 11400000, guid: a9c2ae3057457d84f9a1e6bd73de7773, type: 2}
+  _failureConditions: []
+  _actionsOnCompletion:
+  - {fileID: 11400000, guid: bdc7c8f6e40ab5a42803c58766d20b48, type: 2}
+  - {fileID: 11400000, guid: 4936afa93276fcd45969ec0482f9e1a2, type: 2}
+  _actionsOnFailure: []

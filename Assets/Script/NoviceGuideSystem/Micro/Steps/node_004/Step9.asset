@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22bf600d0a3ea3c4792ec239ea90d378, type: 3}
+  m_Name: Step9
+  m_EditorClassIdentifier: Assembly-CSharp::TutorialStep
+  stepId: Step_009Cmd
+  objective: "\u89C0\u770B\u6559\u5B78\u3001\u7406\u89E3\u6230\u9B25\u5834\u666F\u754C\u9762"
+  _actionsOnStart:
+  - {fileID: 11400000, guid: b03607a3bbf02164db2acadbbf35f0fe, type: 2}
+  - {fileID: 11400000, guid: 066253e6c358d404d860adbe8e22a006, type: 2}
+  _completionConditions:
+  - {fileID: 11400000, guid: a9c2ae3057457d84f9a1e6bd73de7773, type: 2}
+  _actionsOnCompletion:
+  - {fileID: 11400000, guid: 34b272cf684f32842ab1067c5ed74925, type: 2}

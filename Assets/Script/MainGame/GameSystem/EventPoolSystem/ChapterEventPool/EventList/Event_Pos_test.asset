@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecaadf22ca8226f48a641dcdafa4d701, type: 3}
+  m_Name: Event_Pos_test
+  m_EditorClassIdentifier: Assembly-CSharp::RandomEventData
+  eventId: testPos001
+  eventName: Increase MP&PP
+  description: Increase Morale and Popularity 1 point for each.
+  weight: 0
+  eventIcon: {fileID: -666858493, guid: 23d19714080fc1f439e52efdcc505568, type: 3}
+  eventType: 2
+  conditions: []
+  options:
+  - optionId: 
+    optionName: test_confirm
+    description: 
+    effects:
+    - effectType: 7
+      targetResource: 0
+      sourceResource: 0
+      targetPieceType: 0
+      targetTeam: 0
+      combatModifierType: 2
+      statusType: 0
+      flatAmount: 0
+      percentAmount: 0
+      duration: 3
