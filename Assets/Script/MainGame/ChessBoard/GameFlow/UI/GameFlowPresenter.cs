@@ -17,8 +17,20 @@ public class GameFlowPresenter : MonoBehaviour
 
     private GameFlowView _view;
 
-    private Team _currentTeam = Team.White;
+    private const Team PlayerTeam = Team.White;
+    private Team _currentTeam = PlayerTeam;
     private GamePhaseState _currentPhase = GamePhaseState.StandbyPhase;
+
+
+    [Header("Phase Popup")]
+    [Tooltip("只有「玩家回合」且屬於此清單的階段才會顯示階段提示。")]
+    [SerializeField]
+    private GamePhaseState[] _popupPhases =
+   {
+        GamePhaseState.MainPhase1,
+        GamePhaseState.MovementPhase,
+        GamePhaseState.ResolutionPhase
+    };
 
 
     #region Unity Lifecycle
@@ -47,8 +59,10 @@ public class GameFlowPresenter : MonoBehaviour
     {
         if (_view == null) return;
 
-        string turnText = _flowText.GetTurnText(_turnManager.CurrentTurn);
-        _view.UpdateFlowState(_turnManager.CurrentTurn, turnText);
+        _currentTeam = _turnManager.CurrentTurn;
+
+        string turnText = _flowText.GetTurnText(_currentTeam);
+        _view.UpdateFlowState(_currentTeam, turnText);
 
         string phaseText = _flowText.GetPhaseText(_currentPhase);
         _view.UpdatePhaseState(_currentPhase, phaseText);
@@ -73,51 +87,58 @@ public class GameFlowPresenter : MonoBehaviour
     #region Signal Handlers
     private void OnGameStarted(GameStartedSignal signal)
     {
-        _view.ShowTransitionPopup(
-            _flowText.GetText("game_start"),
-            FlowTransitionType.TurnChange
-        );
+        //_view.ShowTransitionPopup(
+        //    _flowText.GetText("game_start"),
+        //    FlowTransitionType.TurnChange
+        //);
+        if (_view == null) return;
+
+        _view.ShowTurnPopup(_flowText.GetText("game_start"));
     }
 
     private void OnTurnChanged(GlobalTurnChangedSignal signal)
     {
+        //_currentTeam = signal.CurrentTurn;
+
+        //string turnText = _flowText.GetTurnText(signal.CurrentTurn);
+        //_view.UpdateFlowState(signal.CurrentTurn, turnText);
+
+        //string popupText = signal.CurrentTurn == Team.White
+        //    ? _flowText.GetText("your_turn")
+        //    : _flowText.GetText("enemy_turn");
+
+        //_view.ShowTransitionPopup(popupText, FlowTransitionType.TurnChange);
+        if (_view == null) return;
+
         _currentTeam = signal.CurrentTurn;
 
-        string turnText = _flowText.GetTurnText(signal.CurrentTurn);
-        _view.UpdateFlowState(signal.CurrentTurn, turnText);
-
-        string popupText = signal.CurrentTurn == Team.White
-            ? _flowText.GetText("your_turn")
-            : _flowText.GetText("enemy_turn");
-
-        _view.ShowTransitionPopup(popupText, FlowTransitionType.TurnChange);
+        _view.UpdateFlowState(_currentTeam, _flowText.GetTurnText(_currentTeam));
+        _view.ShowTurnPopup(_flowText.GetTurnPopupText(_currentTeam));
     }
 
     private void OnPhaseChanged(PhaseChangedSignal signal)
     {
+        if (_view == null) return;
+
         _currentPhase = signal.CurrentPhase;
 
-        string phaseText = _flowText.GetPhaseText(signal.CurrentPhase);
-        _view.UpdatePhaseState(signal.CurrentPhase, phaseText);
+        string phaseText = _flowText.GetPhaseText(_currentPhase);
+        _view.UpdatePhaseState(_currentPhase, phaseText);
 
-        if (ShowPhasePopup(signal.CurrentPhase))
+        if (ShowPhasePopup(_currentPhase))
         {
-            _view.ShowTransitionPopup(phaseText, FlowTransitionType.PhaseChange);
+            // _view.ShowTransitionPopup(phaseText, FlowTransitionType.PhaseChange);
+            _view.ShowPhasePopup(phaseText);
         }
     }
     #endregion
 
     #region Helper Methods
-
     private bool ShowPhasePopup(GamePhaseState phase)
     {
-        return phase switch
-        {
-            GamePhaseState.MainPhase1 => true,
-            GamePhaseState.MovementPhase => true,
-            GamePhaseState.ResolutionPhase => true,
-            _ => false
-        };
+        if (_currentTeam != PlayerTeam) return false;
+
+        return System.Array.IndexOf(_popupPhases, phase) >= 0;
     }
     #endregion
 }

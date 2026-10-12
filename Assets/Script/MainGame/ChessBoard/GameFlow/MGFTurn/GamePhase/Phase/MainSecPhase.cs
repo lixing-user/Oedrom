@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -68,17 +69,25 @@ public class MainSecPhase : IGamePhaseState
             yield return null;
         }
 
+        int myVersion = _machine.PhaseVersion;
         Debug.Log("[MainPhase2] 開始執行階段流程...");
         _facade.DisableAllInput();
 
-        FocusCameraOnMovedPiece();
-        yield return new WaitForSeconds(0.6f);
-
         // === 步驟 1：檢測事件類型 ===
         ResolutionType eventType = DetermineEventType();
+        bool isAI = _facade.GetCurrentTeam() == Team.Black;
+
+        if (eventType == ResolutionType.RandomEvent && !isAI)
+        {
+            _model.EventTriggerPieceId = _model.LastMovedPieceId;
+            _model.PendingRandomEvent = _facade.RollRandomEvent(_model.EventTriggerPieceId);
+
+            if (_model.PendingRandomEvent == null)
+                eventType = ResolutionType.None;
+        }
+
         _triggeredEventType = eventType;
         _model.CurrentResolutionType = eventType;
-
 
         // === 步驟 2：根據事件類型觸發對應流程 ===
         if (eventType == ResolutionType.None)
@@ -88,6 +97,19 @@ public class MainSecPhase : IGamePhaseState
             yield break; // 直接結束協程
         }
 
+        // AI 無 UI 事件攔截：踩到商店/隨機事件，直接切換，攝影機不動
+        if (isAI && (eventType == ResolutionType.Shop || eventType == ResolutionType.RandomEvent))
+        {
+            Debug.Log($"[MainPhase2] AI 觸發 {eventType}，無 UI 演出，直接進入下一階段");
+            SwitchToNextPhase();
+            yield break;
+        }
+
+        // === 步驟 3：【視覺演出】確定有事件，才拉近鏡頭並鎖定 ===
+        FocusCameraOnMovedPiece();
+        yield return new WaitForSeconds(0.6f);
+
+        // === 步驟 4：執行事件流程 ===
         if (eventType == ResolutionType.Battle || eventType == ResolutionType.Shop)
         {
             if (_facade.GetCurrentTeam() == Team.Black && eventType == ResolutionType.Shop)
@@ -98,13 +120,19 @@ public class MainSecPhase : IGamePhaseState
             }
             // 玩家或是戰鬥事件，執行策略
             yield return _currentStrategy.Trigger(eventType, _model);
-            yield return WaitForSceneReturn();
+            if (!_machine.IsCurrent(myVersion)) yield break;
+            yield return WaitForSceneReturn(myVersion);
+            if (!_machine.IsCurrent(myVersion)) yield break;
         }
         else if (eventType == ResolutionType.RandomEvent)
         {
             // 隨機事件：只等待 UI 關閉，不等待場景
             if (_facade.GetCurrentTeam() == Team.White)
-                yield return ExecuteRandomEventFlow();
+            {
+                yield return ExecuteRandomEventFlow(myVersion);
+                if (!_machine.IsCurrent(myVersion)) yield break;
+            }
+                
             if (_triggeredEventType != ResolutionType.Battle)   // Battle事件的 SwitchToNextPhase 會交由 OnSceneReactivated 去呼叫
             {
                 SwitchToNextPhase();
@@ -123,23 +151,20 @@ public class MainSecPhase : IGamePhaseState
         Debug.Log("[MainPhase2] === 主要階段2結束，進入處理階段 ===");
     }
 
-    private IEnumerator WaitForSceneReturn()
+    private IEnumerator WaitForSceneReturn(int myVersion)
     {
         Debug.Log("[MainPhase2] 等待場景返回...");
         _isWaitingForSceneReturn = true;
-        while (_isWaitingForSceneReturn)
+        while (_isWaitingForSceneReturn && _machine.IsCurrent(myVersion))
             yield return null;
+        _isWaitingForSceneReturn = false; // 確保被強制中止時旗標也復位
     }
     #endregion
 
 
-    private IEnumerator ExecuteRandomEventFlow()
+    private IEnumerator ExecuteRandomEventFlow(int myVersion)
     {
         Debug.Log("[MainPhase2] 執行隨機事件流程...");
-
-        // 1. 透過 Facade 觸發 UI，並將結果存入 Model
-        _model.EventTriggerPieceId = _model.LastMovedPieceId;
-        _model.PendingRandomEvent = _facade.TriggerRandomEvent(_model.EventTriggerPieceId);
 
         if (_model.PendingRandomEvent == null)
         {
@@ -150,6 +175,7 @@ public class MainSecPhase : IGamePhaseState
 
         // 2. 掛起協程，等待玩家點擊 UI 確認
         _isWaitingForEventUI = true;
+        _facade.ShowRandomEventUI(_model.PendingRandomEvent);
         while (_isWaitingForEventUI)
         {
             yield return null;
@@ -177,7 +203,8 @@ public class MainSecPhase : IGamePhaseState
             _model.CurrentResolutionType = ResolutionType.Battle;
 
             // 轉交給現有的場景等待機制
-            yield return WaitForSceneReturn();
+            yield return WaitForSceneReturn(myVersion);
+            if (!_machine.IsCurrent(myVersion)) yield break;
 
             // 結束協程。等場景載回來時，OnSceneReactivated 會接手呼叫 SwitchToNextPhase()
             yield break;

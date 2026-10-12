@@ -21,4 +21,5 @@ MonoBehaviour:
   _failureConditions: []
   _actionsOnCompletion:
   - {fileID: 11400000, guid: ef812685972091a4daa6034f90fedde5, type: 2}
+  - {fileID: 11400000, guid: b62c9902d03322d43a65ad70226d8331, type: 2}
   _actionsOnFailure: []

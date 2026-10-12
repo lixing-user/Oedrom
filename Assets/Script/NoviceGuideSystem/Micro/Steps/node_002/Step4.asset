@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TutorialStep
   stepId: Step_004Conv
   objective: "\u9A0E\u58EB\u79FB\u52D5\u5230\u6307\u5B9A\u5730\u9EDE\uFF08\u672A\u89F8\u767C\u4E8B\u4EF6\uFF09\uFF0C\u56DE\u5408\u7D50\u675F\u9032\u5165\u7D50\u7B97\u3002"
-  _actionsOnStart:
-  - {fileID: 11400000, guid: e33ef0d7a2d37c44dba8fd72608c0472, type: 2}
+  _actionsOnStart: []
   _completionConditions:
   - {fileID: 11400000, guid: 3ecb5df738b7dc54d9a1c6ca66cb4f6d, type: 2}
+  _failureConditions: []
   _actionsOnCompletion:
   - {fileID: 11400000, guid: 3d93261bcfe63374ab82a51eb7981fdb, type: 2}
   - {fileID: 11400000, guid: 0d0146a2c3e0be54483d1f406e0d33d4, type: 2}
+  _actionsOnFailure: []

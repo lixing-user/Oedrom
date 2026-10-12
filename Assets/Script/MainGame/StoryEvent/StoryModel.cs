@@ -15,6 +15,11 @@ public struct DialogueHistoryLine
     }
 }
 
+public class CharacterSlotState
+{
+    public string name;
+    public CharacterSpriteSize size;
+}
 
 
 // 全域進度 Model（ProjectContext）
@@ -60,9 +65,11 @@ public class StoryRuntimeModel
     public string currentSpeakerName;
     public string currentDialogueText;
     public Dictionary<string, CharacterSpritePosition> characterPositions = new();
+    public Dictionary<string, CharacterSpriteSize> characterSizes = new();
 
     // === 對話歷史（用於 Log） ===
     public List<DialogueHistoryLine> dialogueHistory = new List<DialogueHistoryLine>();
+    public Dictionary<CharacterSpritePosition, CharacterSlotState> stageSlots = new();
 
     // === 業務邏輯方法 ===
     public void AddDialogueToHistory(string character, string content)
@@ -70,22 +77,41 @@ public class StoryRuntimeModel
         dialogueHistory.Add(new DialogueHistoryLine(character, content));
     }
 
-    public void SetCharacterPosition(string name, CharacterSpritePosition pos)
+    public CharacterSpritePosition? FindCharacter(string name)
     {
-        characterPositions[name] = pos;
+        foreach (var kv in stageSlots)
+            if (kv.Value.name == name) return kv.Key;
+        return null;
     }
 
-    public CharacterSpritePosition? GetCharacterPosition(string name)
+    public CharacterSpriteSize GetCharacterSize(string name)
     {
-        return characterPositions.TryGetValue(name, out var pos) ? pos : null;
+        var pos = FindCharacter(name);
+        return pos.HasValue ? stageSlots[pos.Value].size : CharacterSpriteSize.Normal;
     }
+
+    public void PlaceCharacter(string name, CharacterSpritePosition pos, CharacterSpriteSize size)
+    {
+        var old = FindCharacter(name);
+        if (old.HasValue && old.Value != pos) stageSlots.Remove(old.Value);
+        stageSlots[pos] = new CharacterSlotState { name = name, size = size }; // 同位置的舊角色等於被取代
+    }
+
+    public void RemoveCharacter(string name)
+    {
+        var pos = FindCharacter(name);
+        if (pos.HasValue) stageSlots.Remove(pos.Value);
+    }
+
+    public void ClearAllCharacters() => stageSlots.Clear();
+
 
     public void ResetForNewChapter()
     {
         currentDialogueIndex = 0;
         currentSpeakerName = "";
         currentDialogueText = "";
-        characterPositions.Clear();
+        ClearAllCharacters();
         isAutoPlay = false;
         isSkipping = false;
     }

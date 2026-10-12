@@ -38,7 +38,7 @@ public class BoardTerrainHeightAdapter : ITerrainDataService, IInitializable
         gridBounds = _dimensions.GridBounds;
 
         float marchingWidth = _marchingCubeSetting.width * _marchingCubeSetting.resolution;
-        float domainWidth = _dimensions.BoardSizeX * _dimensions.TileSize;
+        float domainWidth = _dimensions.BoardSizeX * _dimensions.GridSpacing;
 
         if (!Mathf.Approximately(marchingWidth, domainWidth))
         {

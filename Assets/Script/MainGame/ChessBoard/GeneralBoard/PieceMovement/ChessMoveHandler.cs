@@ -137,11 +137,28 @@ public class ChessMoveHandler : IMoveHandler
             return false;
         }
 
-
+        // Step 1: 執行原有的恢復邏輯
         bool success = _board.RestorePiece(pieceId, to);
 
         if (success)
         {
+            // Step 2: 新增角落/底線放置的轉向判斷
+            var piece = _board.GetPieceById(pieceId);
+            if (piece != null)
+            {
+                int maxY = _board.Dimensions.BoardSizeY - 1;
+
+                if (piece.Team == Team.White && to.Y == maxY)
+                {
+                    piece.ReverseDirection();
+                }
+                else if (piece.Team == Team.Black && to.Y == 0)
+                {
+                    piece.ReverseDirection();
+                }
+            }
+
+            // Step 3: 派發事件 (此時派發的事件會反映最新的 IsReversed 狀態)
             _eventDispatcher.Dispatch(_board.DomainEvents);
             _board.ClearEvents();
             Debug.Log($"[MoveHandler] 從待命區恢復成功: {pieceId} → {to}");

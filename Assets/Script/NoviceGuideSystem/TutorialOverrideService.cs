@@ -16,6 +16,9 @@ public interface ITutorialOverrideService
     // --- 隨機事件覆寫 ---
     void EnqueueForcedEvent(RandomEventData eventData);
     bool TryGetForcedEvent(out RandomEventData eventData);
+    void SetRandomEventSuppressed(bool suppressed);
+    bool IsRandomEventSuppressed { get; }
+    bool HasForcedEvent { get; }
 
     // --- 手牌/牌組覆寫 (未來擴充) ---
     void SetRestrictedCardPlay(ChessPieceType allowedCardType);
@@ -93,9 +96,18 @@ public class TutorialOverrideService : ITutorialOverrideService
     #endregion
 
     #region Random Event Overrides
-    public void EnqueueForcedEvent(RandomEventData eventData) => _forcedEvents.Enqueue(eventData);
+    private bool _isRandomEventSuppressed;
+    public bool HasForcedEvent => _forcedEvents.Count > 0;
+
+    public void EnqueueForcedEvent(RandomEventData eventData)
+    {
+        Debug.Log($"[TutorialOverride] Enqueue on instance {GetHashCode()}, queue count before={_forcedEvents.Count}");
+        _forcedEvents.Enqueue(eventData);
+    }
+
     public bool TryGetForcedEvent(out RandomEventData eventData)
     {
+        Debug.Log($"[TutorialOverride] TryGet on instance {GetHashCode()}, queue count={_forcedEvents.Count}");
         if (_forcedEvents.Count > 0)
         {
             eventData = _forcedEvents.Dequeue();
@@ -104,6 +116,9 @@ public class TutorialOverrideService : ITutorialOverrideService
         eventData = null;
         return false;
     }
+
+    public void SetRandomEventSuppressed(bool suppressed) => _isRandomEventSuppressed = suppressed;
+    public bool IsRandomEventSuppressed => _isRandomEventSuppressed;
     #endregion
 
     #region ChessBoard Placement & Movement Overrides

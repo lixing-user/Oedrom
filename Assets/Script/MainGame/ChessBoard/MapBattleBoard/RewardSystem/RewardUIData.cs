@@ -7,6 +7,7 @@ using UnityEngine;
 public struct RewardUIData
 {
     public PieceID Id;         // 追蹤用
+    public ChessPieceType Type;
     public string DisplayName; // 顯示名稱
     public Sprite Icon;        // 卡面圖片
     public bool IsBroken;      // 是否顯示破損特效

@@ -10,6 +10,7 @@ public interface IDeckService
     void InitializeStartingHand(Team team);
     HandCard DrawCard(ChessPieceType type, Team team);
     List<HandCard> DrawRandomCards(int count, Team team);
+    List<HandCard> DrawRandomCardsFromPool(int count, Team team, List<ChessPieceType> allowedTypes);
     void ReloadCardViews();
     void Reset();
 }
@@ -109,6 +110,43 @@ public class DeckService : IDeckService
             var randomType = availableTypes[UnityEngine.Random.Range(0, availableTypes.Count)];
 
             // 創建並添加卡牌到手牌
+            var card = DrawCard(randomType, team);
+
+            // 記錄成功抽取的卡牌
+            if (card != null)
+                drawnCards.Add(card);
+        }
+
+        return drawnCards;
+    }
+
+    public List<HandCard> DrawRandomCardsFromPool(int count, Team team, List<ChessPieceType> allowedTypes)
+    {
+        var drawnCards = new List<HandCard>();
+
+        // 防呆 1：如果傳入的池子是空的，回傳空結果 (或可依據專案設計退回全域抽卡)
+        if (allowedTypes == null || allowedTypes.Count == 0)
+        {
+            Debug.LogWarning("[DeckService] 隨機池為空，無法進行限縮範圍的抽卡");
+            return drawnCards;
+        }
+
+        // 防呆 2：過濾掉企劃可能在 Inspector 誤填的 None
+        var validTypes = allowedTypes.Where(type => type != ChessPieceType.None).ToList();
+
+        if (validTypes.Count == 0)
+        {
+            Debug.LogWarning("[DeckService] 過濾後隨機池中沒有有效的棋子類型");
+            return drawnCards;
+        }
+
+        // 核心抽卡迴圈 (與原版相同，利用 HandService 檢查上限)
+        for (int i = 0; i < count && _handService.CanAddCard(); i++)
+        {
+            // 從「有效白名單」中隨機選擇一個棋子類型
+            var randomType = validTypes[UnityEngine.Random.Range(0, validTypes.Count)];
+
+            // 呼叫現有的 DrawCard 建立卡牌並加入手牌
             var card = DrawCard(randomType, team);
 
             // 記錄成功抽取的卡牌

@@ -1,6 +1,7 @@
+using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 /// <summary>
 /// 故事模式專用按鍵

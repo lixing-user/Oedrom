@@ -47,16 +47,22 @@ public class StandbyPhase : IGamePhaseState
     #region 核心邏輯
     private IEnumerator ExecutePhaseCoroutine()
     {
+        int myVersion = _machine.PhaseVersion;
         Debug.Log("[StandbyPhase] 開始執行階段流程...");
 
         // === 步驟 1：補給資源 ===
-        yield return ReplenishResourcesAsync();
-
+        yield return ReplenishResourcesAsync(myVersion);
+        if (!_machine.IsCurrent(myVersion))
+        {
+            Debug.Log("[StandbyPhase] 階段已被取代，中止剩餘流程");
+            yield break;
+        }
         // === 步驟 2：抽卡（未來實現）===
         // yield return DrawCardsAsync();
 
         // === 步驟 3：顯示階段完成提示 ===
         yield return ShowPhaseCompleteUI();
+        if (!_machine.IsCurrent(myVersion)) yield break;
 
         // === 步驟 4：標記完成 ===
         _model.CanProgressToNextPhase = true;
@@ -67,7 +73,7 @@ public class StandbyPhase : IGamePhaseState
     }
 
 
-    private IEnumerator ReplenishResourcesAsync()
+    private IEnumerator ReplenishResourcesAsync(int myVersion)
     {
         Debug.Log("[StandbyPhase] [1/3] 補給資源...");
 
@@ -82,6 +88,12 @@ public class StandbyPhase : IGamePhaseState
         {
             elapsed += Time.deltaTime;
             yield return null;
+
+            if (!_machine.IsCurrent(myVersion))
+            {
+                Debug.LogWarning("[StandbyPhase] 等待期間階段已切換，放棄後續回調");
+                yield break;   // 不再寫入 _model，因為這裡可能早就不是自己的階段了
+            }
         }
 
         if (!completed)

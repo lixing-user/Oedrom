@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Event_Neg_003_Scorched-earth Policy
   m_EditorClassIdentifier: 
   eventId: Neg003
-  eventName: Scorched-earth Policy
-  description: "3\u5834\u6230\u9B25\u5167\u7121\u6CD5\u7372\u5F97\u4EFB\u4F55\u8CC7\u6E90\uFF08\u91D1\u9322\u3001\u6575\u65B9\u88DC\u7D66\uFF09"
+  eventName: "\u7126\u571F\u6230\u8853"
+  description: "\u5E1D\u570B\u8ECD\u767C\u52D5\u7126\u571F\u6230\u8853\uFF0C\u4F60\u5011\u5728\u6230\u5F8C\u767C\u73FE\uFF0C\u6BCF\u4E00\u500B\u5E1D\u570B\u8ECD\u64DA\u9EDE\u90FD\u5DF2\u88AB\u711A\u71D2\u6B86\u76E1\uFF0C\u5BF8\u8349\u4E0D\u751F\u3002"
   weight: 1
-  eventIcon: {fileID: 0}
+  eventIcon: {fileID: 2098004843, guid: 052b07a6ba1c01b45add3e58ed523129, type: 3}
   eventType: 1
   conditions: []
   options:
@@ -28,6 +28,8 @@ MonoBehaviour:
       targetResource: 0
       sourceResource: 0
       targetPieceType: 0
+      randomPool:
+        pieces: 
       targetTeam: 0
       targetBattleType: 0
       targetBattleId: 

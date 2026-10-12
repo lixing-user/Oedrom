@@ -7,7 +7,7 @@ using Zenject;
 // Application/RandomEventManager.cs
 public class RandomEventManager : IInitializable, IRandomEventManager
 {
-    [InjectOptional] private readonly ITutorialOverrideService _overrideService;
+    private readonly ITutorialOverrideService _overrideService;
 
     private readonly SignalBus _signalBus;
     private readonly EventEffectDispatcher _effectDispatcher;
@@ -18,12 +18,14 @@ public class RandomEventManager : IInitializable, IRandomEventManager
         EventEffectDispatcher effectDispatcher,
         SignalBus signalBus,
         EventPoolConfig eventPoolConfig,
-        EffectContextFactory contextFactory)
+        EffectContextFactory contextFactory,
+        [InjectOptional] ITutorialOverrideService overrideService)
     {
         _effectDispatcher = effectDispatcher;
         _signalBus = signalBus;
         _eventPoolConfig = eventPoolConfig;
         _contextFactory = contextFactory;
+        _overrideService = overrideService;
     }
 
 
@@ -63,34 +65,27 @@ public class RandomEventManager : IInitializable, IRandomEventManager
 
 
     // Step 1: 抽籤並發送 UI 信號 (不執行實際數值變化)
-    public RandomEventData DraftAndShowEvent(PieceID triggerPieceId)
+    public RandomEventData DraftEvent(PieceID triggerPieceId)
     {
+        if (_overrideService != null && _overrideService.IsRandomEventSuppressed)
+            return null;
+
+        if (_overrideService != null && _overrideService.TryGetForcedEvent(out var forced))
+            return forced; // null = 本次不發生事件，這裡不發任何 signal
+
         if (_globalEvents.Count == 0) return null;
 
-        // 1. 【攔截點】：檢查是否有保底的主線/教學事件
-        RandomEventData selectedEvent = null;
+        var checkContext = _contextFactory.Create(triggerPieceId);
+        var availableEvents = _globalEvents.FindAll(e => e.CheckConditions(checkContext));
+        if (availableEvents.Count == 0) return null;
 
-        if (_overrideService != null && _overrideService.TryGetForcedEvent(out RandomEventData forcedEvent))
-        {
-            if (forcedEvent == null)
-            {
-                Debug.Log("[RandomEventManager] 教學/主線強制【壓制】了隨機事件，本次無事發生。");
-                return null; // 直接回傳 null，交由 MainSecPhase 跳過等待
-            }
+        Debug.Log($"[Manager] 檢查的鎖 ID: {_overrideService.GetHashCode()}");
 
-            Debug.Log($"[RandomEventManager] 觸發教學/主線強制事件: {forcedEvent.eventName}");
-            // 直接走觸發流程，跳過隨機抽籤
-            selectedEvent = forcedEvent;
-        }
-        else
-        {
-            // 2. 如果沒有強制事件，才使用權重隨機選擇事件
-            var checkContext = _contextFactory.Create(triggerPieceId);
-            var availableEvents = _globalEvents.FindAll(e => e.CheckConditions(checkContext));
+        return SelectWeightedRandom(availableEvents);
+    }
 
-            selectedEvent = SelectWeightedRandom(availableEvents);
-        }
-
+    public void ShowEvent(RandomEventData selectedEvent)
+    {
         var optionDTOs = new List<EventOptionDTO>();
         if (selectedEvent.options != null)
         {
@@ -112,10 +107,8 @@ public class RandomEventManager : IInitializable, IRandomEventManager
             selectedEvent.description,
             selectedEvent.eventIcon,
             optionDTOs));
-
-        // 回傳抽中結果給 Facade
-        return selectedEvent;
     }
+
     public void ResolvePendingEvent(RandomEventData eventData, int selectedOptionIndex, PieceID targetPieceId)
     {
         if (eventData != null && selectedOptionIndex >= 0 && selectedOptionIndex < eventData.options.Count)
@@ -183,7 +176,8 @@ public class RandomEventManager : IInitializable, IRandomEventManager
 
 public interface IRandomEventManager
 {
-    RandomEventData DraftAndShowEvent(PieceID triggerPieceId);
+    RandomEventData DraftEvent(PieceID triggerPieceId);
+    void ShowEvent(RandomEventData selectedEvent);
     void ResolvePendingEvent(RandomEventData eventData, int selectedOptionIndex, PieceID targetPieceId);
     void TriggerTerrainEvent(TerrainType currentTerrain);
 }

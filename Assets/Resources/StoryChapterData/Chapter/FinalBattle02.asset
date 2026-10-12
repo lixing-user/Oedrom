@@ -14,19 +14,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StoryChapterConfig
   chapterId: FinalBattle_Script_02
   chapterName: FinalBattle02
-  dialogueFile: {fileID: 4900000, guid: 3129c9555edb37940b0d82485d1db1ff, type: 3}
-  initialBackground: Battlefield
+  dialogueFile: {fileID: 4900000, guid: a8b5eed77c625c84c8ca82875df5d84f, type: 3}
+  initialBackground: BG_Battlefield
   backgroundSprite:
-  - backgroundName: Battlefield
-    sprite: {fileID: 0}
+  - backgroundName: BG_Battlefield
+    sprite: {fileID: 21300000, guid: 48fa0ec4b291aa74aa241162e569dc7e, type: 3}
   characterProfiles:
   - {fileID: 11400000, guid: 9331a4f5fa421eb4db22bc3808f4000a, type: 2}
   - {fileID: 11400000, guid: 81aea06fad86aa54f8460e7faea9602d, type: 2}
-  - {fileID: 11400000, guid: a4480f420e45c634daa0dec9fe5b7bb1, type: 2}
-  - {fileID: 11400000, guid: b55f54f3cadb7c04494b46997849c8cd, type: 2}
+  - {fileID: 11400000, guid: cf8e851864496944e82b33749f2289d7, type: 2}
+  - {fileID: 11400000, guid: ba3b018d2facbf0448b78f49a7069c89, type: 2}
   - {fileID: 11400000, guid: b5e7d3320f11a4f4eb58cafe3778ed4b, type: 2}
+  - {fileID: 11400000, guid: 4ab9ba7044a9fe543939b03d9563b938, type: 2}
   cgSprites:
   - cgName: CG_Dark
-    sprite: {fileID: 0}
+    sprite: {fileID: -1371611340, guid: 785d25007f59cd4408b3cf01eb208ca6, type: 3}
   phaseSequence: 01000000
-  nextChapter: {fileID: 0}
+  nextChapter: {fileID: 11400000, guid: c53175aae504c2241b1a686173970d31, type: 2}

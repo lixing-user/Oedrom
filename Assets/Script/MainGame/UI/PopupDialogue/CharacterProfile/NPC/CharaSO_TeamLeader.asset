@@ -17,6 +17,6 @@ MonoBehaviour:
   - "\u5C0F\u968A\u9577"
   - "\u4E2D\u968A\u9577"
   - "\u767E\u592B\u9577"
-  storySprite: {fileID: 833844819, guid: 8b49d996f3326864a86984e303d5b705, type: 3}
+  storySprite: {fileID: 21300000, guid: 62e2ed635b0c988429f0e266dd9e9d30, type: 3}
   defaultAvatar: {fileID: 0}
   avatarVariants: []

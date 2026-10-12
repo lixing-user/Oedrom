@@ -43,7 +43,7 @@ public class MainGameFieldInstaller : MonoInstaller
 
         Container.Bind<GameFlowPresenter>().FromComponentInHierarchy().AsSingle();
 
-        Container.Bind<IQuestTrackerView>().To<QuestTrackerView>().FromComponentInHierarchy().AsSingle();
+        Container.BindInterfacesAndSelfTo<QuestTrackerView>().FromComponentInHierarchy().AsSingle();
         Container.BindInterfacesAndSelfTo<QuestTrackerPresenter>().AsSingle();
 
         Container.Bind<GuidePanelView>().FromComponentInHierarchy().AsSingle();
@@ -77,6 +77,7 @@ public class MainGameFieldInstaller : MonoInstaller
         Container.DeclareSignal<EnemyVisualMoveCompletedSignal>().OptionalSubscriber();
         Container.DeclareSignal<MarkTargetPieceSignal>().OptionalSubscriber();
         Container.DeclareSignal<ToggleHandDeckSignal>().OptionalSubscriber();
+        Container.DeclareSignal<ChangeHandUIVisibilitySignal>().OptionalSubscriber();
         #endregion
     }
 

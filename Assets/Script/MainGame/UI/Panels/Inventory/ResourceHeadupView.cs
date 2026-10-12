@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class ResourceHeadupView : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    #region Resources
     [Header("Container References")]
     [SerializeField] private RectTransform _topRowContainer;    // morale, coin, popularity
     [SerializeField] private RectTransform _bottomRowContainer; // supply
@@ -25,6 +26,17 @@ public class ResourceHeadupView : MonoBehaviour, IPointerEnterHandler, IPointerE
     [SerializeField] private float _subtleScale = 0.7f;
     [SerializeField] private float _transitionDuration = 0.3f;
     [SerializeField] private Ease _transitionEase = Ease.OutCubic;
+    #endregion
+
+    #region QuestPanel
+    [Header("Quest Panel References")]
+    [SerializeField] private RectTransform _questPanelRect;
+    [SerializeField] private CanvasGroup _questCanvasGroup;
+
+    [Header("Quest Panel Positions")]
+    [SerializeField] private Vector2 _questStandardPos = Vector2.zero;
+    [SerializeField] private Vector2 _questSubtlePos = new Vector2(200, 0);
+    #endregion
 
     public event Action OnPointerEntered;
     public event Action OnPointerExited;
@@ -49,6 +61,7 @@ public class ResourceHeadupView : MonoBehaviour, IPointerEnterHandler, IPointerE
 
     public void TransitionTo(UIVisibilityHeadupMode mode, bool immediate = false)
     {
+        #region Resource Headup Transition
         _activeSequence?.Kill();
         _activeSequence = DOTween.Sequence();
 
@@ -72,24 +85,25 @@ public class ResourceHeadupView : MonoBehaviour, IPointerEnterHandler, IPointerE
             _activeSequence.Join(Group.DOFade(targetAlpha, _transitionDuration));
             _activeSequence.SetEase(_transitionEase);
         }
+        #endregion
+
+        #region Quest Panel Transition
+        if (_questPanelRect != null && _questCanvasGroup != null)
+        {
+            Vector2 targetQuestPos = isStandard ? _questStandardPos : _questSubtlePos;
+            float targetQuestAlpha = isStandard ? 1f : 0.2f;
+            if (immediate)
+            {
+                _questPanelRect.anchoredPosition = targetQuestPos;
+                _questCanvasGroup.alpha = targetQuestAlpha;
+            }
+            else
+            {
+                _activeSequence.Join(_questPanelRect.DOAnchorPos(targetQuestPos, _transitionDuration));
+                _activeSequence.Join(_questCanvasGroup.DOFade(targetQuestAlpha, _transitionDuration));
+            }
+            _activeSequence.SetEase(_transitionEase);
+        }
+        #endregion
     }
-
-
-    //public void TransitionToStandard()
-    //{
-    //    _currentTween?.Kill();
-
-    //    _rectTransform.DOAnchorPos(_standardPosition, _transitionDuration);
-    //    _rectTransform.DOScale(_standardScale, _transitionDuration);
-    //    _canvasGroup.DOFade(1f, _transitionDuration);
-    //}
-
-    //public void TransitionToSubtle()
-    //{
-    //    _currentTween?.Kill();
-
-    //    _rectTransform.DOAnchorPos(_subtlePosition, _transitionDuration);
-    //    _rectTransform.DOScale(_subtleScale, _transitionDuration);
-    //    _canvasGroup.DOFade(0.6f, _transitionDuration);
-    //}
 }

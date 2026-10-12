@@ -14,14 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GuideChapterSO
   chapterId: guide_C002
   chapterName: TerrainRule
-  chapterIcon: {fileID: 440355882, guid: d638e9ef88c10a44789152e748f0f622, type: 3}
+  chapterIcon: {fileID: -2118325676, guid: 052b07a6ba1c01b45add3e58ed523129, type: 3}
   pages:
   - title: Plain
-    description: plainrule
-    illustration: {fileID: 0}
+    description: "\u5E73\u539F\u5730\u5F62\uFF0C\u5730\u5F62\u5E73\u5766\u3001\u8349\u6728\u7A00\u758F\uFF0C\u6700\u9069\u5408\u884C\u8ECD\u8207\u6B63\u898F\u4F5C\u6230\u7684\u5730\u5F62\u3002\n\n\u99D0\u7D2E\u5728\u9019\u7A2E\u5730\u5F62\u6642\u6C92\u6709\u7279\u6B8A\u6548\u679C\u3002"
+    illustration: {fileID: -740129151, guid: 052b07a6ba1c01b45add3e58ed523129, type: 3}
+  - title: Forrest
+    description: "\u68EE\u6797\u5730\u5F62\uFF0C\u6A19\u6E96\u7684\u4F4E\u6D77\u62D4\u95CA\u8449\u6797\uFF0C\u5730\u8868\u662F\u76E4\u6839\u932F\u7BC0\u7684\u6A39\u6839\u8207\u843D\u8449\u5C64\uFF0C\u6709\u4E0D\u5C11\u5C0F\u578B\u52D5\u7269\u68F2\u606F\u3002\n\n\u99D0\u7D2E\u5728\u9019\u7A2E\u5730\u5F62\u6642\uFF0C\u7576\u56DE\u5408\u53EF\u7372\u5F97\u7684\u88DC\u7D66\u7269\u8CC7\u6703\u6709\u4E00\u5B9A\u6BD4\u4F8B\u7684\u589E\u52A0\u3002"
+    illustration: {fileID: 1686540417, guid: 052b07a6ba1c01b45add3e58ed523129, type: 3}
   - title: Mountain
-    description: mountainrule
-    illustration: {fileID: 0}
+    description: "\u5C71\u5CB3\u5730\u5F62\uFF0C\u8B93\u8A31\u591A\u8ECD\u7A2E\u611F\u5230\u68D8\u624B\u7684\u5730\u5F62\uFF0C\u56E0\u5730\u52E2\u96AA\u5CFB\uFF0C\u5F8C\u52E4\u4E5F\u8F03\u96E3\u62B5\u9054\u71DF\u5730\u3002\n\n\u99D0\u7D2E\u5728\u9019\u7A2E\u5730\u5F62\u6642\uFF0C\u7576\u56DE\u5408\u53EF\u7372\u5F97\u7684\u88DC\u7D66\u7269\u8CC7\u6703\u6E1B\u534A\u3002"
+    illustration: {fileID: -905070317, guid: 052b07a6ba1c01b45add3e58ed523129, type: 3}
   - title: Water
-    description: waterrule
-    illustration: {fileID: 0}
+    description: "\u6CB3\u6D41\u5730\u5F62\uFF0C\u8B93\u8A31\u591A\u8ECD\u7A2E\u611F\u5230\u68D8\u624B\u7684\u5730\u5F62\uFF0C\u884C\u7D93\u7684\u90E8\u968A\u5927\u591A\u4E0D\u5F97\u4E0D\u7E5E\u9053\u800C\u884C\u3002\n\n\u99D0\u7D2E\u5728\u9019\u7A2E\u5730\u5F62\u6642\u6C92\u6709\u7279\u6B8A\u6548\u679C\u3002"
+    illustration: {fileID: 2020903864, guid: 052b07a6ba1c01b45add3e58ed523129, type: 3}

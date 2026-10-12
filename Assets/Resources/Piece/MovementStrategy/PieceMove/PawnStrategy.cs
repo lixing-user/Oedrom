@@ -22,6 +22,9 @@ public class PawnStrategy : IMovementStrategy
         if (!piece.CurrentPosition.IsValid(_board))
             return moves;
 
+        if (piece.IsReversed)
+            direction *= -1;
+
         AddForwardMoves(moves, piece, board, direction);
         AddCaptureMoves(moves, piece, board, direction);
 

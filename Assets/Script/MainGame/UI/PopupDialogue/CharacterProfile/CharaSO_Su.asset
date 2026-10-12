@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterProfileSO
   characterName: Su
   aliases:
-  - "\uFF1F\uFF1F\uFF1F"
   - Su
-  storySprite: {fileID: 1942138135, guid: 6684a1d32ecf7d745bb689422fcee050, type: 3}
-  defaultAvatar: {fileID: 540985210, guid: 6684a1d32ecf7d745bb689422fcee050, type: 3}
+  storySprite: {fileID: 21300000, guid: 26fdd034ab6e9314ab5981e6c1ec79df, type: 3}
+  defaultAvatar: {fileID: 21300000, guid: 323a093aa91940a4da32eaf8d4c013a9, type: 3}
   avatarVariants: []

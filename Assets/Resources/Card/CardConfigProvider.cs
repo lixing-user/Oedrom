@@ -56,3 +56,25 @@ public class CardConfigProvider : ICardConfigProvider
         return _configLookup.TryGetValue(type, out config);
     }
 }
+
+#region 窄介面，只暴露 Sprite
+public interface IPieceIconResolver
+{
+    Sprite GetIcon(ChessPieceType type);
+}
+
+public class PieceIconResolver : IPieceIconResolver
+{
+    private readonly ICardConfigProvider _provider;
+    public PieceIconResolver(ICardConfigProvider provider) => _provider = provider;
+
+    public Sprite GetIcon(ChessPieceType type)
+    {
+        if (_provider.TryGetConfig(type, out var c) && c.defaultIcon != null)
+            return c.defaultIcon;
+
+        Debug.LogWarning($"[PieceIconResolver] {type} 沒有可用的 defaultIcon");
+        return null;
+    }
+}
+#endregion

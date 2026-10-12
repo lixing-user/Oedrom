@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: EscTest
   m_EditorClassIdentifier: Assembly-CSharp::QuestDatabaseSO
   allQuests:
+  - {fileID: 11400000, guid: 85fa95cffe98f414a8d724b6c8bd1b8b, type: 2}
   - {fileID: 11400000, guid: df29738ac61460c40a8ea739c0b4bc04, type: 2}
   - {fileID: 11400000, guid: 38961fe836726754aa2a2d0d4b6e99dd, type: 2}
+  - {fileID: 11400000, guid: 480c8142f7ee841448e768ce2b386b68, type: 2}
+  - {fileID: 11400000, guid: cc9397fe04de0134f8a55f4277f94d5b, type: 2}

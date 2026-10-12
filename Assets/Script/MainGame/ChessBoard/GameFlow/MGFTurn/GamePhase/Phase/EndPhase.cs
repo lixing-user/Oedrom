@@ -1,5 +1,6 @@
-using UnityEngine;
+using System;
 using System.Collections;
+using UnityEngine;
 using Zenject;
 
 public class EndPhase : IGamePhaseState
@@ -40,6 +41,7 @@ public class EndPhase : IGamePhaseState
     #region 核心邏輯
     private IEnumerator ExecutePhaseCoroutine()
     {
+        int myVersion = _machine.PhaseVersion;
         Debug.Log("[EndPhase] 開始執行結束階段流程...");
 
         _facade.DisableAllInput();
@@ -47,20 +49,17 @@ public class EndPhase : IGamePhaseState
         // === 步驟 1：回合結束效果處理 ===
         if (_facade.GetCurrentTeam() == Team.White)
         {
-            yield return ProcessTurnEndEffects();
+            yield return ProcessTurnEndEffects(myVersion);
+            if (!_machine.IsCurrent(myVersion))
+            {
+                Debug.LogWarning("[EndPhase] 結束階段流程被中斷，版本不匹配");
+                yield break;
+            }
         }
         else
         {
             Debug.Log("[EndPhase] 黑方跳過結束效果處理");
         }
-
-        // === 步驟 2：檢查遊戲勝利條件 ===
-        //GameEndResult gameEndResult = CheckGameEndConditions();
-        //if (gameEndResult.IsGameEnded)
-        //{
-        //    yield return HandleGameEnd(gameEndResult);
-        //    yield break;  // 遊戲結束，不繼續執行
-        //}
 
         // === 步驟 4：標記完成 ===
         _model.CanProgressToNextPhase = true;
@@ -69,7 +68,7 @@ public class EndPhase : IGamePhaseState
         TriggerTurnEnd();
     }
 
-    private IEnumerator ProcessTurnEndEffects()
+    private IEnumerator ProcessTurnEndEffects(int myVersion)
     {
         if (_facade.GetCurrentTeam() == Team.Black)
         {
@@ -81,7 +80,11 @@ public class EndPhase : IGamePhaseState
 
         // 處理持續傷害、回血等效果
         yield return DeductSupplyCostAsync();
-        //_facade.ProcessEndOfTurnEffects();
+        if (!_machine.IsCurrent(myVersion))
+        {
+            Debug.LogWarning("[EndPhase] 結束階段流程被中斷，版本不匹配");
+            yield break;
+        }
 
         yield return new WaitForSeconds(0.5f);
 

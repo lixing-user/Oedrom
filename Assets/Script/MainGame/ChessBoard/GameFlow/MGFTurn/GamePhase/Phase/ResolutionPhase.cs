@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using Zenject;
@@ -57,6 +58,7 @@ public class ResolutionPhase : IGamePhaseState
         {
             yield return null;
         }
+        int myVersion = _machine.PhaseVersion;
         Debug.Log("[ResolutionPhase] 開始處理結果...");
 
         _cameraPresenter.RequestDefaultMode();
@@ -67,7 +69,12 @@ public class ResolutionPhase : IGamePhaseState
 
         if (_model.CurrentResolutionType != ResolutionType.None)
         {
-            yield return ProcessResult();
+            yield return ProcessResult(myVersion);
+            if (!_machine.IsCurrent(myVersion))
+            {
+                Debug.LogWarning("[ResolutionPhase] 當前狀態已被切換，結算流程中斷");
+                yield break;
+            }
         }
 
         yield return new WaitForSeconds(0.5f);
@@ -87,20 +94,35 @@ public class ResolutionPhase : IGamePhaseState
 
 
     #region 各事件流程實作
-    private IEnumerator ProcessResult()
+    private IEnumerator ProcessResult(int myVersion)
     {
         switch (_model.CurrentResolutionType)
         {
             case ResolutionType.Battle:
                 yield return ProcessBattleResult();
+                if (!_machine.IsCurrent(myVersion))
+                {
+                    Debug.LogWarning("[ResolutionPhase] 當前狀態已被切換，戰鬥結算流程中斷");
+                    yield break;
+                }
                 break;
 
             case ResolutionType.Shop:
                 yield return ProcessShopResult();
+                if (!_machine.IsCurrent(myVersion))
+                {
+                    Debug.LogWarning("[ResolutionPhase] 當前狀態已被切換，戰鬥結算流程中斷");
+                    yield break;
+                }
                 break;
 
             case ResolutionType.RandomEvent:
                 yield return ProcessRandomEventResult();
+                if (!_machine.IsCurrent(myVersion))
+                {
+                    Debug.LogWarning("[ResolutionPhase] 當前狀態已被切換，戰鬥結算流程中斷");
+                    yield break;
+                }
                 break;
 
             case ResolutionType.None:

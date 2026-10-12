@@ -61,12 +61,24 @@ public class DialogueService : IDialogueService
                     line.content = cells[4];
                     line.nextId = int.Parse(cells[5]);
                     line.effectTag = cells[6].Trim();
+                    line.effectTag = cells[6].Trim();
+                    line.charSize = ParseSize(cells.Length > 7 ? cells[7] : ""); // 用 Length 保護，避免有人刪掉尾欄時 IndexOutOfRange
                     break;
 
                 case "CG": // 特殊CG
                 case "BG": // 背景切換
                     line.content = cells[4]; // 資源名稱
                     line.nextId = cells.Length > 5 && !string.IsNullOrEmpty(cells[5])
+                        ? int.Parse(cells[5])
+                        : id + 1;
+                    break;
+
+                case "ENTER":
+                case "LEAVE":
+                    line.characterName = cells[2].Trim();
+                    line.charPos = ParsePosition(cells[3].Trim()); // LEAVE 可留空，會自動找角色現在的位置
+                    line.charSize = ParseSize(cells.Length > 7 ? cells[7] : "");
+                    line.nextId = cells.Length > 5 && !string.IsNullOrWhiteSpace(cells[5])
                         ? int.Parse(cells[5])
                         : id + 1;
                     break;
@@ -95,6 +107,24 @@ public class DialogueService : IDialogueService
         };
     }
 
+    private CharacterSpriteSize? ParseSize(string raw)
+    {
+        raw = raw.Trim();
+        if (raw.Length == 0) return null;
+
+        switch (raw.ToLower())
+        {
+            case "large":
+            case "放大":
+                return CharacterSpriteSize.Large;
+            case "normal":
+            case "一般":
+                return CharacterSpriteSize.Normal;
+            default:
+                Debug.LogWarning($"[DialogueService] 無法辨識的大小：'{raw}'，將沿用目前大小");
+                return null;
+        }
+    }
 
     #region Helper Methods
     public DialogueLine GetDialogueById(int id)

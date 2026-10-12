@@ -6,7 +6,7 @@ public class FlatTileHeightCalculator : ITileHeightCalculator
 
     public FlatTileHeightCalculator(BoardSettings settings)
     {
-        _fixedHeight = settings.BoardCenter.y + 0.3f;
+        _fixedHeight = settings.BoardCenter.y + settings.YOffset;
     }
 
     public float CalculateTileHeight(Vector3 worldPosition, Vector3 tileCenter)

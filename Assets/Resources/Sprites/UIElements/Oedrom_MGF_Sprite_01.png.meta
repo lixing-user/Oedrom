@@ -1,0 +1,628 @@
+fileFormatVersion: 2
+guid: 785d25007f59cd4408b3cf01eb208ca6
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_0
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 1353
+        width: 85
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6f2088ddd6237c4695249b193f3aff9
+      internalID: -1085172855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_1
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 1416
+        width: 964
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81d30a16d0971da43be3c63ed046575d
+      internalID: -2081266537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_2
+      rect:
+        serializedVersion: 2
+        x: 1189
+        y: 1352
+        width: 311
+        height: 91
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e8fd1d5f7130ba4f9e03248088d2e6b
+      internalID: -446972177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_3
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 1355
+        width: 964
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab8bac00bacecdc4a85fb086902146cb
+      internalID: -1044621750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_4
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 1239
+        width: 1058
+        height: 89
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94aa630c1cf24da4fa60955285c5f13b
+      internalID: 87811735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_6
+      rect:
+        serializedVersion: 2
+        x: 1191
+        y: 1249
+        width: 87
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3687e54512c160547b0a028f1bde5979
+      internalID: -1371611340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_7
+      rect:
+        serializedVersion: 2
+        x: 1305
+        y: 1249
+        width: 87
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11ce8a474a7f2b64b9492901d602a4c4
+      internalID: 1368147403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_8
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 946
+        width: 278
+        height: 277
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be19454f78d605448b834046b0c126b5
+      internalID: -92387141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_9
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 947
+        width: 276
+        height: 277
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f73a0f866a31034d9fa6ddee5a9f261
+      internalID: 410045445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_10
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 990
+        width: 731
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8352a5e921694fa46a4b46ae0e6d1dfc
+      internalID: 1639964020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_11
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 631
+        width: 278
+        height: 278
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9856172c6af387044a0357f9358e4d79
+      internalID: -1590910812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_12
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 621
+        width: 297
+        height: 297
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4b6a8e26acffb1429f1cdc5854e680c
+      internalID: -1052647485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_13
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 676
+        width: 723
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 768b970e303b61d428dff70326e3b122
+      internalID: 2120151152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_14
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 82
+        width: 522
+        height: 832
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aef4c26278803345aa8fc57bb866e03
+      internalID: -1703157102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_15
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 317
+        width: 278
+        height: 278
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bc510f31edf0bf408ad2b20bbc97416
+      internalID: 1435353835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_16
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 307
+        width: 296
+        height: 297
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77a6d0b92a58cbd4e8afcef7b980c0bb
+      internalID: 2004236612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_17
+      rect:
+        serializedVersion: 2
+        x: 670
+        y: 503
+        width: 503
+        height: 163
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3178e103fbef1f44a9e435786dac7a34
+      internalID: -699917092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_18
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 304
+        width: 542
+        height: 194
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 122aef09805ef4348ba0a4e57f61e871
+      internalID: -1631262350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_19
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 50
+        width: 184
+        height: 223
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df10e5e9cec79d4489d600636b728e49
+      internalID: 1979029539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_20
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 49
+        width: 175
+        height: 213
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb7cc2d69676f774cb15dae8da287e9b
+      internalID: 664834071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_22
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 59
+        width: 138
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f653cc6493103a943b1947d9e78ed327
+      internalID: -813091437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_MGF_Sprite_01_23
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 51
+        width: 575
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ca3262f5c8a43c47ae33d895e99ead9
+      internalID: -396883354
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b3169d1c476352645a97064097423e25
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Oedrom_MGF_Sprite_01_0: -1085172855
+      Oedrom_MGF_Sprite_01_1: -2081266537
+      Oedrom_MGF_Sprite_01_10: 1639964020
+      Oedrom_MGF_Sprite_01_11: -1590910812
+      Oedrom_MGF_Sprite_01_12: -1052647485
+      Oedrom_MGF_Sprite_01_13: 2120151152
+      Oedrom_MGF_Sprite_01_14: -1703157102
+      Oedrom_MGF_Sprite_01_15: 1435353835
+      Oedrom_MGF_Sprite_01_16: 2004236612
+      Oedrom_MGF_Sprite_01_17: -699917092
+      Oedrom_MGF_Sprite_01_18: -1631262350
+      Oedrom_MGF_Sprite_01_19: 1979029539
+      Oedrom_MGF_Sprite_01_2: -446972177
+      Oedrom_MGF_Sprite_01_20: 664834071
+      Oedrom_MGF_Sprite_01_21: -1671554609
+      Oedrom_MGF_Sprite_01_22: -813091437
+      Oedrom_MGF_Sprite_01_23: -396883354
+      Oedrom_MGF_Sprite_01_24: 1735076497
+      Oedrom_MGF_Sprite_01_3: -1044621750
+      Oedrom_MGF_Sprite_01_4: 87811735
+      Oedrom_MGF_Sprite_01_5: 556974357
+      Oedrom_MGF_Sprite_01_6: -1371611340
+      Oedrom_MGF_Sprite_01_7: 1368147403
+      Oedrom_MGF_Sprite_01_8: -92387141
+      Oedrom_MGF_Sprite_01_9: 410045445
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

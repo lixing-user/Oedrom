@@ -59,6 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PieceInfoView
   panel: {fileID: 6186998976003254582}
   _canvasGroup: {fileID: 2478568036341170868}
+  _panelRect: {fileID: 5788269727078588238}
   nameText: {fileID: 826107131577226482}
   positionText: {fileID: 1454301288766090231}
   terrainText: {fileID: 4333654077552338072}
@@ -66,6 +67,10 @@ MonoBehaviour:
   iconImage: {fileID: 9183650180186317406}
   _statusContainer: {fileID: 2442078672185722354}
   _statusItemPrefab: {fileID: 8756429450826131976, guid: a5706bc93d56b0b42877d686d4ab8ebf, type: 3}
+  _transitionDuration: 0.3
+  _transitionEase: 9
+  _standardPos: {x: 0, y: 0}
+  _subtlePos: {x: -200, y: 0}
 --- !u!1 &148104206593513990
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,6 +264,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -521,6 +527,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -659,6 +666,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -795,6 +803,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

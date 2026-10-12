@@ -1,9 +1,12 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class StoryProgressManager
 {
     private StoryProgressModel _progressModel;
     private StoryChapterConfig _currentChapter;
+
+    private Queue<StoryChapterConfig> _storyQueue = new Queue<StoryChapterConfig>();
 
     public StoryProgressManager(StoryProgressModel progressModel)
     {
@@ -15,6 +18,29 @@ public class StoryProgressManager
     {
         _currentChapter = chapter;
         Debug.Log($"[StoryProgressManager] 設定當前章節: {chapter.chapterName}");
+    }
+
+    // 讓外部 (Action) 可以把故事排進隊列中
+    public void EnqueueChapter(StoryChapterConfig chapter)
+    {
+        if (chapter != null)
+        {
+            _storyQueue.Enqueue(chapter);
+            Debug.Log($"[StoryQueue] 已將章節加入排隊: {chapter.chapterName}");
+        }
+    }
+
+    public bool TryDequeueNextChapter(out StoryChapterConfig nextChapterToPlay)
+    {
+        if (_storyQueue.Count > 0)
+        {
+            nextChapterToPlay = _storyQueue.Dequeue();
+            _currentChapter = nextChapterToPlay; // 設置為當前正在播的章節
+            return true;
+        }
+
+        nextChapterToPlay = null;
+        return false;
     }
 
     // 獲取當前章節

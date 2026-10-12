@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3c2c7490d554e547949c9367d2a96ff, type: 3}
+  m_Name: Escaped
+  m_EditorClassIdentifier: Assembly-CSharp::StoryChapterConfig
+  chapterId: Escaped_Script
+  chapterName: EscapeBattle
+  dialogueFile: {fileID: 4900000, guid: 124f2c156097f5d4097acc84ba33a769, type: 3}
+  initialBackground: BG_CountrySide
+  backgroundSprite:
+  - backgroundName: BG_CountrySide
+    sprite: {fileID: 21300000, guid: d54fc496e74081640a86f7393b6f8a2e, type: 3}
+  - backgroundName: BG_BattleField
+    sprite: {fileID: 21300000, guid: 48fa0ec4b291aa74aa241162e569dc7e, type: 3}
+  characterProfiles:
+  - {fileID: 11400000, guid: a4480f420e45c634daa0dec9fe5b7bb1, type: 2}
+  - {fileID: 11400000, guid: 9331a4f5fa421eb4db22bc3808f4000a, type: 2}
+  - {fileID: 11400000, guid: ba3b018d2facbf0448b78f49a7069c89, type: 2}
+  - {fileID: 11400000, guid: b55f54f3cadb7c04494b46997849c8cd, type: 2}
+  cgSprites:
+  - cgName: CG_ArrowOfLove
+    sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  - cgName: CG_LastChance
+    sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  phaseSequence: 01000000
+  nextChapter: {fileID: 11400000, guid: b36f65eba398d214ab5005f10cf895d3, type: 2}

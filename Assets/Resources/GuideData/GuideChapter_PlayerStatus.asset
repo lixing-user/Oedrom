@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af2e2c5f2b448a54b902f6a1d4240c1c, type: 3}
+  m_Name: GuideChapter_PlayerStatus
+  m_EditorClassIdentifier: Assembly-CSharp::GuideChapterSO
+  chapterId: guide_C003
+  chapterName: PlayerStatus
+  chapterIcon: {fileID: 2140831562, guid: 052b07a6ba1c01b45add3e58ed523129, type: 3}
+  pages:
+  - title: Morale(MP)
+    description: "\u8ECD\u5FC3\uFF0C\u8ECD\u968A\u9818\u8896\u7D71\u7387\u529B\u7684\u9AD4\u73FE\uFF0C\u4E0D\u8AD6\u662F\u6230\u722D\u4E2D\u9084\u662F\u76E4\u5916\u4F5C\u6230\u90FD\u6703\u6709\u6240\u6D6E\u52D5\u3002\n\n\u6703\u76F4\u63A5\u5F71\u97FF\u5230\u80FD\u5340\u57DF\u6230\u9B25\u4E2D\u80FD\u5920\u90E8\u7F72\u7684\u55AE\u4F4D\u6578\u91CF\u4E0A\u9650\u3002"
+    illustration: {fileID: -695463995, guid: 5490d7926946fc74885e2f2316689755, type: 3}
+  - title: Popularity(PP)
+    description: "\u6C11\u5FC3\uFF0C\u8ECD\u5718\u5C0D\u4EBA\u6C11\u89AA\u548C\u529B\u7684\u9AD4\u73FE\uFF0C\u7562\u7ADF\u5728\u6210\u70BA\u6230\u5834\u4E4B\u524D\uFF0C\u9019\u7247\u571F\u5730\u7D42\u6B78\u662F\u6751\u843D\u5C45\u6C11\u5011\u8CF4\u4EE5\u70BA\u751F\u7684\u5BB6\u3002\n\n\u6703\u5F71\u97FF\u5230\u80FD\u5920\u7387\u9818\u7684\u8ECD\u968A\u898F\u6A21\u3002\u5728\u6C92\u6709\u5916\u529B\u5F71\u97FF\u6642\uFF0C\u4F3C\u4E4E\u6703\u5F71\u97FF\u5230\u6751\u838A\u4EA4\u6613\u6642\u7684\u50F9\u683C\u3002"
+    illustration: {fileID: 1092744142, guid: 5490d7926946fc74885e2f2316689755, type: 3}
+  - title: Supply(SP)
+    description: "\u88DC\u7D66\u7269\u8CC7\uFF0C\u6230\u722D\u4E2D\u8209\u8DB3\u8F15\u91CD\u7684\u5B58\u5728\u3002\u5728\u7269\u8CC7\u6975\u5EA6\u5331\u4E4F\u7684\u60C5\u6CC1\u4E0B\uFF0C\u90E8\u968A\u751A\u81F3\u7121\u6CD5\u7E7C\u7E8C\u524D\u9032\u3002\n\n\u6BCF\u6B21\u884C\u52D5\u5B8C\u6210\u5F8C\uFF0C\u5F8C\u52E4\u90E8\u968A\u90FD\u6703\u70BA\u90E8\u968A\u5E36\u4F86\u88DC\u7D66\u7269\u8CC7\uFF0C\u7136\u800C\u9019\u4F3C\u4E4E\u6703\u88AB\u6575\u8ECD\u4F5C\u70BA\u653B\u64CA\u76EE\u6A19\u3002"
+    illustration: {fileID: 157987414, guid: 052b07a6ba1c01b45add3e58ed523129, type: 3}
+  - title: Coin
+    description: "\u91D1\u9322\uFF0C\u5728\u5E1D\u570B\u5EFA\u570B\u4EE5\u524D\u5C31\u5DF2\u5B58\u5728\u7684\u901A\u7528\u8CA8\u5E63\uFF0C\u96D6\u7136\u5C0D\u6230\u5834\u6C92\u6709\u76F4\u63A5\u7684\u6548\u7528\uFF0C\u4F46\u53EF\u4EE5\u5728\u6751\u838A\u3001\u5546\u968A\u7684\u4EA4\u6613\u4E2D\u63DB\u53D6\u5373\u6230\u529B\u3002"
+    illustration: {fileID: 0}

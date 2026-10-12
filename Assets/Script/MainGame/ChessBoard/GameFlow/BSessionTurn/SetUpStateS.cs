@@ -9,6 +9,8 @@ public class SetUpStateS : IGameFlowState
     private IMoveModeService _moveModeService;
     private IPieceDeploymentService _deploymentService;
     private IDeploymentValidator _validator;
+    //
+    private ISetupFogService _setupFogService;
 
     private readonly GameFlowStateMachine _flowMachine;
     private readonly DiContainer _container;
@@ -40,6 +42,8 @@ public class SetUpStateS : IGameFlowState
         _moveModeService = _container.Resolve<IMoveModeService>();
         _gameBoard = _container.Resolve<IGameBoard>();
         _battleContext = _container.Resolve<BattleContextHolder>();
+        //
+        _setupFogService = _container.Resolve<ISetupFogService>();
 
         _flowFacade = machine.GetFlowFacade();
         _signalBus = machine.GetSignalBus();
@@ -60,12 +64,17 @@ public class SetUpStateS : IGameFlowState
         _signalBus.Subscribe<PiecesArrangedSignal>(OnPieceArranged);
 
         _flowFacade.EnableAllInput();    // 允許所有操作
-        ApplySetupStrategiesToExistingPieces();
+        //ApplySetupStrategiesToExistingPieces();
 
         if (_battleContext.CurrentBattle == null)
         {
             Debug.Log("[Setup] 偵測到無戰鬥上下文（展演模式），自動跳過佈陣階段，直接進入玩家回合");
             _flowMachine.ChangeState(GameFlow.PlayerTurn);
+        }
+        //
+        else
+        {
+            _setupFogService.ApplySetupFog();
         }
     }
 
@@ -74,6 +83,12 @@ public class SetUpStateS : IGameFlowState
         Debug.Log("[SetUpState] 離開佈陣階段");
 
         var board = _container.Resolve<IGameBoard>();
+
+        //
+        if (_setupFogService != null)
+        {
+            _setupFogService.ClearFog();
+        }
 
         // 1. 先解鎖戰鬥棋子，確保後續操作不被阻擋
         UnlockBattlePieces();

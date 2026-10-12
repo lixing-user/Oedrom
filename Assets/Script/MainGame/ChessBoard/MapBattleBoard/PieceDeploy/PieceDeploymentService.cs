@@ -43,12 +43,14 @@ public class PieceDeploymentService : IPieceDeploymentService
             PlacedCount = 0
         };
 
-        // 1. 獲取手牌
-        var handCards = _handService.GetHandCards();
+        // 1. 獲取手牌 [過濾掉破損卡牌]
+        var handCards = _handService.GetHandCards()
+            .Where(c => c.GetStatus() != CardStatus.broken)
+            .ToList();
         if (handCards.Count == 0)
         {
             result.ErrorType = DeploymentErrorType.EmptyHand;
-            result.ErrorMessage = "手牌為空，無法佈陣";
+            result.ErrorMessage = "沒有可用的手牌 (手牌為空或僅剩破損卡牌)，無法佈陣";
             Debug.LogWarning("[PieceDeploymentService] " + result.ErrorMessage);
             return result;
         }
@@ -127,6 +129,7 @@ public class PieceDeploymentService : IPieceDeploymentService
 
         // 5. 觸發事件
         _eventDispatcher.Dispatch(_board.DomainEvents);
+        _board.ClearEvents();
         _signalBus.Fire(new PiecesArrangedSignal(result.PlacedCount));
 
         result.Success = result.PlacedCount > 0;
@@ -212,7 +215,9 @@ public class PieceDeploymentService : IPieceDeploymentService
             return new ClearResult { Success = true, ClearedCount = 0 };
         }
 
-        return ExecuteClearingProcess(piecesToClear, returnAsBroken);
+        // [核心修改] 為了優化玩家體驗，拔除戰敗破損功能。
+        // 無視外部傳入的 returnAsBroken，強制傳入 false 給 ExecuteClearingProcess
+        return ExecuteClearingProcess(piecesToClear, false);
     }
 
     private List<ChessPiece> GetPiecesToClearAfterBattle()
@@ -269,6 +274,7 @@ public class PieceDeploymentService : IPieceDeploymentService
         }
 
         _eventDispatcher.Dispatch(_board.DomainEvents);
+        _board.ClearEvents();
         _signalBus.Fire(new PiecesClearedSignal(result.ClearedCount));
 
         result.Success = result.ClearedCount > 0;

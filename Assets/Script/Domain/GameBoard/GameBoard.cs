@@ -73,6 +73,8 @@ public class GameBoard<TTile> : IGameBoard where TTile : Tile
 
         piece.MoveTo(position);
 
+        piece.ChangeState(PieceState.OnBoard);
+
         _pieces[position] = piece;
 
         _pieceById[piece.Id] = piece;
@@ -124,6 +126,7 @@ public class GameBoard<TTile> : IGameBoard where TTile : Tile
 
         _pieces.Remove(position);
         _pieceById.Remove(piece.Id);
+        piece.ChangeState(PieceState.Removed);
 
         // 復用現有的 PieceCapturedEvent，用 Remove 模式
         RaiseEvent(new PieceCapturedEvent(
@@ -139,9 +142,6 @@ public class GameBoard<TTile> : IGameBoard where TTile : Tile
 
     public bool RestorePiece(PieceID pieceId, PiecePosition newPosition)
     {
-        //var piece = _pieceById.TryGetValue(pieceId, out var p) ? p : null;
-        //if (piece == null)
-        //    return false;
         if (!_pieceById.TryGetValue(pieceId, out var piece))
         {
             // 2. [後門] 如果找不到，有可能是憑空生成的實體，向待命區要人

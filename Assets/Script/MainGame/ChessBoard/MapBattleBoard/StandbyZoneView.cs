@@ -65,7 +65,7 @@ public class StandbyZoneView : MonoBehaviour
             {
                 // 動畫結束：恢復為棋子 Layer，使其能再次被點擊/選取
                 view.gameObject.layer = LayerMask.NameToLayer("Pieces");
-
+                view.RestoreTeamMaterial();
                 // 執行外部傳入的後續動作 (如資料同步)
                 onComplete?.Invoke();
             });
@@ -98,8 +98,7 @@ public class StandbyZoneView : MonoBehaviour
         var view = _viewRegistry.GetView(pieceId);
         if (view != null && standbyMaterial != null)
         {
-            // 假設 PieceView 有 SetMaterial 方法
-            view.SetMaterial(standbyMaterial);
+            view.SetTemporaryMaterial(standbyMaterial);
         }
     }
     #endregion

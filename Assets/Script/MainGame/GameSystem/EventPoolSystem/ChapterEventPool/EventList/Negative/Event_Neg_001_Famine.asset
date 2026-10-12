@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Event_Neg_001_Famine
   m_EditorClassIdentifier: 
   eventId: Neg001
-  eventName: Famine
-  description: "3\u56DE\u5408\u5167\u7121\u6CD5\u7372\u5F97\u88DC\u7D66\uFF1B\u58EB\u6C23\u4E0B\u964D"
+  eventName: "\u9951\u8352"
+  description: "\u838A\u7A3C\u6B49\u6536\uFF0C\u5F8C\u65B9\u63D0\u4F9B\u7684\u7269\u8CC7\u6E1B\u5C11\uFF0C\u8ECD\u968A\u4E0D\u5F97\u4E0D\u5728\u6328\u9913\u4E2D\u7E7C\u7E8C\u884C\u9032\u3002"
   weight: 1
-  eventIcon: {fileID: 0}
+  eventIcon: {fileID: 629416560, guid: 052b07a6ba1c01b45add3e58ed523129, type: 3}
   eventType: 2
   conditions: []
   options:
@@ -28,6 +28,8 @@ MonoBehaviour:
       targetResource: 1
       sourceResource: 0
       targetPieceType: 0
+      randomPool:
+        pieces: 
       targetTeam: 0
       targetBattleType: 0
       targetBattleId: 
@@ -40,6 +42,8 @@ MonoBehaviour:
       targetResource: 0
       sourceResource: 0
       targetPieceType: 0
+      randomPool:
+        pieces: 
       targetTeam: 0
       targetBattleType: 0
       targetBattleId: 

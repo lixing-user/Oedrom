@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.STP;
 
 /// <summary>
 /// 事件效果工廠（Infrastructure → Domain 轉換）
@@ -43,9 +44,9 @@ public class EventEffectFactory
             { EventEffectType.DynamicResourceChange, config => new DynamicResourceChangeEffect(
                 config.targetResource, config.sourceResource, config.flatAmount, config.percentAmount) },
 
-            { EventEffectType.StatusEffect,          config => new ApplyStatusEffect(config.duration) },
+            { EventEffectType.StatusEffect, config => new ApplyStatusEffect(config.duration) },
 
-            { EventEffectType.DeckEffect, config => new AddCardEffect(config.targetPieceType, config.targetTeam, (int)config.flatAmount) },
+            { EventEffectType.DeckEffect, config => new AddCardEffect(config.targetPieceType, config.targetTeam, (int)config.flatAmount, config.randomPool.pieces) },
 
             { EventEffectType.CombatModifier,config => new ApplyCombatModifierEffect(config.combatModifierType, config.duration)},
 

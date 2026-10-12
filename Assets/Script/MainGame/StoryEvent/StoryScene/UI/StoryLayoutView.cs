@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,9 +17,13 @@ public class StoryLayoutView : MonoBehaviour, IStoryView
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private GameObject dialogueBox;
 
+    [Header("Character Size")]
+    [SerializeField] private float normalScale = 1.0f;
+    [SerializeField] private float largeScale = 1.25f;
+    [SerializeField] private bool flipLeftSprite = true;
 
     [Header("Button")]
-    [SerializeField] public ButtonViewS autoPlayButton; 
+    [SerializeField] public ToggleViewS autoPlayToggle; 
     [SerializeField] public ButtonViewS skipRequestButton; 
     [SerializeField] public ButtonViewS skipConfirmButton; 
     [SerializeField] public ButtonViewS visibleButton; 
@@ -33,6 +36,7 @@ public class StoryLayoutView : MonoBehaviour, IStoryView
     [Header("LogPanel")]
     [SerializeField] public PanelViewS logPanel; // Panel to display History dialogue log
     [SerializeField] public TMP_Text logPanelText;
+    [SerializeField] private ScrollRect logScrollRect;
 
     [Header("SettingPanel")]
     [SerializeField] public PanelViewS quitPanel;
@@ -49,7 +53,7 @@ public class StoryLayoutView : MonoBehaviour, IStoryView
     [SerializeField] private GameObject focusOverlay;
 
     // View Events
-    public event System.Action OnAutoPlayToggled;
+    public event System.Action<bool> OnAutoPlayToggled;
     public event System.Action OnVisibilityToggled;
     public event System.Action OnLogShowRequested;
     public event System.Action OnLogHideRequested;
@@ -59,14 +63,12 @@ public class StoryLayoutView : MonoBehaviour, IStoryView
     public event System.Action OnQuitRequested;
     public event System.Action OnQuitConfirmed;
     public event System.Action OnBackClicked;
-
-    //private List<DialogueHistoryLine> dialogueHistory = new List<DialogueHistoryLine>();
     #endregion
 
     #region Initialization
     void Start()
     {
-        autoPlayButton.OnClicked += () => OnAutoPlayToggled?.Invoke();
+        autoPlayToggle.OnValueChanged += HandleAutoPlayToggled;
         visibleButton.OnClicked += () => OnVisibilityToggled?.Invoke();
         logButton.OnClicked += () => OnLogShowRequested?.Invoke();
         hideLogButton.OnClicked += () => OnLogHideRequested?.Invoke();
@@ -86,7 +88,7 @@ public class StoryLayoutView : MonoBehaviour, IStoryView
     }
     void OnDestroy()
     {
-        autoPlayButton.OnClicked -= () => OnAutoPlayToggled?.Invoke();
+        autoPlayToggle.OnValueChanged -= HandleAutoPlayToggled;
         visibleButton.OnClicked -= () => OnVisibilityToggled?.Invoke();
         logButton.OnClicked -= () => OnLogShowRequested?.Invoke();
         hideLogButton.OnClicked -= () => OnLogHideRequested?.Invoke();
@@ -109,24 +111,29 @@ public class StoryLayoutView : MonoBehaviour, IStoryView
         dialogueText.text = _dialogue;
     }
 
-    public void SetCharacter(Sprite sprite, CharacterSpritePosition position)
+    public void SetCharacter(Sprite sprite, CharacterSpritePosition position, CharacterSpriteSize size)
     {
-        switch (position)
-        {
-            case CharacterSpritePosition.Left:
-                spriteLeft.sprite = sprite;
-                spriteLeft.gameObject.SetActive(true);
-                break;
-            case CharacterSpritePosition.Right:
-                spriteRight.sprite = sprite;
-                spriteRight.gameObject.SetActive(true);
-                break;
-            case CharacterSpritePosition.Center:
-                spriteMiddle.sprite = sprite;
-                spriteMiddle.gameObject.SetActive(true);
-                break;
-        }
-        Debug.Log($"[View] SetCharacter {position}: {sprite?.name}");
+        Image target = GetSpriteSlot(position);
+        if (target == null) return;
+
+        target.sprite = sprite;
+        target.rectTransform.localScale = GetSpriteScale(position, size);
+        target.gameObject.SetActive(true);
+
+        Debug.Log($"[View] SetCharacter {position}: {sprite?.name} ({size})");
+    }
+    private Image GetSpriteSlot(CharacterSpritePosition position) => position switch
+    {
+        CharacterSpritePosition.Left => spriteLeft,
+        CharacterSpritePosition.Right => spriteRight,
+        CharacterSpritePosition.Center => spriteMiddle,
+        _ => null
+    };
+    private Vector3 GetSpriteScale(CharacterSpritePosition position, CharacterSpriteSize size)
+    {
+        float s = size == CharacterSpriteSize.Large ? largeScale : normalScale;
+        float x = (position == CharacterSpritePosition.Left && flipLeftSprite) ? -s : s;
+        return new Vector3(x, s, 1f);
     }
 
     public void ClearCharacter(CharacterSpritePosition position)
@@ -233,6 +240,12 @@ public class StoryLayoutView : MonoBehaviour, IStoryView
         {
             logPanelText.text += $"{line.character}: {line.content}\n";
         }
+
+        Canvas.ForceUpdateCanvases();
+        if (logScrollRect != null)
+        {
+            logScrollRect.verticalNormalizedPosition = 0f;
+        }
     }
     public void HideLogPanel()
     {
@@ -264,7 +277,7 @@ public class StoryLayoutView : MonoBehaviour, IStoryView
     {
         nameText.gameObject.SetActive(visible);
         dialogueText.gameObject.SetActive(visible);
-        autoPlayButton.gameObject.SetActive(visible);
+        autoPlayToggle.gameObject.SetActive(visible);
         skipRequestButton.gameObject.SetActive(visible);
         logButton.gameObject.SetActive(visible);
         hideLogButton.gameObject.SetActive(visible);
@@ -273,13 +286,12 @@ public class StoryLayoutView : MonoBehaviour, IStoryView
     }
 
 
-    public void SetAutoPlayButtonState(bool isActive)
+    public void SetAutoPlayState(bool isOn)
     {
-        // 更新按鈕視覺狀態（顏色、圖示等）
-        var colors = autoPlayButton.colors;
-        //colors.normalColor = isActive ? Color.green : Color.white;
-        autoPlayButton.colors = colors;
+        autoPlayToggle.SetIsOnWithoutNotify(isOn);
     }
+
+    private void HandleAutoPlayToggled(bool isOn) => OnAutoPlayToggled?.Invoke(isOn);
     #endregion
 
     #endregion
@@ -288,7 +300,7 @@ public class StoryLayoutView : MonoBehaviour, IStoryView
 
 public interface IStoryView
 {
-    event System.Action OnAutoPlayToggled;
+    event System.Action<bool> OnAutoPlayToggled;
     event System.Action OnVisibilityToggled;
     event System.Action OnLogShowRequested;
     event System.Action OnLogHideRequested;
@@ -300,7 +312,7 @@ public interface IStoryView
     event System.Action OnBackClicked;
 
     void SetDialogue(string _name, string _dialogue);
-    void SetCharacter(Sprite sprite, CharacterSpritePosition position);
+    void SetCharacter(Sprite sprite, CharacterSpritePosition position, CharacterSpriteSize size);
     void ClearCharacter(CharacterSpritePosition position);
     void SetBackground(Sprite sprite);
     void ChangeBackground(Sprite sprite, float fadeTime);
@@ -314,5 +326,5 @@ public interface IStoryView
     void ShowQuitPanel();
     void HideQuitPanel();
     void ToggleUIVisibility(bool visible);
-    void SetAutoPlayButtonState(bool isActive);
+    void SetAutoPlayState(bool isOn);
 }

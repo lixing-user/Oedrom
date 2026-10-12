@@ -16,7 +16,7 @@ public class ShopScenePresenter : MonoBehaviour
 {
     [Inject] private SignalBus _signalBus;
     [Inject] private IShopService _shopService;
-    [Inject] private IHandUIManager _handUIManager;
+    [Inject] private IHandUIStateManager _handUIManager;
 
     private ShopUIView _view;
     private Shop3DView _view3D;

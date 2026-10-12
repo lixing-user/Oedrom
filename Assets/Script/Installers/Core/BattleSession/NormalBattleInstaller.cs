@@ -23,6 +23,9 @@ public class NormalBattleInstaller : MonoInstaller
         Container.Bind<IResourceRewardStrategy>().To < DifficultyBasedRewardStrategy >().AsSingle();
 
         Container.BindInterfacesAndSelfTo<MoveCounterService>().AsSingle();
+
+        Container.BindInterfacesAndSelfTo<SetupFogService>().AsSingle();
+        Container.Bind<IFogRenderer>().To<FogRenderer>().AsSingle();
         #endregion
 
         #region Signal Bindings

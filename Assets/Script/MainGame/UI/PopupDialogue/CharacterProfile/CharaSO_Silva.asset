@@ -16,6 +16,6 @@ MonoBehaviour:
   aliases:
   - "\u6751\u9577"
   - Silva
-  storySprite: {fileID: -1545431140, guid: ff649c69a6aba704d878728436277a19, type: 3}
-  defaultAvatar: {fileID: -1545431140, guid: ff649c69a6aba704d878728436277a19, type: 3}
+  storySprite: {fileID: 21300000, guid: 9f5e5b53f4298a2439f710a14a8e86de, type: 3}
+  defaultAvatar: {fileID: 0}
   avatarVariants: []

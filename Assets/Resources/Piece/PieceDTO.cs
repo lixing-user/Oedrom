@@ -14,6 +14,7 @@ public class PieceDTO
     public int currentY;
     public bool hasMoved;
     public bool isCaptured;
+    public bool isReversed;
     public int state;
 
     // 空構造函數（用於反序列化）
@@ -29,6 +30,7 @@ public class PieceDTO
         currentY = piece.CurrentPosition.Y;
         hasMoved = piece.HasMoved;
         isCaptured = piece.IsCaptured;
+        isReversed = piece.IsReversed;
         state = (int)piece.State;
     }
 
@@ -54,7 +56,8 @@ public class PieceDTO
             piece.MoveTo(position);  // 觸發 HasMoved = true
         if (isCaptured)
             piece.Capture();
-
+        if (isReversed)
+            piece.ReverseDirection();
         return piece;
     }
 }

@@ -10,7 +10,14 @@ public class StoryPhaseFacade : MonoBehaviour
 
     private void Start()
     {
-        var chapter = _progressManager.GetCurrentChapter() ?? _defaultChapter;
-        _stateMachine.StartChapter(chapter);
+        if (_progressManager.TryDequeueNextChapter(out var nextChapter))
+        {
+            _stateMachine.StartChapter(nextChapter);
+        }
+        else
+        {
+            var chapter = _progressManager.GetCurrentChapter() ?? _defaultChapter;
+            _stateMachine.StartChapter(chapter);
+        }
     }
 }

@@ -15,16 +15,16 @@ MonoBehaviour:
   chapterId: Event_Script_01
   chapterName: Event01
   dialogueFile: {fileID: 4900000, guid: 2c20e56274fd66d4db1113d88c71123c, type: 3}
-  initialBackground: Forrest
+  initialBackground: BG_Forrest
   backgroundSprite:
-  - backgroundName: Forrest
-    sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  - backgroundName: BG_Forrest
+    sprite: {fileID: 21300000, guid: 7fee3ceb13072414182a9cc314a1d574, type: 3}
   characterProfiles:
-  - {fileID: 11400000, guid: a4480f420e45c634daa0dec9fe5b7bb1, type: 2}
+  - {fileID: 11400000, guid: cf8e851864496944e82b33749f2289d7, type: 2}
   - {fileID: 11400000, guid: 9331a4f5fa421eb4db22bc3808f4000a, type: 2}
   - {fileID: 11400000, guid: 81aea06fad86aa54f8460e7faea9602d, type: 2}
   cgSprites:
   - cgName: CG_Dark
-    sprite: {fileID: 0}
+    sprite: {fileID: -1371611340, guid: 785d25007f59cd4408b3cf01eb208ca6, type: 3}
   phaseSequence: 01000000
-  nextChapter: {fileID: 11400000, guid: debf025c0cce48e4fa70d94d2bec2549, type: 2}
+  nextChapter: {fileID: 11400000, guid: 997064c913866cd4d9b0be7e8e0b8bc0, type: 2}

@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -29,6 +30,12 @@ public class EventEffectConfig
     [BoxGroup("棋子與牌組")]
     [ShowIf("effectType", EventEffectType.DeckEffect)]
     public ChessPieceType targetPieceType; // 獲得的棋子類型 (若為 None 代表隨機)
+
+    [AllowNesting]
+    [BoxGroup("棋子與牌組")]
+    [ShowIf("ShowRandomPool")]
+    [Label("隨機池 (留空為全域隨機)")]
+    public RandomPoolWrapper randomPool = new RandomPoolWrapper();
 
     [AllowNesting]
     [BoxGroup("棋子與牌組")]
@@ -84,6 +91,7 @@ public class EventEffectConfig
     private bool IsDynamicRelated => effectType == EventEffectType.DynamicResourceChange;
     private bool IsValueNeeded => effectType != EventEffectType.TriggerBattle ;
     private bool IsDurationNeeded => effectType == EventEffectType.ResourceModifier || effectType == EventEffectType.CombatModifier || effectType == EventEffectType.StatusEffect;
+    private bool ShowRandomPool => effectType == EventEffectType.DeckEffect && targetPieceType == ChessPieceType.None;
     #endregion
 }
 
@@ -98,7 +106,7 @@ public class EventConditionConfig
 }
 
 
-public enum EventEffectType
+public enum EventEffectType  //Enum 新增值時，請加在最後面，避免打亂已序列化的 SO 數值
 {
     ResourceChange,      // 即時資源變化
     ResourceModifier,    // 持續效果（Buff/Debuff）
@@ -125,4 +133,12 @@ public enum StatusEffectType
     Stun,       // 暈眩 (無法行動)
     Plague,     // 瘟疫 (持續掉血/機率陣亡)
     Attrition   // 消耗戰 (無法行動，解除時觸發戰鬥)
+}
+
+[System.Serializable]
+public class RandomPoolWrapper
+{
+    // 這裡就不需要 ShowIf 了，讓它乖乖顯示
+    [AllowNesting]
+    public List<ChessPieceType> pieces = new List<ChessPieceType>();
 }

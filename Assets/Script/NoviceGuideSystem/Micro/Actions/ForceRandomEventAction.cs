@@ -25,8 +25,11 @@ public class ForceRandomEventActionSO : MicroActionSO
         if (SuppressEvent)
         {
             // 塞入 null 代表強制不觸發事件
-            overrideService.EnqueueForcedEvent(null);
-            Debug.Log("[Tutorial] 安插指令：強制【壓制】下一次隨機事件");
+            //overrideService.EnqueueForcedEvent(null);
+            //Debug.Log("[Tutorial] 安插指令：強制【壓制】下一次隨機事件");
+            overrideService.SetRandomEventSuppressed(true);
+            Debug.Log("[Tutorial] 已鎖定：教學期間持續壓制隨機事件");
+            Debug.Log($"[TutorialAction] 持有的鎖 ID: {overrideService.GetHashCode()}");
         }
         else if (SpecificEvent != null)
         {

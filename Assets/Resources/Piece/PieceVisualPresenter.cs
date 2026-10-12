@@ -60,12 +60,16 @@ public class PieceVisualPresenter : IInitializable, IDisposable
         if (view != null)
         {
             // 讓生成的棋子有一個彈出的動畫效果
-            view.transform.localScale = Vector3.zero;
-            view.transform.DOScale(Vector3.one, 0.4f).SetEase(Ease.OutBack);
+            view.transform.localScale = Vector3.zero; 
+            Vector3 targetScale = view.GetTargetScale();
+            view.transform.DOScale(targetScale, 0.4f).SetEase(Ease.OutBack);
+            //view.transform.localScale = Vector3.zero;
+            //view.transform.DOScale(Vector3.one, 0.4f).SetEase(Ease.OutBack);
         }
         else
         {
             Debug.LogWarning($"[PieceViewRegistry] 找不到 PieceID {signal.PieceId} 對應的 View");
+            return;
         }
 
         view.SyncLogicalPosition();
@@ -105,12 +109,12 @@ public class PieceVisualPresenter : IInitializable, IDisposable
         if (view.GetTeam() == Team.Black)
         {
             // 計算目標世界座標...
-            _currentEnemySequence = _coroutineService.StartCoroutine(PlayEnemyMoveSequence(view, worldPos, 0.5f));
+            _currentEnemySequence = _coroutineService.StartCoroutine(PlayEnemyMoveSequence(view, worldPos, 1.2f));
         }
         else
         {
             // 如果是玩家自己移動，就不動鏡頭，只播棋子動畫
-            view.DOMoveTo(worldPos, 0.5f);
+            view.DOMoveTo(worldPos, 0.8f);
         }
 
         view.SyncLogicalPosition();
@@ -318,9 +322,11 @@ public class PieceVisualPresenter : IInitializable, IDisposable
     // --- 新增：專為 AI 戰鬥設計的運鏡與解鎖協程 ---
     private IEnumerator PlayEnemyBattleChargeSequence(PieceView attackerView, Vector3 targetWorldPosition, Transform defenderTransform, float moveDuration)
     {
+        float cameraBlendTime = 0.8f;
+
         // 1. 鏡頭切換為 Focus 鎖定攻擊的敵人
         _cameraPresenter.RequestEnemyFocusMode(attackerView.transform);
-        yield return new WaitForSeconds(0.5f); // 給鏡頭飛過去的時間
+        yield return new WaitForSeconds(cameraBlendTime); // 給鏡頭飛過去的時間
 
         if (attackerView == null || attackerView.gameObject == null) yield break;
 
@@ -329,12 +335,13 @@ public class PieceVisualPresenter : IInitializable, IDisposable
 
         // 3. 轉向面向防守者
         attackerView.transform.LookAt(defenderTransform);
-        yield return new WaitForSeconds(0.3f); // 稍微停頓，讓玩家看清楚雙方對峙
+        yield return new WaitForSeconds(0.4f); // 稍微停頓，讓玩家看清楚雙方對峙
 
         // 4. 鏡頭歸位
         _cameraPresenter.RequestDefaultMode();
+        yield return new WaitForSeconds(cameraBlendTime);
 
-        // 5. 【關鍵解鎖】：發射訊號，讓 MovementPhase 解除死鎖並進入 MainSecPhase！
+        // 5. 發射訊號，讓 MovementPhase 解除死鎖並進入 MainSecPhase！
         _signalBus.Fire<EnemyVisualMoveCompletedSignal>();
     }
 }

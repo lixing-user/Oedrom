@@ -1,4 +1,5 @@
 using ChessPieceCardProduction;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,7 +16,7 @@ public class CardInputService : ICardInputService
 
     [Inject] private IBoardVisualizer _boardVisualizer;
     [Inject] private IHandService _handManager;
-    [Inject] private IHandUIManager _handUIManager;
+    [Inject] private IHandUIStateManager _handUIManager;
     [Inject] private ICardConfigProvider _cardConfigProvider;
 
     private CardState _currentState = CardState.Idle;
@@ -136,19 +137,29 @@ public class CardInputService : ICardInputService
             card.Team
         );
 
-        bool success = _placementHandler.TryPlaceCard(inputData);
+        try
+        {
+            bool success = _placementHandler.TryPlaceCard(inputData);
 
-        if (success)
-        {
-            _visualizer.PlayPlacementSuccessEffect();
-            _handUIManager.RefreshAllCards();
+            if (success)
+            {
+                _visualizer.PlayPlacementSuccessEffect();
+                _handUIManager.RefreshAllCards();
+            }
+            else
+            {
+                _visualizer.PlayPlacementFailedEffect();
+            }
         }
-        else
+        catch (Exception ex)
         {
+            Debug.LogError($"¥dµP©ñ¸m¥¢±Ñ: {ex.Message}");
             _visualizer.PlayPlacementFailedEffect();
         }
-
-        TransitionToIdle();
+        finally
+        {
+            TransitionToIdle();
+        }
     }
 
     private void TransitionToHover(InputData inputData, HandCard card)

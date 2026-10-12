@@ -84,6 +84,7 @@ public class ProjectInstaller : MonoInstaller
         .AsSingle();
 
         Container.Bind<ICardConfigProvider>().To<CardConfigProvider>().AsSingle();
+        Container.Bind<IPieceIconResolver>().To<PieceIconResolver>().AsSingle();
 
 
         // Application Services
@@ -163,6 +164,7 @@ public class ProjectInstaller : MonoInstaller
         Container.DeclareSignal<QuestStateChangedSignal>().OptionalSubscriber();
         Container.DeclareSignal<FeatureLockChangedSignal>().OptionalSubscriber();
         Container.DeclareSignal<ForceBattleResetSignal>().OptionalSubscriber();
+        Container.DeclareSignal<RewindSequenceFinishedSignal>().OptionalSubscriber();
         Container.DeclareSignal<BattleResetCompletedSignal>().OptionalSubscriber();
         Container.DeclareSignal<CameraModeRequestSignal>().OptionalSubscriber();
         Container.DeclareSignal<CameraFocusRequestSignal>().OptionalSubscriber();

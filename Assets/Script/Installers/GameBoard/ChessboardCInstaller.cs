@@ -14,8 +14,10 @@ public class ChessboardCInstaller : MonoInstaller
         #region Board Initialize
         Container.Bind<IBoardInitializationService>().To<BoardInitializeServiceC>().AsSingle();
 
-        Container.BindInterfacesAndSelfTo<BattleResetCoordinator>().AsSingle();
-        Container.Bind<IBattleStateRestorer>().To<StaticBattleRestorer>().AsSingle();
+        //Container.BindInterfacesAndSelfTo<BattleResetCoordinator>().AsSingle();
+        //Container.Bind<IBattleStateRestorer>().To<StaticBattleRestorer>().AsSingle();
+        //Container.Bind<IRewindVisualPresenter>().To<RewindVisualDirector>().AsSingle();
+        //Container.Bind<RewindTransitionView>().FromComponentInHierarchy().AsSingle();
         #endregion
 
         #region AI System

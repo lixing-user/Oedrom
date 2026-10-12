@@ -14,7 +14,7 @@ public class BoardDimensionsFactory
         return new BoardDimensions(
             _settings.BoardSizeX,
             _settings.BoardSizeY,
-            _settings.TileSize
+            _settings.GridSpacing
         );
     }
 }

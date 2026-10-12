@@ -17,6 +17,8 @@ MonoBehaviour:
   unlockConditions:
   - {fileID: 11400000, guid: 5bf3b74759dba4c429a9053315f67fd7, type: 2}
   actionsOnStart:
-  - {fileID: 11400000, guid: 715c3ab6b2d128140ac9966fc581257b, type: 2}
-  completionConditions: []
+  - {fileID: 11400000, guid: ecfd4af327cf04445ac83d5d194a02e8, type: 2}
+  - {fileID: 11400000, guid: 597645be8f32fdc448476ebf3b13239f, type: 2}
+  completionConditions:
+  - {fileID: 11400000, guid: 7d3cf4aea9e897a4992d68c4a48e3175, type: 2}
   actionsOnComplete: []

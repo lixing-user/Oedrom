@@ -87,8 +87,11 @@ public class BoardCView : MonoBehaviour
             // 設定相對位置 (以 Container 的中心點為基準)
             rectTransform.anchoredPosition = new Vector2(x, y);
 
-            // (可選) 強制重置 Scale，避免生成時因為層級關係導致尺寸變形
+            // 強制重置 Scale，避免生成時因為層級關係導致尺寸變形
             rectTransform.localScale = Vector3.one;
+
+            // 設定旋轉，使 Token 面向圓心 (或其他需求的方向)
+            rectTransform.localRotation = Quaternion.Euler(0, 0, currentAngle - 90f);
 
             _moveTokens.Add(token);
         }

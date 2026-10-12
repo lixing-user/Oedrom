@@ -23,6 +23,7 @@ public class CardMoveVisualizer : MonoBehaviour, ICardVisualizerService
 
     [SerializeField] private float smoothSpeed = 20f;
     [SerializeField] private float hoverHeight = 0.5f;
+    [SerializeField] private float previewScale = 1.0f;
     [SerializeField] private Camera mainCamera;
 
     public GameObject _worldDragInstance;  // 世界空間拖曳預覽物件
@@ -86,6 +87,8 @@ public class CardMoveVisualizer : MonoBehaviour, ICardVisualizerService
             worldPosition, 
             Quaternion.identity, 
             null);
+
+        _worldDragInstance.transform.localScale = Vector3.one * previewScale;
 
         SetupDragInstanceVisuals(type, team);
 

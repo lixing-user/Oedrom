@@ -212,12 +212,14 @@ public class AddCardEffect : IEventEffect
     private readonly ChessPieceType _type;
     private readonly Team _team;
     private readonly int _amount;
+    private readonly List<ChessPieceType> _randomPool;
 
-    public AddCardEffect(ChessPieceType type, Team team, int amount)
+    public AddCardEffect(ChessPieceType type, Team team, int amount, List<ChessPieceType> randomPool = null)
     {
         _type = type;
         _team = team;
         _amount = amount;
+        _randomPool = randomPool;
     }
 
     public bool CanExecute(IEffectContext context)
@@ -232,11 +234,23 @@ public class AddCardEffect : IEventEffect
         {
             if (_type == ChessPieceType.None)
             {
-                // 如果是 None，讓 DeckService 來隨機抽一張
-                var cards = context.DeckService.DrawRandomCards(1, _team);
-                if (cards != null && cards.Count > 0)
+                if (_randomPool != null && _randomPool.Count > 0)
                 {
-                    Debug.Log($"[AddCardEffect] 隨機獲得卡牌: {cards[0].CardType}");
+                    // 呼叫支援過濾清單的新抽卡方法 
+                    var cards = context.DeckService.DrawRandomCardsFromPool(1, _team, _randomPool);
+                    if (cards != null && cards.Count > 0)
+                    {
+                        Debug.Log($"[AddCardEffect] 從特定池隨機獲得卡牌: {cards[0].CardType}");
+                    }
+                }
+                else
+                {
+                    // 如果沒有填寫，維持原有的全域隨機
+                    var cards = context.DeckService.DrawRandomCards(1, _team);
+                    if (cards != null && cards.Count > 0)
+                    {
+                        Debug.Log($"[AddCardEffect] 全域隨機獲得卡牌: {cards[0].CardType}");
+                    }
                 }
             }
             else
@@ -251,6 +265,16 @@ public class AddCardEffect : IEventEffect
         }
     }
 }
+
+//public class RemoveCardEffect : IEventEffect
+//{
+//    public string EffectId => "remove_card_from_deck";
+
+//    private readonly ChessPieceType _type;
+//    private readonly Team _team;
+//    private readonly int _amount;
+//    private readonly List<ChessPieceType> _randomPool;
+//}
 #endregion
 
 #region Trigger Battle Effects

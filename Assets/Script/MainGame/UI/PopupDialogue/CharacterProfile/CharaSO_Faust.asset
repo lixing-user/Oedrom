@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterProfileSO
   characterName: Faust
   aliases:
-  - "\uFF1F\uFF1F\uFF1F"
   - Faust
-  storySprite: {fileID: 941120722, guid: 3a9c9a13a8f61d34ea8d00423b377f5b, type: 3}
-  defaultAvatar: {fileID: -1806131317, guid: 3a9c9a13a8f61d34ea8d00423b377f5b, type: 3}
+  storySprite: {fileID: 21300000, guid: 2af62bf1c43db0b4b87bca6720b79bf7, type: 3}
+  defaultAvatar: {fileID: 21300000, guid: cd5f574ab4f4d494eafaf863e0e4586e, type: 3}
   avatarVariants: []

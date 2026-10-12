@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::QuestSO
   questId: Quest_Ending_11
   questType: 0
-  unlockConditions: []
+  unlockConditions:
+  - {fileID: 11400000, guid: 61d1eda570716324c825ee94995284c0, type: 2}
   actionsOnStart:
   - {fileID: 11400000, guid: 601f4755536190749bc03b51a779072f, type: 2}
   - {fileID: 11400000, guid: c2b789f9d4623d3478b287c43d337323, type: 2}

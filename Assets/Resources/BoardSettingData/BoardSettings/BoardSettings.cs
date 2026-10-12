@@ -7,10 +7,12 @@ public class BoardSettings
     [Header("Board Dimensions")]
     public int BoardSizeX = 8;
     public int BoardSizeY = 8;
-    public float TileSize = 1.0f;
+    public float GridSpacing = 1.0f;
     public Vector3 BoardCenter = Vector3.zero;
 
     [Header("Visual Settings")]
+    public float PieceVisualSize = 1.0f;
+    public float TileVisualSize = 0.95f;
     public float YOffset = 0.25f;
     public float DragOffset = 1.25f;
     public Material TileMaterial;

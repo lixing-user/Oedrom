@@ -16,6 +16,6 @@ MonoBehaviour:
   aliases:
   - "\u7687\u5E1D"
   - Ares
-  storySprite: {fileID: -1545431140, guid: ff649c69a6aba704d878728436277a19, type: 3}
-  defaultAvatar: {fileID: -1545431140, guid: ff649c69a6aba704d878728436277a19, type: 3}
+  storySprite: {fileID: 21300000, guid: d10cb715c8d9bc644a27aefa6ca71344, type: 3}
+  defaultAvatar: {fileID: 21300000, guid: ba99d9e7bd1dafc4ca517d4422fb5397, type: 3}
   avatarVariants: []

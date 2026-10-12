@@ -17,7 +17,7 @@ public class BoardInitializeServiceE : IBoardInitializationService
     {
         // 1. 生成棋盤格子
         _tileGenerator.GenerateAllTiles(
-            _dimensions.TileSize,
+            _dimensions.GridSpacing,
             _dimensions.BoardSizeX,
             _dimensions.BoardSizeY
         );

@@ -5,6 +5,7 @@ public class BoardFView : MonoBehaviour, IBoardFView
 {
     [Header("Setup")]
     [SerializeField] private PanelView setupPanel;
+    [SerializeField] private PanelView startGamePanel;
     [SerializeField] public ButtonView autoArrangeButton;
     [SerializeField] public ButtonView resetButton;
     [SerializeField] public ButtonView startGameButton;
@@ -51,10 +52,12 @@ public class BoardFView : MonoBehaviour, IBoardFView
     public void ShowSetupPanel()
     {
         setupPanel.Show();
+        startGamePanel.Show();
     }
     public void HideSetupPanel()
     {
         setupPanel.Hide();
+        startGamePanel.Hide();
     }
 
     public void ShowMGFScenePanel()

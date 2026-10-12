@@ -14,7 +14,7 @@ public class TileHeightCalculator : ITileHeightCalculator
     private const float RAY_DEBUG_DURATION = 2f;
 
     private readonly int _terrainLayerMask;
-    private float _heightOffset = 0.05f;
+    //private float _heightOffset = 0.05f;
 
     public TileHeightCalculator(
       ITerrainDataService terrainService,
@@ -36,14 +36,13 @@ public class TileHeightCalculator : ITileHeightCalculator
 
         if (raycastHeight > 0)
         {
-            return raycastHeight + _heightOffset;
+            //return raycastHeight + _heightOffset;
+            return raycastHeight + _boardSettings.YOffset;
         }
 
         // 癶计沮琩高度ノ﹟ゼネΘ
         Debug.LogWarning($"[TileHeightCalculator] Raycast ア毖 {worldPosition}癶计沮琩高");
-        return GetHeightByData(worldPosition);
-
-        
+        return GetHeightByData(worldPosition);  
     }
 
 
@@ -109,13 +108,15 @@ public class TileHeightCalculator : ITileHeightCalculator
             Vector3Int heightIndex = _terrainService.WorldToHeightIndex(worldPosition);
             float terrainHeight = _terrainService.GetHeightAtIndex(
                 heightIndex.x, heightIndex.y, heightIndex.z);
-            return terrainHeight * _settings.height * _settings.resolution + _heightOffset;
+            //return terrainHeight * _settings.height * _settings.resolution + _heightOffset;
+            return terrainHeight * _settings.height * _settings.resolution + _boardSettings.YOffset;
         }
         else
         {
             float localX = (worldPosition.x - (boardCenter.x - bounds.x)) / _settings.resolution;
             float localZ = (worldPosition.z - (boardCenter.z - bounds.z)) / _settings.resolution;
-            return _terrainService.GetSurfaceHeight(localX, localZ) + _heightOffset;
+            //return _terrainService.GetSurfaceHeight(localX, localZ) + _heightOffset;
+            return _terrainService.GetSurfaceHeight(localX, localZ) + _boardSettings.YOffset;
         }
     }
 }

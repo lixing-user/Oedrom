@@ -8,6 +8,7 @@ public class DialogueLine
     public string characterName;
     public string position; // "left" or "right"
     public CharacterSpritePosition charPos;
+    public CharacterSpriteSize? charSize;
     public string content;
     public int nextId;
     public string effectTag; // 特效/差分標籤
@@ -16,6 +17,8 @@ public class DialogueLine
     public bool IsEnd => type == "END";
     public bool IsCG => type == "CG";
     public bool IsBackgroundChange => type == "BG";
+    public bool IsEnter => type == "ENTER";
+    public bool IsLeave => type == "LEAVE";
     public bool IsSoundEffect => type == "SE";
     public bool IsAnimation => type == "ANIM";
     public bool IsCameraEffect => type == "CAMERA";
@@ -35,6 +38,8 @@ public enum CharacterSpritePosition
     Center,
     None // 用於角色離場或無站位
 }
+
+public enum CharacterSpriteSize { Normal, Large }
 
 public enum DialogueEffect
 {

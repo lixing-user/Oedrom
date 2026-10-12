@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 277316850d5afd64ebd183f44a7ba581, type: 3}
   m_Name: LootBattleSetting
   m_EditorClassIdentifier: 
-  ChapterBoardConfig: {fileID: 0}
   BasicBoardSettings:
     BoardSizeX: 6
     BoardSizeY: 6
-    TileSize: 1
+    GridSpacing: 2
     BoardCenter: {x: 0, y: 0, z: 0}
+    TileVisualSize: 0.95
     YOffset: 0.25
     DragOffset: 1.25
     TileMaterial: {fileID: 2100000, guid: 4562392ee283f45309d05bcc52adc74c, type: 2}
@@ -28,3 +28,8 @@ MonoBehaviour:
     LandmarkMaterials: []
     LandmarkPrefabs: []
     HeightOffset: 0
+  HeightThreshold:
+    waterMaxHeight: 2
+    plainMaxHeight: 5
+    forestMaxHeight: 8
+    mountainMinHeight: 8

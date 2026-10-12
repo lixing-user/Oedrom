@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d54b3cc221e0e42b7c1cb08ff4eed8, type: 3}
+  m_Name: ShowDialogue_D03_PawnMove02
+  m_EditorClassIdentifier: Assembly-CSharp::ShowDialogueAction
+  dialogueLines:
+  - speaker: {fileID: 11400000, guid: cf8e851864496944e82b33749f2289d7, type: 2}
+    emotion: 0
+    content: "\u4E0D\u904E\u6B65\u5175\u6A5F\u52D5\u6027\u6B20\u4F73\uFF0C\u5F88\u5BB9\u6613\u8207\u5C0D\u65B9\u7684\u90E8\u968A\u9677\u5165\u50F5\u5C40\u5462\u3002"
+    anchor: 3
+    pauseAfterThisLine: 0
+  - speaker: {fileID: 11400000, guid: cf8e851864496944e82b33749f2289d7, type: 2}
+    emotion: 0
+    content: "\u800C\u4E14\u554A\uFF0C\u53E3\u8A23\u7684\u5F8C\u534A\u4E43\u662F\u300C\u518D\u800C\u8870\uFF0C\u4E09\u800C\u7AED\u300D\u3002"
+    anchor: 3
+    pauseAfterThisLine: 0
+  - speaker: {fileID: 11400000, guid: cf8e851864496944e82b33749f2289d7, type: 2}
+    emotion: 0
+    content: "\u885D\u92D2\u4E4B\u5F8C\uFF0C\u5C31\u6703\u56DE\u6B78\u5E73\u6642\u7684\u57FA\u672C\u6230\u529B\u4E86\u3002"
+    anchor: 3
+    pauseAfterThisLine: 0
+  - speaker: {fileID: 11400000, guid: cf8e851864496944e82b33749f2289d7, type: 2}
+    emotion: 0
+    content: "\u4E0D\u904E\uFF0C\u4F60\u61C9\u8A72\u6CE8\u610F\u5230\u6230\u5834\u5DE6\u5074\uFF0C\u90A3\u96BB\u6B65\u5175\u7684\u7279\u6B8A\u4E4B\u8655\u4E86\u5427\uFF1F"
+    anchor: 3
+    pauseAfterThisLine: 0
+  - speaker: {fileID: 11400000, guid: 81aea06fad86aa54f8460e7faea9602d, type: 2}
+    emotion: 0
+    content: "\uFF08\u4E0D\u904E\uFF0C\u61C9\u7576\u5148\u8B93\u4ED6\u524D\u9032\uFF0C\u6642\u6A5F\u9084\u6C92\u6210\u719F\u3002\uFF09"
+    anchor: 3
+    pauseAfterThisLine: 0

@@ -10,8 +10,9 @@ public class PlayStoryAction : MacroActionSO
         var storyManager = context.StoryProgressManager;
         if (storyManager != null)
         {
-            storyManager.SetCurrentChapter(StoryConfig);
-            context.SignalBus.Fire(new RequestSessionStateChangeSignal { TargetState = GameSessionState.Story });
+            storyManager.EnqueueChapter(StoryConfig);
+            //storyManager.SetCurrentChapter(StoryConfig);
+            //context.SignalBus.Fire(new RequestSessionStateChangeSignal { TargetState = GameSessionState.Story });
         }
     }
 }

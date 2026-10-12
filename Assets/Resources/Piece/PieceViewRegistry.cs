@@ -87,12 +87,6 @@ public class PieceViewRegistry : IPieceViewRegistry
         view.transform.rotation = Quaternion.Euler(0, targetYRotation, 0);
 
         Debug.Log($"[PieceViewRegistry] 已將 {view.GetTeam()} 陣營的 {view.GetModelId()} 重置。座標:({boardPos.X},{boardPos.Y}) / Rotation Y:{targetYRotation}");
-        /* 如果你的遊戲有陣營朝向，可以改寫成類似這樣：
-        if (view.Team == Team.White)
-            view.transform.rotation = Quaternion.LookRotation(Vector3.forward);
-        else
-            view.transform.rotation = Quaternion.LookRotation(Vector3.back);
-        */
     }
 
     public IEnumerable<PieceID> GetAllRegisteredIds()

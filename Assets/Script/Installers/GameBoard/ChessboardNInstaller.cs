@@ -52,6 +52,8 @@ public class ChessboardNInstaller : MonoInstaller
 
         Container.BindInterfacesAndSelfTo<BattleResetCoordinator>().AsSingle();
         Container.BindInterfacesAndSelfTo<NormalBattleRestorer>().AsSingle();
+        Container.Bind<IRewindVisualPresenter>().To<RewindVisualDirector>().AsSingle();
+        Container.Bind<RewindTransitionView>().FromComponentInHierarchy().AsSingle();
 
         Container.BindMemoryPool<RewardCardSlot, RewardCardSlotPool>()
         .WithInitialSize(5) // 初始先做 5 個放著備用

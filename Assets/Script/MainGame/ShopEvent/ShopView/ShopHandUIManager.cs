@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using Zenject;
 
-public class ShopHandUIManager : MonoBehaviour, IHandUIManager
+public class ShopHandUIManager : MonoBehaviour, IHandUIStateManager
 {
     [Inject] private SignalBus _signalBus;
     [Inject] private IHandService _handManager;
@@ -15,8 +15,8 @@ public class ShopHandUIManager : MonoBehaviour, IHandUIManager
 
     private bool _isInitialized = false;
 
-    private HandDisplayMode currentMode = HandDisplayMode.Centered;
-    private UIVisibilityHeadupMode currentVisibility = UIVisibilityHeadupMode.Standard;
+    private HandDisplayMode _currentMode = HandDisplayMode.Centered;
+    private UIVisibilityHeadupMode _currentVisibility = UIVisibilityHeadupMode.Standard;
 
 
     #region Initialize 
@@ -39,8 +39,8 @@ public class ShopHandUIManager : MonoBehaviour, IHandUIManager
     public void InitializeView()
     {
         RefreshAllCards();
-        _handCardContainer.SetHandMode(currentMode);
-        _handCardContainer.SetVisibilityMode(currentVisibility);
+        _handCardContainer.SetHandMode(_currentMode);
+        _handCardContainer.SetVisibilityMode(_currentVisibility);
         _isInitialized = true;
     }
     #endregion
@@ -92,19 +92,13 @@ public class ShopHandUIManager : MonoBehaviour, IHandUIManager
         }
     }
 
-    private void ToggleHandMode()
+    public void ToggleHandMode()
     {
-        currentMode = (currentMode == HandDisplayMode.Centered)
+        _currentMode = (_currentMode == HandDisplayMode.Centered)
             ? HandDisplayMode.BottomRight 
             : HandDisplayMode.Centered;
 
-         _handCardContainer.SetHandMode(currentMode);
-    }
-
-    private void ApplyHandMode(HandDisplayMode mode)
-    {
-        currentMode = mode;
-        _handCardContainer.SetHandMode(currentMode);
+         _handCardContainer.SetHandMode(_currentMode);
     }
 
     public void RefreshAllCards()
@@ -118,6 +112,20 @@ public class ShopHandUIManager : MonoBehaviour, IHandUIManager
         int currentCount = _handManager.GetHandCards().Count;
         int maxCount = _handManager.GetMaxHandSize();
         Debug.Log($"手牌數量: {currentCount}/{maxCount}");
+    }
+
+    public void SetHandDisplayMode(HandDisplayMode mode)
+    {
+        if (_currentMode == mode) return;
+
+        _currentMode = mode;
+
+        // 透過 Zenject Signal 發送更新
+        _signalBus.Fire(new ChangeHandUIVisibilitySignal
+        {
+            DisplayMode = mode,
+            VisibilityMode = _currentVisibility // 帶入當前狀態
+        });
     }
     #endregion
 }

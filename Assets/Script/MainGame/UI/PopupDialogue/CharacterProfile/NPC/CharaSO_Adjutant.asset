@@ -16,6 +16,6 @@ MonoBehaviour:
   aliases:
   - "\u526F\u5B98"
   - "\u526F\u968A\u9577"
-  storySprite: {fileID: 440355882, guid: d638e9ef88c10a44789152e748f0f622, type: 3}
-  defaultAvatar: {fileID: 440355882, guid: d638e9ef88c10a44789152e748f0f622, type: 3}
+  storySprite: {fileID: 21300000, guid: 7dc963357d7ef0e4ead64eafe8c2b271, type: 3}
+  defaultAvatar: {fileID: 0}
   avatarVariants: []

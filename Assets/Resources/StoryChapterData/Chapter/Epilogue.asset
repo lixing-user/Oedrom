@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c2c7490d554e547949c9367d2a96ff, type: 3}
   m_Name: Epilogue
   m_EditorClassIdentifier: Assembly-CSharp::StoryChapterConfig
-  chapterId: 
+  chapterId: Epilogue_Script
   chapterName: Epilogue
   dialogueFile: {fileID: 4900000, guid: 3129c9555edb37940b0d82485d1db1ff, type: 3}
   initialBackground: 
@@ -23,7 +23,11 @@ MonoBehaviour:
     sprite: {fileID: 0}
   - backgroundName: Dark
     sprite: {fileID: 0}
-  characterProfiles: []
+  characterProfiles:
+  - {fileID: 11400000, guid: cf8e851864496944e82b33749f2289d7, type: 2}
+  - {fileID: 11400000, guid: a4480f420e45c634daa0dec9fe5b7bb1, type: 2}
+  - {fileID: 11400000, guid: 81aea06fad86aa54f8460e7faea9602d, type: 2}
+  - {fileID: 11400000, guid: 9331a4f5fa421eb4db22bc3808f4000a, type: 2}
   cgSprites: []
   phaseSequence: 02000000
   nextChapter: {fileID: 0}

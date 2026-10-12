@@ -52,6 +52,7 @@ public class ResolutionFlowStateE : IGameFlowState
             // 這樣當 Coordinator 攔截並切換回 Setup 時，就不會被上面的 ChangeState 覆蓋
             if (winner.HasValue)
             {
+                //_signalBus.Fire(new CheckmateOccurredSignal(winner.Value, reason));
                 _signalBus.Fire(new GameEndedSignal(winner.Value, reason));
             }
             return;

@@ -20,7 +20,7 @@ public class BoardInitializeServiceN : IBoardInitializationService
     {
         // 1. 生成棋盤格子
         _tileGenerator.GenerateAllTiles(
-            _dimensions.TileSize,
+            _dimensions.GridSpacing,
             _dimensions.BoardSizeX,
             _dimensions.BoardSizeY
         );
@@ -131,11 +131,6 @@ public class BoardInitializeServiceN : IBoardInitializationService
         Debug.Log($"[InitializeService] 載入敵人配置，難度層級: {levelIndex}");
         SpawnDynamicEnemies(difficultyData);
         #endregion
-
-        #region 測試棋盤（FEN解析）
-        //SpawnPiece(ChessPieceType.Rook, 0, 5, Team.Black);
-        //SpawnPiece(ChessPieceType.Knight, 1, 5, Team.Black);
-        #endregion
     }
 
     private void SetupLootBattle(BattleSessionData battle)
@@ -143,18 +138,27 @@ public class BoardInitializeServiceN : IBoardInitializationService
         Debug.Log("[InitializeService] 初始化搶劫戰鬥...");
 
         // 1. 為 LootBattle 補齊缺失的 ID
-        battle.AttackerId = PieceID.Generate(); 
+        battle.AttackerId = PieceID.Generate();
         battle.DefenderId = PieceID.Generate();
 
         // 2. 補齊防守方的資訊
-        battle.DefenderType = ChessPieceType.King;
+        battle.DefenderType = ChessPieceType.Knight;
         battle.DefenderTeam = Team.Black;
 
+        #region 正式棋盤
         // 3. 統一使用 SpawnPieceWithId 生成，這樣它們就會正式註冊在 GameBoard 字典裡了！
         SpawnPieceWithId(battle.AttackerId, battle.AttackerType, 3, 0, battle.AttackerTeam);
         SpawnPieceWithId(battle.DefenderId, battle.DefenderType, 2, 5, battle.DefenderTeam);
-    }
 
+        // 4. 生成固定的黑方陣容
+        SpawnPiece(ChessPieceType.Rook, 5, 5, Team.Black);
+        SpawnPiece(ChessPieceType.Pawn, 5, 4, Team.Black);
+        SpawnPiece(ChessPieceType.Pawn, 4, 5, Team.Black);
+
+        // 5.處理隨機生成 (Defender Knight + 剩下的 3 枚 Pawn)
+        SpawnLootRandomPieces();
+        #endregion
+    }
 
     private void SetupEventBattle(BattleSessionData battle)
     {
@@ -279,6 +283,59 @@ public class BoardInitializeServiceN : IBoardInitializationService
 
         // 呼叫你原本寫好的完美動態生成器！
         SpawnDynamicEnemies(eventDifficulty);
+    }
+
+    private void SpawnLootRandomPieces()
+    {
+        var allEmptyPos = _boardQuery.GetAllEmptyPositions()
+                    .Where(p => !(p.X == 5 && p.Y == 5) &&
+                                !(p.X == 5 && p.Y == 4) &&
+                                !(p.X == 4 && p.Y == 5) &&
+                                !(p.X == 2 && p.Y == 5)) // 確保不會重疊 Defender 的位置
+                    .ToList();
+
+        // 篩選出合法的敵方生成區 (Y=4 或 Y=5)
+        var validEnemyPositions = allEmptyPos.Where(p => p.Y == 4 || p.Y == 5).ToList();
+
+        // --- 放置剩下的 3 枚 Pawn ---
+        int remainingPawns = 3;
+        for (int i = 0; i < remainingPawns; i++)
+        {
+            if (validEnemyPositions.Count == 0)
+            {
+                Debug.LogWarning("生成區域沒有足夠的空位生成剩餘的 Pawn！");
+                break;
+            }
+
+            // 動態分類 Y=4 和 Y=5 的空位
+            var emptyY4 = validEnemyPositions.Where(p => p.Y == 4).ToList();
+            var emptyY5 = validEnemyPositions.Where(p => p.Y == 5).ToList();
+
+            PiecePosition spawnPos = default;
+            int selectedIndexToRemove = -1;
+
+            // 傾向 Y=4：如果 Y=4 還有位子，優先從裡面抽
+            if (emptyY4.Count > 0)
+            {
+                int rIndex = UnityEngine.Random.Range(0, emptyY4.Count);
+                spawnPos = emptyY4[rIndex];
+            }
+            // 退而求其次：如果 Y=4 滿了，才放 Y=5
+            else if (emptyY5.Count > 0)
+            {
+                int rIndex = UnityEngine.Random.Range(0, emptyY5.Count);
+                spawnPos = emptyY5[rIndex];
+            }
+
+            // 執行生成並將該座標從可用清單中剔除
+            SpawnPiece(ChessPieceType.Pawn, spawnPos.X, spawnPos.Y, Team.Black);
+
+            selectedIndexToRemove = validEnemyPositions.FindIndex(p => p.X == spawnPos.X && p.Y == spawnPos.Y);
+            if (selectedIndexToRemove != -1)
+            {
+                validEnemyPositions.RemoveAt(selectedIndexToRemove);
+            }
+        }
     }
 }
 

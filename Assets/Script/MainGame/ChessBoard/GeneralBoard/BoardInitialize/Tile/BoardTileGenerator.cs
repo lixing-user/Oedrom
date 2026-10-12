@@ -6,7 +6,6 @@ public class BoardTileGenerator : IBoardTileGenerator
     [Inject] private TileView.Factory _tileFactory;
 
     [Inject] private readonly BoardDimensions _dimensions;//Domain 核心邏輯（棋盤格式）
-    [Inject] private readonly BoardSettings _settings;//Infrastructure 棋盤設定（材質、大小、位置）
     [Inject(Id = "BoardTransform")] private readonly Transform _boardTransform;
 
     [Inject] private readonly ITilePositionCalculator _tilePosition;

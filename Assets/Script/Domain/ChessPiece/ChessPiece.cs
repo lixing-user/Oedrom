@@ -21,6 +21,7 @@ public class ChessPiece
     public bool IsCaptured { get; private set; }
     public bool IsLocked { get; private set; }
     public bool IsBroken { get; private set; }
+    public bool IsReversed { get; private set; } // 用於將棋模式，表示棋子已被翻轉
 
 
     public IMovementStrategy MovementStrategy { get; private set; }
@@ -76,6 +77,7 @@ public class ChessPiece
             throw new InvalidOperationException("上鎖的棋子無法被吃");
 
         IsCaptured = true;
+        IsReversed = false; // 被吃時，將棋子翻回正面
         State = PieceState.InStandby;
         CurrentPosition = null; 
     }
@@ -88,6 +90,17 @@ public class ChessPiece
         Team = newTeam;
     }
 
+    public void ChangeState(PieceState newState)
+    {
+        State = newState;
+    }
+
+    // 業務邏輯：翻轉棋子方向
+    public void ReverseDirection()
+    {
+        IsReversed = !IsReversed;
+    }
+
     #region 擴充業務邏輯：重新放置
     public void Capture(CaptureMode mode)
     {
@@ -95,6 +108,7 @@ public class ChessPiece
             throw new InvalidOperationException("上鎖的棋子無法被吃");
 
         IsCaptured = true;
+        IsReversed = false; // 被吃時，將棋子翻回正面
         State = mode == CaptureMode.ToStandby
             ? PieceState.InStandby
             : PieceState.Removed;

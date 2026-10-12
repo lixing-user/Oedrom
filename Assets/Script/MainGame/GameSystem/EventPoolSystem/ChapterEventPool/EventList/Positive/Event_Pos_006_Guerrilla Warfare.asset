@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Event_Pos_006_Guerrilla Warfare
   m_EditorClassIdentifier: Assembly-CSharp::RandomEventData
   eventId: Pos006
-  eventName: Guerrilla Warfare
-  description: "3\u5834\u6230\u9B25\u5167\u5E03\u9663\u7BC4\u570D\u64F4\u5927"
+  eventName: "\u6E38\u64CA\u6230"
+  description: "\u8ECD\u5FC3\u7A69\u5B9A\uFF0C\u4F60\u5617\u8A66\u8B93\u5404\u90E8\u968A\u4F7F\u7528\u5354\u8ABF\u6027\u66F4\u9AD8\u7684\u6230\u8853\u3002\u6548\u679C\u76F8\u7576\u986F\u8457\uFF0C\u8ECD\u968A\u7684\u9663\u5730\u4F5C\u6230\u5BE6\u529B\u63D0\u5347\u4E86\u3002"
   weight: 1
-  eventIcon: {fileID: 0}
+  eventIcon: {fileID: -965901380, guid: 052b07a6ba1c01b45add3e58ed523129, type: 3}
   eventType: 0
   conditions:
   - conditionType: 0
@@ -30,6 +30,8 @@ MonoBehaviour:
       targetResource: 0
       sourceResource: 0
       targetPieceType: 0
+      randomPool:
+        pieces: 
       targetTeam: 0
       targetBattleType: 0
       targetBattleId: 

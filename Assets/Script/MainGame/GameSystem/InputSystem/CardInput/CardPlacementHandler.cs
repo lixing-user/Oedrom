@@ -16,7 +16,6 @@ public interface ICardPlacementHandler
 public class CardPlacementHandler : ICardPlacementHandler
 {
     //Domain
-    //[Inject] private GameBoard<Tile> _gameBoard;
     [Inject] private IGameBoard _gameBoard;
 
     //Application
@@ -105,6 +104,20 @@ public class CardPlacementHandler : ICardPlacementHandler
             {
                 Debug.LogWarning("棋子創建失敗");
                 return false;
+            }
+
+            // 6. 檢查是否需要反向棋子方向（例如放置在對方底線）
+            int maxY = _gameBoard.Dimensions.BoardSizeY - 1;
+
+            // 假設玩家是 White(0)，對手底線是 maxY
+            if (piece.Team == Team.White && boardPosition.Y == maxY)
+            {
+                piece.ReverseDirection();
+            }
+            // 假設黑方是 1，玩家底線是 0
+            else if (piece.Team == Team.Black && boardPosition.Y == 0)
+            {
+                piece.ReverseDirection();
             }
 
             // 加入棋盤（觸發領域事件）

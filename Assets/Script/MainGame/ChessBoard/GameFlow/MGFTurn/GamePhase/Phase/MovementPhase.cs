@@ -28,6 +28,7 @@ public class MovementPhase : IGamePhaseState
         Debug.Log("[MovementPhase] === 進入移動階段 ===");
 
         _model.CanProgressToNextPhase = false;
+        _isWaitingForVisual = false;
 
         _signalBus.Subscribe<PreviewMoveSignal>(OnPreviewMove);
         _signalBus.Subscribe<PieceMovedSignal>(OnPieceMoved);

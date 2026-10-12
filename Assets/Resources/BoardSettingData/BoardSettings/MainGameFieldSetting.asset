@@ -15,9 +15,11 @@ MonoBehaviour:
   BasicBoardSettings:
     BoardSizeX: 8
     BoardSizeY: 8
-    TileSize: 5
+    GridSpacing: 5
     BoardCenter: {x: 0, y: 0, z: 0}
-    YOffset: 0.25
+    PieceVisualSize: 1.25
+    TileVisualSize: 0.95
+    YOffset: 1.25
     DragOffset: 1.25
     TileMaterial: {fileID: 2100000, guid: 4562392ee283f45309d05bcc52adc74c, type: 2}
     TeamMaterials:
@@ -40,3 +42,8 @@ MonoBehaviour:
     - {fileID: 2100000, guid: dd9568ec50ca00c49b986e492b1d8ada, type: 2}
     LandmarkPrefabs: []
     HeightOffset: 3
+  HeightThreshold:
+    waterMaxHeight: 2
+    plainMaxHeight: 5
+    forestMaxHeight: 8
+    mountainMinHeight: 8

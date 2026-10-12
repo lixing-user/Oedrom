@@ -65,10 +65,15 @@ public class TileView : MonoBehaviour
         Bounds meshBounds = mesh.bounds;
 
         _collider.size = new Vector3(
-            _dimensions.TileSize,
+            _dimensions.GridSpacing,
             meshBounds.size.y + 1.0f,  // 使用實際高度 + 緩衝值
-            _dimensions.TileSize
+            _dimensions.GridSpacing
         );
+        //_collider.size = new Vector3(
+        //    _settings.TileVisualSize,
+        //    meshBounds.size.y + 1.0f,
+        //    _settings.TileVisualSize
+        //);
 
         _collider.center = meshBounds.center;// center 相對於 TileView 的本地原點
     }
@@ -79,7 +84,8 @@ public class TileView : MonoBehaviour
         if (_hoverIndicator == null) return;
 
         // 取得設定中的格子大小
-        float size = _dimensions.TileSize;
+        //float size = _dimensions.GridSpacing;
+        float size = _settings.TileVisualSize;
 
         // 根據你使用的 3D 物件類型，調整 Scale：
 
@@ -92,7 +98,7 @@ public class TileView : MonoBehaviour
 
         // 【情況 C】如果你用的是 Unity 的 Plane：
         // Plane 的預設大小是 10x10，所以要除以 10
-         _hoverIndicator.transform.localScale = new Vector3(size / 10f, 1f, size / 10f);
+        _hoverIndicator.transform.localScale = new Vector3(size / 10f, 1f, size / 10f);
     }
 
 

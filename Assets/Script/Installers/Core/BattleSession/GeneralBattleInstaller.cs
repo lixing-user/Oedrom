@@ -22,6 +22,9 @@ public class GeneralBattleInstaller : MonoInstaller
         BindResourceContainer<SupplyContainer>("SupplyContainer");
         BindResourceContainer<MoraleContainer>("MoraleContainer");
         BindResourceContainer<PopularityContainer>("PopularityContainer");
+
+        Container.BindInterfacesAndSelfTo<UniversalCheckmateDirector>().AsSingle();
+        Container.Bind<CheckmateUXView>().FromComponentInHierarchy().AsSingle();
         #endregion
 
         #region Signal Bindings
@@ -29,12 +32,15 @@ public class GeneralBattleInstaller : MonoInstaller
         Container.DeclareSignal<GameStartedSignal>().OptionalSubscriber();
         Container.DeclareSignal<TurnChangedSignal>().OptionalSubscriber();
         Container.DeclareSignal<TurnEndedSignal>().OptionalSubscriber();
+        Container.DeclareSignal<CheckmateOccurredSignal>().OptionalSubscriber();
+        Container.DeclareSignal<CheckmateVisualCompletedSignal>().OptionalSubscriber();
 
         Container.DeclareSignal<CameraOpeningFinishedSignal>().OptionalSubscriber();
         Container.DeclareSignal<CameraModeChangedSignal>().OptionalSubscriber();
         Container.DeclareSignal<MarkTargetPieceSignal>().OptionalSubscriber();
         Container.DeclareSignal<EnemyVisualMoveCompletedSignal>().OptionalSubscriber();
         Container.DeclareSignal<ToggleHandDeckSignal>().OptionalSubscriber();
+        Container.DeclareSignal<ChangeHandUIVisibilitySignal>().OptionalSubscriber();
 
         //null
         Container.DeclareSignal<PhaseEndRequestedSignal>().OptionalSubscriber();

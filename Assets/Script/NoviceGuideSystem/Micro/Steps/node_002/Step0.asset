@@ -16,6 +16,9 @@ MonoBehaviour:
   objective: "\u89C0\u770B\u6559\u5B78\u8207\u5C0D\u8A71\u6846"
   _actionsOnStart:
   - {fileID: 11400000, guid: 7a4797a8f02bc604c9468494e2ea0203, type: 2}
+  - {fileID: 11400000, guid: e33ef0d7a2d37c44dba8fd72608c0472, type: 2}
   _completionConditions:
   - {fileID: 11400000, guid: a9c2ae3057457d84f9a1e6bd73de7773, type: 2}
+  _failureConditions: []
   _actionsOnCompletion: []
+  _actionsOnFailure: []

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Event_Neg_005_Supply Interception
   m_EditorClassIdentifier: Assembly-CSharp::RandomEventData
   eventId: Neg005
-  eventName: Supply Interception
-  description: "\u4E2D\u65B7\u6211\u65B9\u6BCF\u56DE\u5408\u7684\u88DC\u7D663\u56DE\u5408"
+  eventName: "\u88DC\u7D66\u7DDA\u622A\u65B7"
+  description: "\u5E1D\u570B\u8ECD\u6D3E\u8ECD\u622A\u65B7\u4E86\u4F60\u5011\u7684\u88DC\u7D66\u8DEF\u7DDA\uFF0C\u4F60\u5011\u4E0D\u5F97\u4E0D\u5728\u6C92\u6709\u5F8C\u52E4\u7684\u60C5\u6CC1\u4E0B\u7E7C\u7E8C\u884C\u8ECD\u3002"
   weight: 1
-  eventIcon: {fileID: 0}
+  eventIcon: {fileID: 2098004843, guid: 052b07a6ba1c01b45add3e58ed523129, type: 3}
   eventType: 1
   conditions: []
   options:
@@ -28,6 +28,8 @@ MonoBehaviour:
       targetResource: 2
       sourceResource: 0
       targetPieceType: 0
+      randomPool:
+        pieces: 
       targetTeam: 0
       targetBattleType: 0
       targetBattleId: 

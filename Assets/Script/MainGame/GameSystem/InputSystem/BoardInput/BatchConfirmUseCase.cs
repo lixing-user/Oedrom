@@ -5,6 +5,8 @@ using Zenject;
 // Application/ use case
 public class BatchConfirmMovesHandler : IInitializable, IDisposable
 {
+    private readonly ITutorialOverrideService _overrideService;
+
     private readonly SignalBus _signalBus;
     private readonly GamePhaseModel _model; 
     private readonly GameBoard<TerrainTile> _board; 
@@ -16,13 +18,15 @@ public class BatchConfirmMovesHandler : IInitializable, IDisposable
         IMoveHandler moveHandler,
         GamePhaseModel model,
         GameBoard<TerrainTile> board,
-        ITerrainRepository terrainRepository)
+        ITerrainRepository terrainRepository,
+        [InjectOptional] ITutorialOverrideService overrideService)
     {
         _signalBus = signalBus;
         _moveHandler = moveHandler;
         _model = model;
         _board = board;
         _terrainRepository = terrainRepository;
+        _overrideService = overrideService;
     }
 
     public void Initialize()
@@ -41,6 +45,9 @@ public class BatchConfirmMovesHandler : IInitializable, IDisposable
 
         foreach (var pending in signal.PendingMoves)  // 用快照數據
         {
+            _model.IsRandomEventTriggered = false;
+            _model.CurrentResolutionType = ResolutionType.None;
+
             var pieceId = pending.PieceId;
             var to = new PiecePosition(pending.To.x, pending.To.y);
             var piece = _board.GetPieceById(pieceId);
@@ -79,6 +86,21 @@ public class BatchConfirmMovesHandler : IInitializable, IDisposable
             }
 
             // --- 4. 隨機事件---
+            if (_overrideService.IsRandomEventSuppressed == true)
+            {
+                Debug.Log($"[BatchConfirmMovesHandler] 隨機事件被 TutorialOverrideService 禁用，跳過隨機事件判定");
+                _model.CurrentResolutionType = ResolutionType.None;
+                continue; // 判定結束
+            }
+            if (_overrideService != null && _overrideService.HasForcedEvent)
+            {
+                Debug.Log($"[BatchConfirmMovesHandler] 隨機事件被 TutorialOverrideService 強制觸發，直接觸發隨機事件");
+                _model.IsRandomEventTriggered = true;
+                _model.CurrentResolutionType = ResolutionType.RandomEvent;
+                _model.TriggerPosition = pending.To;
+                continue; // 判定結束
+            }
+
             //float triggerProbability = 0.3f; // 這裡建議未來從 Config 讀取
 
             if (UnityEngine.Random.value <= 1.0f)

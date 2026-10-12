@@ -13,23 +13,25 @@ MonoBehaviour:
   m_Name: Event_Pos_002_Uprising
   m_EditorClassIdentifier: Assembly-CSharp::RandomEventData
   eventId: Pos002
-  eventName: Uprising
-  description: "\uFF08\u6C11\u5FC3\u5927\u65BC\u5F8C\u52A0\u5165\u4E8B\u4EF6\uFF09\u7372\u5F97\u96A8\u6A5F\u4E00\u679A\u68CB\u5B50\uFF1B\u6700\u5927\u88DC\u7D66\u91CF\u4E0A\u5347\uFF1B\u7372\u5F97\u56FA\u5B9A\u91CF\u7684\u8CC7\u6E90"
+  eventName: "\u8D77\u7FA9"
+  description: "\u5728\u884C\u8ECD\u9014\u4E2D\u5076\u9047\u4E00\u652F\u6C11\u5175\u90E8\u968A\uFF0C\u4F86\u81EA\u9644\u8FD1\u6751\u843D\u7684\u6751\u6C11\u56E0\u6DF1\u77E5\u5E1D\u570B\u7684\u66B4\u8650\uFF0C\u66F4\u64D4\u6182\u6230\u706B\u6CE2\u53CA\u6B64\u5730\uFF0C\u7FA4\u60C5\u6FC0\u596E\u4E4B\u4E0B\u6C7A\u610F\u8D77\u5175\u9020\u53CD\u3002"
   weight: 1
-  eventIcon: {fileID: 0}
+  eventIcon: {fileID: 1111914135, guid: 052b07a6ba1c01b45add3e58ed523129, type: 3}
   eventType: 0
   conditions:
   - conditionType: 2
     threshold: 8
   options:
-  - optionId: 
-    optionName: 
+  - optionId: Event_Effect_Confim
+    optionName: "\u7DE8\u5165\u8ECD\u968A"
     description: 
     effects:
     - effectType: 5
       targetResource: 0
       sourceResource: 0
       targetPieceType: 0
+      randomPool:
+        pieces: 0100000003000000
       targetTeam: 0
       targetBattleType: 0
       targetBattleId: 
@@ -42,27 +44,13 @@ MonoBehaviour:
       targetResource: 2
       sourceResource: 0
       targetPieceType: 0
+      randomPool:
+        pieces: 
       targetTeam: 0
       targetBattleType: 0
       targetBattleId: 
       combatModifierType: 0
       statusType: 0
       flatAmount: 100
-      percentAmount: 0
-      duration: 0
-  - optionId: 
-    optionName: 
-    description: 
-    effects:
-    - effectType: 3
-      targetResource: 0
-      sourceResource: 0
-      targetPieceType: 0
-      targetTeam: 0
-      targetBattleType: 0
-      targetBattleId: 
-      combatModifierType: 0
-      statusType: 0
-      flatAmount: 1
       percentAmount: 0
       duration: 0

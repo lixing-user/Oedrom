@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Event_Neg_002_Plague
   m_EditorClassIdentifier: 
   eventId: Neg002
-  eventName: Plague
-  description: "5\u56DE\u5408\u5167\u6BCF\u6B21\u884C\u52D5\u6211\u65B9\u68CB\u5B50\u6709\u6A5F\u7387(20%)\u9663\u4EA1"
+  eventName: "\u761F\u75AB"
+  description: "\u8ECD\u968A\u4E2D\u7206\u767C\u50B3\u67D3\u6027\u75BE\u75C5\u3002"
   weight: 1
-  eventIcon: {fileID: 0}
+  eventIcon: {fileID: 1764886173, guid: 052b07a6ba1c01b45add3e58ed523129, type: 3}
   eventType: 2
   conditions: []
   options:
@@ -28,6 +28,8 @@ MonoBehaviour:
       targetResource: 0
       sourceResource: 0
       targetPieceType: 0
+      randomPool:
+        pieces: 
       targetTeam: 0
       targetBattleType: 0
       targetBattleId: 

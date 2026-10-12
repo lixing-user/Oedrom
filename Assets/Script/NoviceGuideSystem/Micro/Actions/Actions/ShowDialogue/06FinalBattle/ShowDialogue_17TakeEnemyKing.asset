@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72d54b3cc221e0e42b7c1cb08ff4eed8, type: 3}
+  m_Name: ShowDialogue_17TakeEnemyKing
+  m_EditorClassIdentifier: Assembly-CSharp::ShowDialogueAction
+  dialogueLines:
+  - speaker: {fileID: 11400000, guid: cf8e851864496944e82b33749f2289d7, type: 2}
+    emotion: 0
+    content: "\u6575\u65B9\u2026\u5C45\u7136\u6309\u5175\u4E0D\u52D5\u55CE\uFF1F"
+    anchor: 3
+    pauseAfterThisLine: 0
+  - speaker: {fileID: 11400000, guid: cf8e851864496944e82b33749f2289d7, type: 2}
+    emotion: 0
+    content: "\u8DDF\u6751\u9577\u7D04\u5B9A\u7684\u6642\u9593\u4E5F\u5DEE\u4E0D\u591A\u4E86\u3002"
+    anchor: 3
+    pauseAfterThisLine: 0
+  - speaker: {fileID: 11400000, guid: 9331a4f5fa421eb4db22bc3808f4000a, type: 2}
+    emotion: 0
+    content: "\u5F88\u597D\uFF01\u5C45\u7136\u81EA\u5DF1\u628A\u81C9\u6E4A\u904E\u4F86\uFF0C\u81EA\u7136\u8981\u7D66\u4ED6\u5E7E\u8033\u5149\uFF01"
+    anchor: 3
+    pauseAfterThisLine: 0
+  - speaker: {fileID: 11400000, guid: cf8e851864496944e82b33749f2289d7, type: 2}
+    emotion: 0
+    content: "\u90A3\u9EBC\uFF0C\u5C31\u6E96\u5099\u524D\u9032\uFF0C\u7A81\u64CA\u6575\u65B9\u4E3B\u5E25\uFF01"
+    anchor: 3
+    pauseAfterThisLine: 0

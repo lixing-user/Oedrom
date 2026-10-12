@@ -32,6 +32,8 @@ public class ChessboardEInstaller : MonoInstaller
 
         Container.BindInterfacesAndSelfTo<BattleResetCoordinator>().AsSingle();
         Container.Bind<IBattleStateRestorer>().To<StaticBattleRestorer>().AsSingle();
+        Container.Bind<IRewindVisualPresenter>().To<RewindVisualDirector>().AsSingle();
+        Container.Bind<RewindTransitionView>().FromComponentInHierarchy().AsSingle();
 
         Container.Bind<IShardSpawner>().To<EscapePointSpawner>().AsSingle();
         Container.BindFactory<PiecePosition, Vector3, EscapePointView, EscapePointView.Factory>()

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 178c9f3dcd387b24fa0db4efc9528f87, type: 3}
+  m_Name: QuesttestE 2
+  m_EditorClassIdentifier: Assembly-CSharp::QuestSO
+  questId: Quest_Ending_13
+  questType: 0
+  unlockConditions:
+  - {fileID: 11400000, guid: 988d7cace56dc874baf8f5297d8deaa9, type: 2}
+  actionsOnStart:
+  - {fileID: 11400000, guid: ecfd4af327cf04445ac83d5d194a02e8, type: 2}
+  - {fileID: 11400000, guid: 8bd04dbb6c3df5a4dac43d4c96e5cf55, type: 2}
+  completionConditions:
+  - {fileID: 11400000, guid: deb4c66ed24e8fc4e95f2366013f45a8, type: 2}
+  actionsOnComplete: []

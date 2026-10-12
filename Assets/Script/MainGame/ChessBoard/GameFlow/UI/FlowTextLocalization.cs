@@ -10,6 +10,8 @@ public class FlowTextLocalization
         ["enemy_turn"] = "敵方回合",
         ["player_turn"] = "玩家回合",
         ["game_start"] = "遊戲開始！",
+        ["game_setup"] = "佈陣階段",
+        ["resolution"] = "結算階段",
 
         // 階段相關
         ["phase_standby"] = "準備階段",
@@ -40,6 +42,14 @@ public class FlowTextLocalization
             : GetText("enemy_turn");
     }
 
+    /// <summary>回合切換 Popup 文字</summary>
+    public string GetTurnPopupText(Team team)
+    {
+        return team == Team.White
+            ? GetText("your_turn")
+            : GetText("enemy_turn");
+    }
+
     public string GetFlowText(GameFlow flow)
     {
         string key = flow switch
@@ -51,7 +61,7 @@ public class FlowTextLocalization
             GameFlow.GameEnd => "",
             _ => "unknown"
         };
-        return GetText(key);
+        return GetTextOrEmpty(key);
     }
 
     public string GetPhaseText(GamePhaseState phase)
@@ -66,7 +76,7 @@ public class FlowTextLocalization
             GamePhaseState.EndPhase => "phase_end",
             _ => "unknown"
         };
-        return GetText(key);
+        return GetTextOrEmpty(key);
     }
 
     public string GetPhaseHint(GamePhaseState phase)
@@ -82,5 +92,10 @@ public class FlowTextLocalization
             _ => null
         };
         return key != null ? GetText(key) : null;
+    }
+
+    private string GetTextOrEmpty(string key)
+    {
+        return string.IsNullOrEmpty(key) ? string.Empty : GetText(key);
     }
 }

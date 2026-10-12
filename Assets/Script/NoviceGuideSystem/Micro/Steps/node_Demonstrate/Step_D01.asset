@@ -15,8 +15,9 @@ MonoBehaviour:
   stepId: Step_D001Conv
   objective: "\u5165\u5834\u5C0D\u8A71"
   _actionsOnStart:
-  - {fileID: 11400000, guid: 80f81d18f81444244a15372d6a5de023, type: 2}
   - {fileID: 11400000, guid: 036a67f5bd04b3e40bd09c1591b679f9, type: 2}
+  - {fileID: 11400000, guid: cba74be6bebd7f147a0aefd4cfd1a95c, type: 2}
+  - {fileID: 11400000, guid: a74e3861e1532db4fa00b383d56da357, type: 2}
   _completionConditions:
   - {fileID: 11400000, guid: a9c2ae3057457d84f9a1e6bd73de7773, type: 2}
   _failureConditions: []

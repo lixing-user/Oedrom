@@ -31,6 +31,11 @@ public class CameraPresenter : MonoBehaviour, ICameraPresenter
     [SerializeField] GameObject vcamFLLocator;
     [SerializeField] GameObject vcamFCLocator;
 
+    [Header("Default Camera Follow")]
+    [SerializeField] private Transform vcamFollowAnchor;
+    [SerializeField] private Transform followReference;   // 預設視角正對的那個點
+    [SerializeField] private float followSmoothTime = 0.25f;
+
     [Header("Opening Animation")]
     [SerializeField] float openingDuration = 3f;
 
@@ -40,6 +45,8 @@ public class CameraPresenter : MonoBehaviour, ICameraPresenter
 
 
     [Inject] private SignalBus _signalBus;
+    [Inject] private readonly IPieceViewRegistry _viewRegistry;
+    [Inject] private readonly IBoardQueryService _boardQuery;
 
     // 使用 HashSet 儲存所有要求上鎖的來源 ID
     private HashSet<string> _lockTokens = new HashSet<string>();
@@ -48,6 +55,9 @@ public class CameraPresenter : MonoBehaviour, ICameraPresenter
 
     private CameraMode _currentMode = CameraMode.Uninitialized;
     private Transform _currentFocusTarget;
+    private Transform _trackedPiece;
+    private Vector3 _anchorHome;
+    private Vector3 _anchorVelocity;
     private List<CinemachineCamera> _allCameras;
     private FreelookCameraController _freelookController;
     public CameraMode CurrentMode => _currentMode;
@@ -70,14 +80,36 @@ public class CameraPresenter : MonoBehaviour, ICameraPresenter
         _signalBus.Subscribe<CameraModeRequestSignal>(OnCameraModeRequested);
         _signalBus.Subscribe<ResetCameraToDefaultSignal>(signal => RequestDefaultMode(true));
 
+        _signalBus.Subscribe<MarkTargetPieceSignal>(OnTargetMarked);
+
         vcamf.Follow = vcamFCLocator.transform;
+
+        var locator = vcam.Follow;
+        vcamFollowAnchor.SetPositionAndRotation(locator.position, locator.rotation);
+        _anchorHome = vcamFollowAnchor.position;
+        vcam.Follow = vcamFollowAnchor;
     }
+
+    void Update()
+    {
+        Vector3 goal = _anchorHome;
+        if (_trackedPiece != null)
+        {
+            Vector3 d = _trackedPiece.position - followReference.position;
+            goal += new Vector3(d.x, 0f, d.z);   // 只取 XZ 位移,Y 與旋轉完全不動
+        }
+
+        vcamFollowAnchor.position = Vector3.SmoothDamp(
+            vcamFollowAnchor.position, goal, ref _anchorVelocity, followSmoothTime);
+    }
+
     void OnDestroy()
     {
         _signalBus.Unsubscribe<CameraFocusRequestSignal>(OnFocusRequested);
         _signalBus.Unsubscribe<CameraLockStateSignal>(OnCameraLockStateChanged);
         _signalBus.Unsubscribe<CameraModeRequestSignal>(OnCameraModeRequested);
         _signalBus.Unsubscribe<ResetCameraToDefaultSignal>(signal => RequestDefaultMode(true));
+        _signalBus.TryUnsubscribe<MarkTargetPieceSignal>(OnTargetMarked);
     }
     #endregion
 
@@ -155,6 +187,27 @@ public class CameraPresenter : MonoBehaviour, ICameraPresenter
     private void OnCameraLockStateChanged(CameraLockStateSignal signal)
     {
         LockCamera(signal.RequesterId, signal.IsLocked);
+    }
+
+    private void OnTargetMarked(MarkTargetPieceSignal signal)
+    {
+        // 1. 向 Domain 層查詢這顆棋子的實體資料
+        var piece = _boardQuery.GetPieceById(signal.TargetPieceId);
+        if (piece == null) return;
+
+        // 2. 只有當目標是白方（玩家自己的棋子）時，才讓 Default Camera 跟隨
+        if (piece.Team == Team.White)
+        {
+            var view = _viewRegistry.GetView(signal.TargetPieceId);
+            _trackedPiece = view != null ? view.transform : null;
+            Debug.Log($"[CameraPresenter] Default Camera 鎖定並跟隨己方 TargetPiece: {signal.TargetPieceId}");
+        }
+        else
+        {
+            // 3. 若是黑方目標，可以印個 Log 確保邏輯有正確攔截
+            _trackedPiece = null;
+            Debug.Log($"[CameraPresenter] 目標為黑方棋子 {signal.TargetPieceId}，Default Camera 忽略跟隨。");
+        }
     }
 
     private void SetOnlyActive(CinemachineCamera activeVcam, int priority = 10)

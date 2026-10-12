@@ -1,7 +1,7 @@
 using ChessPieceCardProduction;
+using DG.Tweening;
 using UnityEngine;
 using Zenject;
-using DG.Tweening;
 
 
 public class PieceView : MonoBehaviour
@@ -17,10 +17,12 @@ public class PieceView : MonoBehaviour
     [SerializeField] private Team _currentTeam;
 
     [Inject] private ChessPiece _model;
+    [Inject] private BoardSettings _settings;
     [Inject(Id = "InitialPosition")] private Vector3 _initialPos;
 
-    protected MeshRenderer _renderer;
+    protected MeshRenderer[] _renderers;
     protected MaterialPropertyBlock _block;
+    private Material _teamMaterial;
 
     #endregion
 
@@ -49,12 +51,12 @@ public class PieceView : MonoBehaviour
 
     private void InitializeRenderer()
     {
-        if (_renderer == null)
+        if (_renderers == null)
         {
-            _renderer = GetComponentInChildren<MeshRenderer>();
+            _renderers = GetComponentsInChildren<MeshRenderer>(true);
             _block = new MaterialPropertyBlock();
 
-            if (_renderer == null)
+            if (_renderers == null || _renderers.Length == 0)
             {
                 Debug.LogWarning($"[PieceView] {_pieceIdValue} 找不到 MeshRenderer，材質變色將失效！");
             }
@@ -73,38 +75,57 @@ public class PieceView : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, yAngle, 0);
     }
 
-    public void SetScale(Vector3 scale)
+    public Vector3 GetTargetScale()
     {
-        transform.localScale = scale;
+        //transform.localScale = scale;
+        float scale = _settings != null ? _settings.PieceVisualSize : 1.0f;
+        return Vector3.one * scale;
     }
 
     public void SetMaterial(Material material)
     {
-        if (_renderer != null)
-            _renderer.material = material;
+        _teamMaterial = material;
+        ApplyMaterial(material);
     }
 
-    public void SetTeamColor(Color color)
-    {
-        if (_renderer == null) return;
+    /// 暫時換成其他材質（例如待命區），不覆蓋隊伍材質
+    public void SetTemporaryMaterial(Material material) => ApplyMaterial(material);
 
-        _renderer.GetPropertyBlock(_block);
-        _block.SetColor("_BaseColor", color);
-        _renderer.SetPropertyBlock(_block);
+    /// 還原成隊伍材質（從待命區回到棋盤時呼叫）
+    public void RestoreTeamMaterial() => ApplyMaterial(_teamMaterial);
+
+    private void ApplyMaterial(Material material)
+    {
+        if (material == null) return;
+        InitializeRenderer();
+
+        foreach (var r in _renderers)
+        {
+            // 取得整個材質陣列，每個槽位都換掉
+            var mats = r.sharedMaterials;
+            for (int i = 0; i < mats.Length; i++)
+                mats[i] = material;
+            r.sharedMaterials = mats;
+
+            // 清掉舊的 PropertyBlock，避免覆蓋新材質的屬性
+            r.SetPropertyBlock(null);
+        }
     }
 
     public void UpdateTeamVisual(Team newTeam)
     {
-        if (_renderer == null) return;
+        if (_renderers == null) return;
 
         // 1. 改變材質顏色 (這裡假設你用 MaterialPropertyBlock 控制顏色)
         if (_block == null) _block = new MaterialPropertyBlock();
-        _renderer.GetPropertyBlock(_block);
 
         // 根據新隊伍設定顏色，這部分依你的 Shader 屬性名稱為準 (例如 "_Color" 或 "_BaseColor")
         Color teamColor = (newTeam == Team.White) ? Color.white : Color.black;
         _block.SetColor("_BaseColor", teamColor);
-        _renderer.SetPropertyBlock(_block);
+        foreach (var r in _renderers)
+        {
+            r.SetPropertyBlock(_block);
+        }
 
         // 2. 改變面向 (同你 Registry 的邏輯，讓它馬上轉向)
         float targetYRotation = (newTeam == Team.White) ? 0f : 180f;

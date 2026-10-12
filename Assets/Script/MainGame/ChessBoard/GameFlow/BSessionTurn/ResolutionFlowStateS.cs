@@ -34,6 +34,8 @@ public class ResolutionFlowStateS : IGameFlowState
         _flowFacade = machine.GetFlowFacade();
         _signalBus = machine.GetSignalBus();
 
+
+
         // 執行結算邏輯
         PerformResolution();
     }
@@ -44,9 +46,10 @@ public class ResolutionFlowStateS : IGameFlowState
     }
 
     #region 檢查條件
-    private bool CheckVictoryConditions(out Team winnerTeam)
+    private bool CheckVictoryConditions(out Team winnerTeam, out string reason)
     {
         winnerTeam = Team.None;// 預設值
+        reason = string.Empty;
 
         var pending = _battleContext.CurrentBattle;
         if (pending == null)
@@ -70,7 +73,6 @@ public class ResolutionFlowStateS : IGameFlowState
         //if (attacker.IsCaptured || defender.IsCaptured)
         if (attackerDead || defenderDead)
         {
-            string reason;
             if (attackerDead)
             {
                 winnerTeam = defender != null ? defender.OriginalTeam : Team.White; // 攻擊方死，防守方贏
@@ -85,7 +87,6 @@ public class ResolutionFlowStateS : IGameFlowState
             Debug.Log($"[Victory] {winnerTeam} 勝出：{reason}");
 
             _battleContext.SetBattleResult(winnerTeam);
-            _signalBus.Fire(new GameEndedSignal(winnerTeam, reason));
 
             return true;
         }
@@ -98,33 +99,54 @@ public class ResolutionFlowStateS : IGameFlowState
     private void PerformResolution()
     {
         // 執行結算（檢查勝利條件等）
-        bool gameEnded = CheckVictoryConditions(out Team winner);
+        bool gameEnded = CheckVictoryConditions(out Team winner, out string reason);
 
         if (gameEnded)
         {
-            HandleGameEndResources(winner);
-
-            var battleType = _battleContext.CurrentBattle?.BattleType;
-            if (winner == Team.White && (battleType != BattleType.Loot && battleType != BattleType.Event))
-            {
-                Debug.Log("[Resolution] 白方獲勝且非搶劫戰，觸發獎勵顯示");
-                _signalBus.Fire<ShowRewardRequestedSignal>();
-
-                if (!_moveCounter.IsExceeded())
-                {
-                    Debug.Log("[Resolution] 白方獲勝且『步數未耗盡』，解鎖特殊獎勵/追擊戰資格！");
-                    _signalBus.Fire<ShowChaseBattleRequestedSignal>();
-                }
-                else
-                {
-                    Debug.Log("[Resolution] 白方獲勝但『步數已耗盡』，失去追擊戰資格。");
-                }
-            }
-
-            _flowMachine.ChangeState(GameFlow.GameEnd);
-            return;
+            Debug.Log($"[Resolution] {winner} 勝出，等待視覺層演出...");
+            // 【關鍵修改】：不直接結算，而是發出視覺演出請求！
+            _signalBus.Subscribe<CheckmateVisualCompletedSignal>(OnVisualCompleted);
+            _signalBus.Fire(new CheckmateOccurredSignal(winner, reason));
+            return; // 暫停往下執行，等待 OnVisualCompleted 被喚醒
         }
 
+        // 2. 沒結束，繼續正常的回合切換
+        ContinueToNextTurn();
+    }
+
+    private void OnVisualCompleted(CheckmateVisualCompletedSignal signal)
+    {
+        _signalBus.Unsubscribe<CheckmateVisualCompletedSignal>(OnVisualCompleted);
+
+        Debug.Log("[Resolution] 收到視覺演出完畢通知，執行最終結算！");
+
+        HandleGameEndResources(signal.WinnerTeam);
+
+        var battleType = _battleContext.CurrentBattle?.BattleType;
+        if (signal.WinnerTeam == Team.White && (battleType != BattleType.Loot && battleType != BattleType.Event))
+        {
+            Debug.Log("[Resolution] 白方獲勝且非搶劫戰，觸發獎勵顯示");
+            _signalBus.Fire<ShowRewardRequestedSignal>();
+
+            if (!_moveCounter.IsExceeded())
+            {
+                Debug.Log("[Resolution] 白方獲勝且『步數未耗盡』，解鎖特殊獎勵/追擊戰資格！");
+                _signalBus.Fire<ShowChaseBattleRequestedSignal>();
+            }
+            else
+            {
+                Debug.Log("[Resolution] 白方獲勝但『步數已耗盡』，失去追擊戰資格。");
+            }
+        }
+
+        _flowMachine.ChangeState(GameFlow.GameEnd);
+        _signalBus.Fire(new GameEndedSignal(signal.WinnerTeam, signal.Reason));
+
+        return;
+    }
+
+    private void ContinueToNextTurn()
+    {
         // 根據前一個狀態決定下一步
         GameFlow previousFlow = _flowMachine.GetPreviousFlow();
 
@@ -157,7 +179,8 @@ public class ResolutionFlowStateS : IGameFlowState
         else if (winner == Team.Black)
         {
             Debug.Log("[Resolution] 黑方勝出：銷毀備戰區，並以破損狀態回收場上所有棋子");
-            _deploymentService.ClearPiecesAfterBattle(returnAsBroken: true);
+            // 優化玩家體驗，暫時不設置為破損狀態，避免新玩家無法繼續
+            _deploymentService.ClearPiecesAfterBattle(returnAsBroken: false);
         }
     }
     #endregion

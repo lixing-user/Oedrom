@@ -13,21 +13,23 @@ MonoBehaviour:
   m_Name: Event_Pos_003_Deserters
   m_EditorClassIdentifier: Assembly-CSharp::RandomEventData
   eventId: Pos003
-  eventName: Deserters
-  description: "\u8ECD\u5FC3\u4E0A\u5347\uFF1B\u7372\u5F97\u96A8\u6A5F\u4E00\u679A\u68CB\u5B50"
+  eventName: "\u5E1D\u570B\u53DB\u8ECD"
+  description: "\u906D\u9047\u4E86\u4E00\u7FA4\u5E1D\u570B\u58EB\u5175\uFF0C\u5C0D\u65B9\u4E00\u898B\u9762\u7576\u5373\u5378\u4E0B\u6B66\u5668\u6295\u8AA0\uFF0C\u8A62\u554F\u4E0B\u5F97\u77E5\u5176\u89F8\u72AF\u8ECD\u4EE4\uFF0C\u9023\u591C\u9003\u96E2\u5E1D\u570B\u8ECD\u82EF\u71DF\u3002"
   weight: 1
-  eventIcon: {fileID: 0}
+  eventIcon: {fileID: -1258695512, guid: 052b07a6ba1c01b45add3e58ed523129, type: 3}
   eventType: 0
   conditions: []
   options:
-  - optionId: 
-    optionName: 
+  - optionId: Event_Effect_01
+    optionName: "\u7DE8\u5165\u8ECD\u968A"
     description: 
     effects:
     - effectType: 0
       targetResource: 0
       sourceResource: 0
       targetPieceType: 0
+      randomPool:
+        pieces: 
       targetTeam: 0
       targetBattleType: 0
       targetBattleId: 
@@ -40,6 +42,8 @@ MonoBehaviour:
       targetResource: 0
       sourceResource: 0
       targetPieceType: 0
+      randomPool:
+        pieces: 01000000020000000300000004000000
       targetTeam: 0
       targetBattleType: 0
       targetBattleId: 
@@ -48,14 +52,16 @@ MonoBehaviour:
       flatAmount: 1
       percentAmount: 0
       duration: 0
-  - optionId: 
-    optionName: 
+  - optionId: Event_Effect_02
+    optionName: "\u5C07\u5176\u91CB\u653E"
     description: 
     effects:
     - effectType: 0
       targetResource: 0
       sourceResource: 0
       targetPieceType: 0
+      randomPool:
+        pieces: 
       targetTeam: 0
       targetBattleType: 0
       targetBattleId: 
@@ -68,6 +74,8 @@ MonoBehaviour:
       targetResource: 1
       sourceResource: 0
       targetPieceType: 0
+      randomPool:
+        pieces: 
       targetTeam: 0
       targetBattleType: 0
       targetBattleId: 

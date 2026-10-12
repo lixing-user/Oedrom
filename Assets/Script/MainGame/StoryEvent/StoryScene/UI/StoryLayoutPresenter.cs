@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Splines;
 using Zenject;
 
 public interface IStoryPresenter
@@ -38,6 +37,7 @@ public class StoryLayoutPresenter : MonoBehaviour, IStoryPresenter
         // 初始化 Model
         _model = new StoryRuntimeModel();
         _model.currentDialogueIndex = 0;
+        SetAutoPlay(false);
 
         // 從 Config 讀取資源並設置到 View
         _view.SetBackground(_spriteService.GetBackgroundSprite(config.initialBackground));
@@ -126,19 +126,12 @@ public class StoryLayoutPresenter : MonoBehaviour, IStoryPresenter
         AdvanceDialogue();
     }
 
-    private void OnAutoPlayToggled()
+    private void OnAutoPlayToggled(bool isOn) => SetAutoPlay(isOn);
+    private void SetAutoPlay(bool on)
     {
-        _model.isAutoPlay = !_model.isAutoPlay;
-        _view.SetAutoPlayButtonState(_model.isAutoPlay);
-
-        if (_model.isAutoPlay)
-        {
-            StartAutoPlay();
-        }
-        else
-        {
-            StopAutoPlay();
-        }
+        _model.isAutoPlay = on;
+        _view.SetAutoPlayState(on);   // WithoutNotify，不會回圈
+        if (on) StartAutoPlay(); else StopAutoPlay();
     }
 
     private void OnVisibilityToggled()
@@ -238,6 +231,9 @@ public class StoryLayoutPresenter : MonoBehaviour, IStoryPresenter
                 OnChapterComplete();
                 break;
 
+            case "ENTER": HandleEnter(currentLine); break;
+            case "LEAVE": HandleLeave(currentLine); break;
+
             default:
                 Debug.LogWarning($"[Presenter] 未處理的類型: {currentLine.type}");
                 _model.currentDialogueIndex = currentLine.nextId;
@@ -274,24 +270,7 @@ public class StoryLayoutPresenter : MonoBehaviour, IStoryPresenter
         _view.SetDialogue(line.characterName, line.content);
 
         if (line.charPos != CharacterSpritePosition.None)
-        {
-            Sprite sprite = _spriteService.GetCharacterSprite(line.characterName);
-            if (sprite != null)
-            {
-                CharacterSpritePosition? oldPos = _model.GetCharacterPosition(line.characterName);
-
-                // 舊位置存在且與新位置不同，清除舊位置
-                if (oldPos.HasValue && oldPos.Value != line.charPos)
-                    _view.ClearCharacter(oldPos.Value);
-
-                // 更新 Model 的位置記錄
-                _model.SetCharacterPosition(line.characterName, line.charPos);
-                _view.SetCharacter(sprite, line.charPos);
-            }
-            else
-                Debug.LogWarning($"[Presenter] 找不到角色 Sprite: '{line.characterName}'");
-        }
-
+            ShowCharacterOnStage(line.characterName, line.charPos, line.charSize);
         _model.currentDialogueIndex = line.nextId;
     }
 
@@ -330,7 +309,7 @@ public class StoryLayoutPresenter : MonoBehaviour, IStoryPresenter
         _view.ClearCharacter(CharacterSpritePosition.Right);
 
         // 清空 Model 裡的位置記錄
-        _model.characterPositions.Clear();
+        _model.ClearAllCharacters();
 
         // 強制把可能還在畫面上的 CG 關掉
         _view.HideCG(0.5f);
@@ -349,6 +328,50 @@ public class StoryLayoutPresenter : MonoBehaviour, IStoryPresenter
         _model.currentDialogueIndex = line.nextId;
         StartCoroutine(DelayedAdvance(1.0f)); // 等待背景切換
     }
+
+    private void HandleEnter(DialogueLine line)
+    {
+        if (line.charPos == CharacterSpritePosition.None)
+            Debug.LogWarning($"[Presenter] ENTER 缺少位置，ID={line.id}");
+        else
+            ShowCharacterOnStage(line.characterName, line.charPos, line.charSize);
+
+        _model.currentDialogueIndex = line.nextId;
+        AdvanceDialogue(); // 不顯示文字、不進 Log，直接接下一列
+    }
+    private void ShowCharacterOnStage(string name, CharacterSpritePosition pos, CharacterSpriteSize? csvSize)
+    {
+        Sprite sprite = _spriteService.GetCharacterSprite(name);
+        if (sprite == null)
+        {
+            Debug.LogWarning($"[Presenter] 找不到角色 Sprite: '{name}'");
+            return;
+        }
+
+        var oldPos = _model.FindCharacter(name);
+        if (oldPos.HasValue && oldPos.Value != pos)
+            _view.ClearCharacter(oldPos.Value);
+
+        CharacterSpriteSize size = csvSize ?? _model.GetCharacterSize(name); // CSV 有填用 CSV，否則沿用
+
+        _model.PlaceCharacter(name, pos, size);
+        _view.SetCharacter(sprite, pos, size);
+    }
+    private void HandleLeave(DialogueLine line)
+    {
+        var pos = _model.FindCharacter(line.characterName);
+        if (pos.HasValue)
+        {
+            _view.ClearCharacter(pos.Value);
+            _model.RemoveCharacter(line.characterName);
+        }
+        else
+            Debug.LogWarning($"[Presenter] LEAVE：'{line.characterName}' 不在場上，ID={line.id}");
+
+        _model.currentDialogueIndex = line.nextId;
+        AdvanceDialogue();
+    }
+
 
     private void OnChapterComplete()
     {
@@ -381,6 +404,7 @@ public class StoryLayoutPresenter : MonoBehaviour, IStoryPresenter
         {
             StopCoroutine(_autoPlayCoroutine);
             _autoPlayCoroutine = null;
+            SetAutoPlay(false);
         }
     }
     IEnumerator AutoPlayRoutine()
@@ -400,6 +424,8 @@ public class StoryLayoutPresenter : MonoBehaviour, IStoryPresenter
     {
         if (_model.isSkipping) return; // 避免重複啟動
         _model.isSkipping = true;
+
+        if (_model.isAutoPlay) SetAutoPlay(false);
 
         if (_skipCoroutine != null) StopCoroutine(_skipCoroutine);
         _skipCoroutine = StartCoroutine(FastForwardRoutine());

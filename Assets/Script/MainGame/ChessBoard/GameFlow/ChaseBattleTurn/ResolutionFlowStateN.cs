@@ -50,6 +50,7 @@ public class ResolutionFlowStateN : IGameFlowState
             _flowMachine.ChangeState(GameFlow.GameEnd);
 
             // 再發射信號！這時 Coordinator 接收信號並把狀態切回 Setup 就絕對安全了
+            //_signalBus.Fire(new CheckmateOccurredSignal(winner.Value));
             _signalBus.Fire(new GameEndedSignal(winner.Value, reason));
 
             return;

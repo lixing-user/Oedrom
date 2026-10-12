@@ -13,15 +13,15 @@ MonoBehaviour:
   m_Name: Event_Pos_001_Harvest
   m_EditorClassIdentifier: 
   eventId: Pos001
-  eventName: Harvest
-  description: "\u6839\u64DA\u6C11\u5FC3\u7372\u5F97\u66F4\u9AD8\u7684\u8CC7\u6E90"
+  eventName: "\u8C50\u6536"
+  description: "\u5730\u65B9\u6751\u843D\u7A40\u7269\u8C50\u6536\uFF0C\u6751\u6C11\u5011\u672C\u8457\u5F85\u5BA2\u4E4B\u9053\uFF0C\u5C07\u591A\u9918\u7684\u7CE7\u98DF\u5206\u9001\u7D66\u904E\u8DEF\u7684\u4F60\u5011\u3002"
   weight: 1
-  eventIcon: {fileID: 0}
+  eventIcon: {fileID: 985573565, guid: 052b07a6ba1c01b45add3e58ed523129, type: 3}
   eventType: 2
   conditions: []
   options:
-  - optionId: Event_Confirm
-    optionName: "\u78BA\u8A8D"
+  - optionId: Event_Effect_Confirm
+    optionName: "\u63A5\u6536\u7269\u8CC7"
     description: 
     effects:
     - effectType: 6

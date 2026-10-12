@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ChangeSessionStateAction_ESCBattle
   m_EditorClassIdentifier: Assembly-CSharp::ChangeSessionStateAction
   TargetState: 4
-  TargetBattleType: 2
+  TargetBattleType: 3

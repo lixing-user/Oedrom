@@ -13,23 +13,25 @@ MonoBehaviour:
   m_Name: Event_Pos_004_Captives (II)
   m_EditorClassIdentifier: Assembly-CSharp::RandomEventData
   eventId: Pos004
-  eventName: Captives (II)
-  description: "\u7372\u5F97\u4E00\u679A\u58EB\u5175\u68CB\u5B50\uFF1B\u7372\u5F97\u56FA\u5B9A\u91CF\u7684\u8CC7\u6E90"
+  eventName: "\u4FD8\u865C"
+  description: "\u8207\u5E1D\u570B\u8ECD\u767C\u751F\u906D\u9047\u6230\uFF0C\u6230\u5F8C\u4FD8\u865C\u4E86\u5C0D\u65B9\u7684\u58EB\u5175\u3002\u5728Amoriss\u7684\u5B89\u64AB\u4E0B\uFF0C\u5C0D\u65B9\u9858\u610F\u6539\u70BA\u6295\u9760\u4F60\u5011\u3002"
   weight: 1
-  eventIcon: {fileID: 0}
+  eventIcon: {fileID: -1258695512, guid: 052b07a6ba1c01b45add3e58ed523129, type: 3}
   eventType: 2
   conditions:
   - conditionType: 2
     threshold: 6
   options:
   - optionId: Event_Confirm
-    optionName: "\u78BA\u8A8D"
+    optionName: "\u7DE8\u5165\u8ECD\u968A"
     description: 
     effects:
     - effectType: 0
       targetResource: 2
       sourceResource: 0
       targetPieceType: 0
+      randomPool:
+        pieces: 
       targetTeam: 0
       targetBattleType: 0
       targetBattleId: 
@@ -42,6 +44,8 @@ MonoBehaviour:
       targetResource: 2
       sourceResource: 0
       targetPieceType: 1
+      randomPool:
+        pieces: 
       targetTeam: 0
       targetBattleType: 0
       targetBattleId: 

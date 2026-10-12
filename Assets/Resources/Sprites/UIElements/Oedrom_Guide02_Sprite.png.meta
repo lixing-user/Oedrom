@@ -1,0 +1,568 @@
+fileFormatVersion: 2
+guid: 052b07a6ba1c01b45add3e58ed523129
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Oedrom_Guide02_Sprite_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 1728
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 4, y: 15, z: 9, w: 11}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 311f7d5ff064bd643a1e34d149f34f4c
+      internalID: 2098004843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_Guide02_Sprite_1
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 1728
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10ae9ccd9588beb46a1c00e6d636bc70
+      internalID: 1111914135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_Guide02_Sprite_2
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 1671
+        width: 377
+        height: 377
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dd53bf7233911540b7833b77f91b354
+      internalID: -740129151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_Guide02_Sprite_4
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 1622
+        width: 390
+        height: 390
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a891f84858c9084479efde69f318418c
+      internalID: -2045450397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_Guide02_Sprite_5
+      rect:
+        serializedVersion: 2
+        x: 1701
+        y: 1734
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 843ebfabf2bf463419ca9d2017a0d9ea
+      internalID: 606674227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_Guide02_Sprite_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1425
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 5}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7cdf65a1612f67419369b0027a6ffa4
+      internalID: 1101929293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_Guide02_Sprite_7
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 1419
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e962a57840d4ecc4db30365c350c74cf
+      internalID: -1258695512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_Guide02_Sprite_8
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 1326
+        width: 358
+        height: 358
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1c976b9ed3402449aadf1a39051661d
+      internalID: 2020903864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_Guide02_Sprite_10
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 1222
+        width: 390
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fc536f327aa1304da588b99284365d9
+      internalID: -2118325676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_Guide02_Sprite_11
+      rect:
+        serializedVersion: 2
+        x: 1679
+        y: 1282
+        width: 350
+        height: 350
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2edb6e8d8b8d604d928ac90d23fcec0
+      internalID: 157987414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_Guide02_Sprite_12
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1107
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 7}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3734b8983805ac748854c29e14bc44d8
+      internalID: 1764886173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_Guide02_Sprite_13
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 1098
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1d9ed3c85167f943881affb0e3764ec
+      internalID: -965901380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_Guide02_Sprite_14
+      rect:
+        serializedVersion: 2
+        x: 716
+        y: 933
+        width: 394
+        height: 394
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09812664b7223794ba67469972e7d188
+      internalID: -905070317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_Guide02_Sprite_16
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 822
+        width: 390
+        height: 389
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f15bea030ebd8a4994a9b1b378b5dde
+      internalID: 2140831562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_Guide02_Sprite_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 791
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 16, z: 0, w: 10}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0e3a0571f7b41746b3e29d9cf63c9fc
+      internalID: 629416560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_Guide02_Sprite_19
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 563
+        width: 322
+        height: 322
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcbbf7a5a9622dc488e433e84821c72f
+      internalID: 1686540417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_Guide02_Sprite_22
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 498
+        width: 320
+        height: 320
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 11}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 226a4b0492443a745a9d212e79f832bb
+      internalID: 985573565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_Guide02_Sprite_26
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 50
+        width: 852
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 060dca4fb1cc3ff42a678bb8b1bb71e3
+      internalID: -429733534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Oedrom_Guide02_Sprite_28
+      rect:
+        serializedVersion: 2
+        x: 977
+        y: 51
+        width: 834
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecbc553ce957ae14ba2b2d2ee35199df
+      internalID: 1424099513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 9be521b6b1880014b83d0d74657981e1
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":6.0},"gridSpriteSize":{"x":341.0,"y":341.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Oedrom_Guide02_Sprite_0: 2098004843
+      Oedrom_Guide02_Sprite_1: 1111914135
+      Oedrom_Guide02_Sprite_10: -2118325676
+      Oedrom_Guide02_Sprite_11: 157987414
+      Oedrom_Guide02_Sprite_12: 1764886173
+      Oedrom_Guide02_Sprite_13: -965901380
+      Oedrom_Guide02_Sprite_14: -905070317
+      Oedrom_Guide02_Sprite_15: -431883410
+      Oedrom_Guide02_Sprite_16: 2140831562
+      Oedrom_Guide02_Sprite_17: 1291392758
+      Oedrom_Guide02_Sprite_18: 629416560
+      Oedrom_Guide02_Sprite_19: 1686540417
+      Oedrom_Guide02_Sprite_2: -740129151
+      Oedrom_Guide02_Sprite_20: -1653874114
+      Oedrom_Guide02_Sprite_21: -1938797327
+      Oedrom_Guide02_Sprite_22: 985573565
+      Oedrom_Guide02_Sprite_23: 1503876340
+      Oedrom_Guide02_Sprite_24: 1063096206
+      Oedrom_Guide02_Sprite_25: 1750539085
+      Oedrom_Guide02_Sprite_26: -429733534
+      Oedrom_Guide02_Sprite_27: -1987466711
+      Oedrom_Guide02_Sprite_28: 1424099513
+      Oedrom_Guide02_Sprite_29: 114924758
+      Oedrom_Guide02_Sprite_3: -1855317473
+      Oedrom_Guide02_Sprite_30: -119103614
+      Oedrom_Guide02_Sprite_4: -2045450397
+      Oedrom_Guide02_Sprite_5: 606674227
+      Oedrom_Guide02_Sprite_6: 1101929293
+      Oedrom_Guide02_Sprite_7: -1258695512
+      Oedrom_Guide02_Sprite_8: 2020903864
+      Oedrom_Guide02_Sprite_9: 1275149012
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

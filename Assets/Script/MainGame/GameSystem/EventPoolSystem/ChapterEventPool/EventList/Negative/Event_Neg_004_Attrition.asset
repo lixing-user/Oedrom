@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: Event_Neg_004_Attrition
   m_EditorClassIdentifier: 
   eventId: Neg004
-  eventName: Attrition
-  description: "\u6575\u8ECD\u9810\u85CF\u57CB\u4F0F\uFF0C\u5728\u6B64\u5730\u89F8\u767C\u6D88\u8017\u6230"
+  eventName: "\u6D88\u8017\u6230"
+  description: "\u5E1D\u570B\u8ECD\u5B88\u4F4F\u4E86\u5C71\u4E2D\u7684\u9698\u53E3\uFF0C\u5805\u5B88\u4E0D\u51FA\uFF0C\u5728\u6B64\u5730\u89F8\u767C\u6D88\u8017\u6230\u3002"
   weight: 1
-  eventIcon: {fileID: 0}
+  eventIcon: {fileID: 2098004843, guid: 052b07a6ba1c01b45add3e58ed523129, type: 3}
   eventType: 2
   conditions: []
   options:
-  - optionId: Neg_Choice001
+  - optionId: Event_Effect_01
     optionName: "\u8207\u5176\u5468\u65CB"
     description: "\u89F8\u767C\u8A72\u4E8B\u4EF6\u7684\u68CB\u5B50\u7121\u6CD5\u884C\u52D53\u56DE\u5408"
     effects:
@@ -28,6 +28,8 @@ MonoBehaviour:
       targetResource: 0
       sourceResource: 0
       targetPieceType: 0
+      randomPool:
+        pieces: 
       targetTeam: 0
       targetBattleType: 0
       targetBattleId: 
@@ -36,14 +38,16 @@ MonoBehaviour:
       flatAmount: 0
       percentAmount: 0
       duration: 3
-  - optionId: Neg_Choice002
-    optionName: "\u65B7\u5C3E\u6C42\u751F"
+  - optionId: Event_Effect_02
+    optionName: "\u5F37\u884C\u7A81\u7834"
     description: "\u6E1B\u5C112\u679A\u68CB\u5B50\u62B5\u6D88\u6548\u679C"
     effects:
     - effectType: 5
       targetResource: 0
       sourceResource: 0
       targetPieceType: 0
+      randomPool:
+        pieces: 
       targetTeam: 0
       targetBattleType: 0
       targetBattleId: 

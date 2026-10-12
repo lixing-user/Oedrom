@@ -13,18 +13,18 @@ MonoBehaviour:
   m_Name: Event_Neg_007_Mutiny
   m_EditorClassIdentifier: Assembly-CSharp::RandomEventData
   eventId: Neg007
-  eventName: Mutiny
-  description: "\uFF08\u8ECD\u5FC3\u4F4E\u65BC\u5F8C\u52A0\u5165\u4E8B\u4EF6\uFF1B\u8D85\u984D\u6301\u6709>6\uFF09\u89F8\u767C\u6230\u9B25\uFF1B\u6211\u65B9\u640D\u5931\u73FE\u670930%\u7684\u5175\u529B\u3001\u8CC7\u6E90"
+  eventName: "\u53DB\u8B8A"
+  description: "\u8ECD\u5FC3\u4E0D\u7A69\uFF0C\u8ECD\u4E2D\u767C\u751F\u53DB\u8B8A\uFF0C\u90E8\u5206\u6210\u54E1\u5728\u67D0\u591C\u6697\u4E2D\u8207\u5E1D\u570B\u63A5\u61C9\uFF0C\u6230\u9B25\u4E00\u89F8\u5373\u767C\u3002"
   weight: 1
-  eventIcon: {fileID: 0}
+  eventIcon: {fileID: 1101929293, guid: 052b07a6ba1c01b45add3e58ed523129, type: 3}
   eventType: 0
   conditions:
   - conditionType: 1
     threshold: 3
   - conditionType: 4
-    threshold: 10
+    threshold: 12
   options:
-  - optionId: Event_Confirm
+  - optionId: Event_Effect01
     optionName: "\u8FCE\u6230"
     description: 
     effects:
@@ -32,6 +32,8 @@ MonoBehaviour:
       targetResource: 0
       sourceResource: 0
       targetPieceType: 0
+      randomPool:
+        pieces: 
       targetTeam: 0
       targetBattleType: 0
       targetBattleId: 
@@ -44,6 +46,54 @@ MonoBehaviour:
       targetResource: 0
       sourceResource: 0
       targetPieceType: 0
+      randomPool:
+        pieces: 01000000020000000300000004000000
+      targetTeam: 0
+      targetBattleType: 0
+      targetBattleId: 
+      combatModifierType: 0
+      statusType: 0
+      flatAmount: 0
+      percentAmount: -30
+      duration: 0
+  - optionId: Event_Effect02
+    optionName: "\u64A4\u9000"
+    description: 
+    effects:
+    - effectType: 0
+      targetResource: 0
+      sourceResource: 0
+      targetPieceType: 0
+      randomPool:
+        pieces: 
+      targetTeam: 0
+      targetBattleType: 0
+      targetBattleId: 
+      combatModifierType: 0
+      statusType: 0
+      flatAmount: -1
+      percentAmount: 0
+      duration: 0
+    - effectType: 0
+      targetResource: 2
+      sourceResource: 0
+      targetPieceType: 0
+      randomPool:
+        pieces: 01000000020000000300000004000000
+      targetTeam: 0
+      targetBattleType: 0
+      targetBattleId: 
+      combatModifierType: 0
+      statusType: 0
+      flatAmount: 0
+      percentAmount: -30
+      duration: 0
+    - effectType: 5
+      targetResource: 0
+      sourceResource: 0
+      targetPieceType: 0
+      randomPool:
+        pieces: 01000000020000000300000004000000
       targetTeam: 0
       targetBattleType: 0
       targetBattleId: 

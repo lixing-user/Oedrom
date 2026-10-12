@@ -24,4 +24,5 @@ MonoBehaviour:
   _actionsOnCompletion:
   - {fileID: 11400000, guid: bdc7c8f6e40ab5a42803c58766d20b48, type: 2}
   - {fileID: 11400000, guid: 4936afa93276fcd45969ec0482f9e1a2, type: 2}
+  - {fileID: 11400000, guid: fe8e9b599ed7bf64a89a35701dd235c0, type: 2}
   _actionsOnFailure: []

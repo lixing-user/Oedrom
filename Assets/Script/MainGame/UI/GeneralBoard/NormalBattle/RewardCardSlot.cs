@@ -28,7 +28,10 @@ public class RewardCardSlot : MonoBehaviour
         }
 
         nameText.text = data.DisplayName;
+
         iconImage.sprite = data.Icon;
+        iconImage.enabled = data.Icon != null;
+
         brokenOverlay.SetActive(data.IsBroken);
         selectionOverlay.SetActive(false);
     }

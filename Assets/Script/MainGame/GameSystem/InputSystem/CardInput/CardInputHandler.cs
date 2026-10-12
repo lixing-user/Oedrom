@@ -51,6 +51,8 @@ public class CardInputHandler : ICardInputManager
 
     public void OnCardPointerDown(CardID cardId, PointerEventData eventData)
     {
+        if (!IsCardInputEnabled) return;
+
         Debug.Log("[CardInput] pick");
         _isProcessingCard = true;
 
@@ -61,6 +63,9 @@ public class CardInputHandler : ICardInputManager
 
     public void OnCardDrag(CardID cardId, PointerEventData eventData)
     {
+        if (!IsCardInputEnabled) return; 
+        if (!_isProcessingCard) return;
+
         Debug.Log("[CardInput] drag");
 
         InputData inputData = CreateInputData(cardId, eventData, false, true, false);
@@ -72,6 +77,8 @@ public class CardInputHandler : ICardInputManager
     {
         Debug.Log("[CardInput] release");
         _isProcessingCard = false;
+
+        if (!IsCardInputEnabled) return;
 
         InputData inputData = CreateInputData(cardId, eventData, false, false, true);
         _inputService.ProcessInput(inputData);

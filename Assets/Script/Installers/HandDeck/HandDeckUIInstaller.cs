@@ -14,8 +14,9 @@ public class HandDeckUIInstaller : MonoInstaller
          .WithId("DeckTransform")
          .FromInstance(_handContainer.handCardDeck.transform);
 
-        Container.BindInterfacesAndSelfTo<HandUIManager>().FromComponentInHierarchy().AsSingle();
+        Container.BindInterfacesAndSelfTo<HandUIInputDetector>().FromComponentInHierarchy().AsSingle();
         Container.BindInterfacesAndSelfTo<HandCardContainer>().FromComponentInHierarchy().AsSingle();
+        Container.BindInterfacesAndSelfTo<HandUIStateManager>().AsSingle();
 
         Container.BindInterfacesAndSelfTo<CardInputService>().AsSingle();
         Container.BindInterfacesAndSelfTo<CardInputHandler>().AsSingle();

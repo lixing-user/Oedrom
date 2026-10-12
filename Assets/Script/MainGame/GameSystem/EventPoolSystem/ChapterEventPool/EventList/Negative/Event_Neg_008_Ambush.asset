@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Event_Neg_008_Ambush
   m_EditorClassIdentifier: Assembly-CSharp::RandomEventData
   eventId: Neg007
-  eventName: Ambush
-  description: "\u906D\u9047\u57CB\u4F0F\u7684\u6575\u8ECD\uFF0C\u6230\u9B25\u4E00\u89F8\u5373\u767C"
+  eventName: "\u906D\u9047\u6230"
+  description: "\u906D\u9047\u57CB\u4F0F\u7684\u6575\u8ECD\uFF0C\u6230\u9B25\u4E00\u89F8\u5373\u767C\u3002"
   weight: 1
-  eventIcon: {fileID: 0}
+  eventIcon: {fileID: 2098004843, guid: 052b07a6ba1c01b45add3e58ed523129, type: 3}
   eventType: 2
   conditions: []
   options:
@@ -28,8 +28,10 @@ MonoBehaviour:
       targetResource: 0
       sourceResource: 0
       targetPieceType: 0
+      randomPool:
+        pieces: 
       targetTeam: 0
-      targetBattleType: 4
+      targetBattleType: 5
       targetBattleId: Ambush_Bandits_01
       combatModifierType: 0
       statusType: 0

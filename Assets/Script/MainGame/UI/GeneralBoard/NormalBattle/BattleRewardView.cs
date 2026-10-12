@@ -44,12 +44,12 @@ public class BattleRewardView : MonoBehaviour
 
     private void Start()
     {
-        confirmRewardButton.OnClicked += () => OnConfirmClicked?.Invoke();
+        confirmRewardButton.OnClicked += HandleConfirmClicked;
         //rewardPanel.OnBackRequested += () => OnBackClicked?.Invoke();
     }
     private void OnDestroy()
     {
-        confirmRewardButton.OnClicked -= () => OnConfirmClicked?.Invoke();
+        confirmRewardButton.OnClicked -= HandleConfirmClicked;
         //rewardPanel.OnBackRequested -= () => OnBackClicked?.Invoke();
 
         foreach (var slot in _activeSlots)
@@ -61,6 +61,8 @@ public class BattleRewardView : MonoBehaviour
         }
         _activeSlots.Clear();
     }
+
+    private void HandleConfirmClicked() => OnConfirmClicked?.Invoke();
 
 
     #region Reward Slot System
@@ -120,9 +122,9 @@ public class BattleRewardView : MonoBehaviour
     #region Resource Reward UI System
     public void SetupCoinRewards(ResourceRewardData data)
     {
-        bool hasAnyResource = data.MoraleAmount > 0 || data.SupplyAmount > 0 || data.CoinAmount > 0;
+        //bool hasAnyResource = data.MoraleAmount > 0 || data.SupplyAmount > 0 || data.CoinAmount > 0;
 
-        if (!hasAnyResource) return;
+        //if (!hasAnyResource) return;
 
         // --- ³]©w Coin (¯Â¤å¦r) ---
         if (data.CoinAmount > 0)

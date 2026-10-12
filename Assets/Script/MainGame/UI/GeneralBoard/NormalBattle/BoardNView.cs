@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 
@@ -6,6 +7,7 @@ public class BoardNView : MonoBehaviour, IBoardNView
 {
     [Header("Setup")]
     [SerializeField] private PanelView setupPanel;
+    [SerializeField] private PanelView startGamePanel;
     [SerializeField] public ButtonView autoArrangeButton;
     [SerializeField] public ButtonView resetButton;
     [SerializeField] public ButtonView startGameButton;
@@ -57,11 +59,13 @@ public class BoardNView : MonoBehaviour, IBoardNView
     #region ¤¬°Ê¤º®e
     public void ShowSetupPanel()
     {
+        startGamePanel.Show();
         setupPanel.Show();
     }
     public void HideSetupPanel()
     {
         setupPanel.Hide();
+        startGamePanel.Hide();
     }
 
     public void ShowMGFScenePanel()

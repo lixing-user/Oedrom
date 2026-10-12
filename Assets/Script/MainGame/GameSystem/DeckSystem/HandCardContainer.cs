@@ -1,5 +1,6 @@
 using ChessPieceCardProduction;
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Systems.SceneManagement;
@@ -14,7 +15,7 @@ public class HandCardContainer : MonoBehaviour, IHandCardContainer
 
     [SerializeField] public GameObject handCardDeck;
     [SerializeField] private HorizontalLayoutGroup layoutGroup;
-    [SerializeField] public bool use2DUI = true;
+    [SerializeField] private bool use2DUI = true;
 
     [Header("Dynamic Spacing Settings")]
     [SerializeField] private float cardWidth = 100f;
@@ -32,6 +33,8 @@ public class HandCardContainer : MonoBehaviour, IHandCardContainer
     private float _currentDefaultSpacing;   // 紀錄當前模式的預設參數，供動態計算使用
 
     private Tweener _moveTween;
+
+    public event Action OnVisualLayoutReady;
 
 
     private Dictionary<CardID, CardFacade> _cardViews = new();
@@ -68,8 +71,6 @@ public class HandCardContainer : MonoBehaviour, IHandCardContainer
         cardFacade.transform.SetParent(handCardDeck.transform, false);
 
         _cardViews[handCard.CardId] = cardFacade;
-
-        //UpdateCardPositions();
     }
 
     public void RemoveCard(CardID cardId)
@@ -78,7 +79,6 @@ public class HandCardContainer : MonoBehaviour, IHandCardContainer
         {
             _cardViews.Remove(cardId);
             Destroy(cardFacade.gameObject);
-            //UpdateCardPositions();
         }
     }
 
@@ -91,8 +91,6 @@ public class HandCardContainer : MonoBehaviour, IHandCardContainer
         {
             AddCard(handCard);
         }
-
-        //UpdateCardPositions();
     }
 
     public void ClearAllCards()
@@ -128,8 +126,8 @@ public class HandCardContainer : MonoBehaviour, IHandCardContainer
 
         Vector2 anchoredPos_Centered = Vector2.zero;
         Vector3 localScale_Centered = Vector3.one;
-        float spacing_Centered = 95f;
-        RectOffset padding_Centered = new RectOffset(-220, 0, 0, -350);
+        float spacing_Centered = 75f;
+        RectOffset padding_Centered = new RectOffset(-140, 0, 0, -350);
 
         Vector2 anchoredPos_BottomRight = Vector2.zero;
         Vector3 localScale_BottomRight = new Vector3(0.65f, 0.65f, 0.65f); 
@@ -148,7 +146,7 @@ public class HandCardContainer : MonoBehaviour, IHandCardContainer
                 layoutGroup.childAlignment = TextAnchor.MiddleCenter;
                 layoutGroup.spacing = spacing_Centered;
                 layoutGroup.padding = padding_Centered;
-                _currentDefaultSpacing = 95f;
+                _currentDefaultSpacing = 75f;
                 break;
 
             case HandDisplayMode.BottomRight:
@@ -165,6 +163,8 @@ public class HandCardContainer : MonoBehaviour, IHandCardContainer
         }
 
         UpdateDynamicSpacing();
+
+        StartCoroutine(RefreshLayoutDelayed());
     }
 
     private void UpdateDynamicSpacing()
@@ -242,15 +242,20 @@ public class HandCardContainer : MonoBehaviour, IHandCardContainer
     {
         yield return new WaitForEndOfFrame();
 
-        Canvas.ForceUpdateCanvases();
-        LayoutRebuilder.ForceRebuildLayoutImmediate(handCardDeckRect);
+        if (handCardDeckRect != null)
+        {
+            Canvas.ForceUpdateCanvases();
+            LayoutRebuilder.ForceRebuildLayoutImmediate(handCardDeckRect);
+        }
 
-        // 如果仍使用手動位置計算，取消 HorizontalLayoutGroup
         if (layoutGroup != null)
         {
             layoutGroup.enabled = false;
             layoutGroup.enabled = true;
         }
+
+        // 當排版徹底完成後，觸發事件通知 Manager
+        OnVisualLayoutReady?.Invoke();
     }
 
     public void SetVisibilityMode(UIVisibilityHeadupMode mode, bool immediate = false)
@@ -267,7 +272,8 @@ public class HandCardContainer : MonoBehaviour, IHandCardContainer
         {
             // 僅針對 Y 軸進行 DOTween 動畫
             _moveTween = handCardDeckRect.DOAnchorPosY(targetY, _transitionDuration)
-                                         .SetEase(Ease.OutCubic);
+                                         .SetEase(Ease.OutCubic)
+                                         .SetUpdate(true);
         }
     }
     #endregion
@@ -285,4 +291,5 @@ public interface IHandCardContainer
 
     CardFacade GetCardFacade(CardID cardId);
     IEnumerable<CardFacade> GetAllCardFacades();
+    event Action OnVisualLayoutReady;
 }

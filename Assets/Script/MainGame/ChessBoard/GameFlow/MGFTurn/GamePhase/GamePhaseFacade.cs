@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.InferenceEngine.Tokenization.PostProcessors.Templating;
 using UnityEngine;
 
 public class GamePhaseFacade
@@ -213,11 +212,8 @@ public class GamePhaseFacade
     /// Step 1: 供 MainSecPhase 呼叫。
     /// 負責抽籤、通知 UI 顯示，並回傳抽到的事件資料讓 Model 儲存
     /// </summary>
-    public RandomEventData TriggerRandomEvent(PieceID triggerPieceId)
-    {
-        Debug.Log($"[Facade] 棋子 {triggerPieceId} 觸發隨機事件，開始抽籤...");
-        return _eventManager.DraftAndShowEvent(triggerPieceId);
-    }
+    public RandomEventData RollRandomEvent(PieceID id) => _eventManager.DraftEvent(id);
+    public void ShowRandomEventUI(RandomEventData e) => _eventManager.ShowEvent(e);
 
     /// <summary>
     /// Step 3: 供 ResolutionPhase 呼叫。

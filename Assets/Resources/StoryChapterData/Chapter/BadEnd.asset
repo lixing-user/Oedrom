@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3c2c7490d554e547949c9367d2a96ff, type: 3}
+  m_Name: BadEnd
+  m_EditorClassIdentifier: Assembly-CSharp::StoryChapterConfig
+  chapterId: BadEnd_Script
+  chapterName: BadEnd
+  dialogueFile: {fileID: 4900000, guid: 9b4465eb3dab7a6438a3d9112661a534, type: 3}
+  initialBackground: BG_BattleField
+  backgroundSprite:
+  - backgroundName: BG_BattleField
+    sprite: {fileID: 21300000, guid: 48fa0ec4b291aa74aa241162e569dc7e, type: 3}
+  characterProfiles: []
+  cgSprites:
+  - cgName: CG_Dark
+    sprite: {fileID: -1371611340, guid: 785d25007f59cd4408b3cf01eb208ca6, type: 3}
+  phaseSequence: 02000000
+  nextChapter: {fileID: 0}

@@ -24,7 +24,7 @@ public class PiecePreviewVisualizerService : MonoBehaviour, IPiecePreviewVisuali
 
     [Header("視覺設定")]
     [SerializeField] private float _smoothSpeed = 20f;
-    [SerializeField] private float _hoverHeight = 0.5f; // 自由拖曳時的懸浮高度
+    [SerializeField] private float _previewScale = 1.0f;
     [SerializeField] private float _previewAlpha = 0.6f;
 
     private GameObject _freeDragInstance;
@@ -71,7 +71,7 @@ public class PiecePreviewVisualizerService : MonoBehaviour, IPiecePreviewVisuali
         {
             _isFreeDragging = true;
             float terrainY = _heightSampler.GetTerrainHeightAt(mouseWorldPos);
-            _targetDragPosition = new Vector3(mouseWorldPos.x, terrainY + _hoverHeight, mouseWorldPos.z);
+            _targetDragPosition = new Vector3(mouseWorldPos.x, terrainY + _settings.DragOffset, mouseWorldPos.z);
         }
     }
 
@@ -140,12 +140,12 @@ public class PiecePreviewVisualizerService : MonoBehaviour, IPiecePreviewVisuali
 
     private GameObject CreatePreviewInstance(PieceID pieceId)
     {
-        //var piece = _board.GetPieceById(pieceId);
         var piece = FindPiece(pieceId);
         if (piece == null || !_cardConfigProvider.TryGetConfig(piece.Type, out CardConfig config))
             return null;
 
         GameObject instance = Instantiate(config.previewPrefab);
+        instance.transform.localScale = Vector3.one * _previewScale;
         SetupPreviewVisuals(instance, piece.Team);
         return instance;
     }

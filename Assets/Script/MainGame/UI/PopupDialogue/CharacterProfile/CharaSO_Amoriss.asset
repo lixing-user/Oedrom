@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CharacterProfileSO
   characterName: Amoriss
   aliases:
-  - "\uFF1F\uFF1F\uFF1F"
   - Amoriss
-  storySprite: {fileID: -819374483, guid: 8a5065970af6464478b25e7defb0557f, type: 3}
-  defaultAvatar: {fileID: -339871057, guid: 8a5065970af6464478b25e7defb0557f, type: 3}
+  storySprite: {fileID: 21300000, guid: c5eade4f0618bab4389510ac87bf9833, type: 3}
+  defaultAvatar: {fileID: 21300000, guid: 6e524ad12c4120e4891d03b0d6a4e037, type: 3}
   avatarVariants: []

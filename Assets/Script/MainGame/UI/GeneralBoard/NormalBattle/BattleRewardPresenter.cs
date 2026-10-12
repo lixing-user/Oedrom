@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using Zenject;
 
@@ -9,6 +10,7 @@ public class BattleRewardPresenter : MonoBehaviour
     [Inject] private SignalBus _signalBus;
     [Inject] private IResourceManager _resourceManager;
     [Inject] private IRewardService _rewardService;
+    [Inject] private IPieceIconResolver _iconResolver; 
 
     private BattleRewardView _view;
     private List<PieceID> _selectedIds = new List<PieceID>();
@@ -38,9 +40,22 @@ public class BattleRewardPresenter : MonoBehaviour
     #region 核心功能
     private void OnShowRewardRequested(ShowRewardRequestedSignal signal)
     {
-        // 1. 處理卡牌獎勵
-        var uiRewards = _rewardService.GetRewardUIData();
-        _view.SetupRewardOptions(uiRewards);
+        _selectedIds.Clear();
+
+        // 1. 卡牌獎勵：Domain → UI DTO，只在這裡做一次
+        var uiData = _rewardService.GetAvailableRewards()
+            .Select(piece => new RewardUIData
+            {
+                Id = piece.Id,
+                Type = piece.Type,
+                DisplayName = piece.Type.ToString(),
+                Icon = _iconResolver.GetIcon(piece.Type),
+                IsBroken = piece.IsBroken,
+                SupplyCost = 0
+            })
+            .ToList();
+
+        _view.SetupRewardOptions(uiData);
 
         // 2. 處理基礎資源獎勵
         _currentResourceData = _rewardService.GenerateResourceRewards();
@@ -62,7 +77,7 @@ public class BattleRewardPresenter : MonoBehaviour
         _view.ShowRewardPanel();
         StartCoroutine(CollectResourcesCoroutine(currentMorale, currentSupply));
 
-        if (uiRewards.Count == 0)
+        if (uiData.Count == 0)
         {
             Debug.Log("[BattleReward] 卡牌獎勵庫為空，僅派發資源獎勵");
         }

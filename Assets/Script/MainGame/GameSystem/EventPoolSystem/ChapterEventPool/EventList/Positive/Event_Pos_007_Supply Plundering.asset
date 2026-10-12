@@ -13,21 +13,25 @@ MonoBehaviour:
   m_Name: Event_Pos_007_Supply Plundering
   m_EditorClassIdentifier: Assembly-CSharp::RandomEventData
   eventId: Pos007
-  eventName: Supply Plundering
-  description: "3\u5834\u6230\u9B25\u5167\u7372\u53D62\u500D\u7684\u6575\u65B9\u88DC\u7D66"
+  eventName: "\u7269\u8CC7\u63A0\u596A"
+  description: "\u8ECD\u968A\u898F\u6A21\u64F4\u5927\uFF0C\u5C6C\u4E0B\u5EFA\u8B70\u5728\u6230\u9B25\u7D50\u675F\u5F8C\u63A0\u596A\u5E1D\u570B\u8ECD\u88DC\u7D66\u7DDA\u7684\u6CBF\u7DDA\u6751\u838A\uFF0C\u78BA\u4FDD\u7269\u8CC7\u7121\u865E\u3002"
   weight: 1
-  eventIcon: {fileID: 0}
+  eventIcon: {fileID: -965901380, guid: 052b07a6ba1c01b45add3e58ed523129, type: 3}
   eventType: 0
-  conditions: []
+  conditions:
+  - conditionType: 4
+    threshold: 10
   options:
-  - optionId: 
-    optionName: 
+  - optionId: Event_Effect_01
+    optionName: "\u653E\u4EFB\u63A0\u596A"
     description: 
     effects:
     - effectType: 7
       targetResource: 2
       sourceResource: 0
       targetPieceType: 0
+      randomPool:
+        pieces: 
       targetTeam: 0
       targetBattleType: 0
       targetBattleId: 
@@ -36,14 +40,44 @@ MonoBehaviour:
       flatAmount: 0
       percentAmount: 200
       duration: 3
-  - optionId: 
-    optionName: 
-    description: 
-    effects:
     - effectType: 0
       targetResource: 1
       sourceResource: 0
       targetPieceType: 0
+      randomPool:
+        pieces: 
+      targetTeam: 0
+      targetBattleType: 0
+      targetBattleId: 
+      combatModifierType: 3
+      statusType: 0
+      flatAmount: -1
+      percentAmount: 0
+      duration: 3
+  - optionId: Event_Effect_02
+    optionName: "\u56B4\u5B88\u7D00\u5F8B"
+    description: 
+    effects:
+    - effectType: 0
+      targetResource: 0
+      sourceResource: 0
+      targetPieceType: 0
+      randomPool:
+        pieces: 
+      targetTeam: 0
+      targetBattleType: 0
+      targetBattleId: 
+      combatModifierType: 3
+      statusType: 0
+      flatAmount: -1
+      percentAmount: 0
+      duration: 3
+    - effectType: 0
+      targetResource: 1
+      sourceResource: 0
+      targetPieceType: 0
+      randomPool:
+        pieces: 
       targetTeam: 0
       targetBattleType: 0
       targetBattleId: 

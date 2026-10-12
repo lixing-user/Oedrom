@@ -1,5 +1,6 @@
-using TMPro;
 using DG.Tweening;
+using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,14 +20,27 @@ public class GameFlowView : MonoBehaviour
     [SerializeField] private GameObject _phaseIndicatorPanel;
 
 
-    [Header("Transition Popup")]
-    [SerializeField] private GameObject _transitionPopup;
-    [SerializeField] private TextMeshProUGUI _transitionText;
-    [SerializeField] private CanvasGroup _transitionCanvasGroup;
-    [SerializeField] private float _popupDuration = 2f;
+    [Header("Transition Popups")]
+    [SerializeField] private ScaleFadePopup _turnPopup;
+    [SerializeField] private SlidePopup _phasePopup;
 
 
-    private Sequence _currentAnimation;
+    private readonly Queue<string> _turnQueue = new Queue<string>();
+    private string _pendingPhaseMessage;
+    #endregion
+
+    #region Unity Lifecycle
+    private void Awake()
+    {
+        if (_turnPopup == null || _phasePopup == null)
+        {
+            Debug.LogError("[GameFlowView] 請在 Inspector 指定 _turnPopup 與 _phasePopup。", this);
+            return;
+        }
+
+        _turnPopup.Stop();
+        _phasePopup.Stop();
+    }
     #endregion
 
     #region Public Methods (由 Presenter 調用)
@@ -39,9 +53,6 @@ public class GameFlowView : MonoBehaviour
         {
             _flowStateText.text = displayText;
             _flowStateText.color = team == Team.White ? _playerTurnColor : _enemyTurnColor;
-
-            // 動畫：文字放大效果
-            //_flowStateText.transform.DOPunchScale(Vector3.one * 0.2f, 0.5f);
         }
 
         if (_flowStateIcon != null)
@@ -65,42 +76,34 @@ public class GameFlowView : MonoBehaviour
     }
 
     /// <summary>
-    /// 顯示轉換提示彈窗
+    /// 顯示回合提示（遊戲開始 / 你的回合 / 敵方回合）
     /// </summary>
-    public void ShowTransitionPopup(string message, FlowTransitionType type)
+    public void ShowTurnPopup(string message)
     {
-        if (_transitionPopup == null) return;
+        if (_turnPopup == null || _phasePopup == null) return;
 
-        // 停止之前的動畫
-        _currentAnimation?.Kill();
+        // 新回合開始：舊的階段提示（播放中或等待中）都已過期，一律作廢
+        _phasePopup.Stop();
+        _pendingPhaseMessage = null;
 
-        // 設置文字
-        if (_transitionText != null)
+        _turnQueue.Enqueue(message);
+        if (!_turnPopup.IsPlaying) PlayNextTurn();
+    }
+
+    /// <summary>
+    /// 顯示階段提示。回合提示播放中會延後顯示，且只保留最新一則。
+    /// </summary>
+    public void ShowPhasePopup(string message)
+    {
+        if (_turnPopup == null || _phasePopup == null) return;
+
+        if (_turnPopup.IsPlaying)
         {
-            _transitionText.text = message;
+            _pendingPhaseMessage = message;
+            return;
         }
 
-        // 取得 RectTransform 用於位置動畫
-        RectTransform rectTransform = _transitionPopup.GetComponent<RectTransform>();
-        Vector2 startPos = new Vector2(Screen.width, 0); // 從右側滑入
-        Vector2 centerPos = Vector2.zero;
-
-        // 動畫序列
-        _currentAnimation = DOTween.Sequence()
-            .OnStart(() => {
-                _transitionPopup.SetActive(true);
-                _transitionCanvasGroup.alpha = 0;
-                rectTransform.anchoredPosition = startPos;
-            })
-            // 快速滑入 + 淡入（0.3秒）
-            .Append(rectTransform.DOAnchorPos(centerPos, 0.3f).SetEase(Ease.OutQuad))
-            .Join(_transitionCanvasGroup.DOFade(1f, 0.3f))
-            // 短暫停留（0.8秒）
-            .AppendInterval(0.8f)
-            // 快速滑出 + 淡出（0.3秒）
-            .Append(rectTransform.DOAnchorPos(new Vector2(-Screen.width, 0), 0.3f).SetEase(Ease.InQuad))
-            .Join(_transitionCanvasGroup.DOFade(0f, 0.3f))
-            .OnComplete(() => _transitionPopup.SetActive(false));
+        _phasePopup.Play(message);   // 播放中再呼叫會直接取代，符合「只留最新」
     }
 
     /// <summary>
@@ -116,24 +119,24 @@ public class GameFlowView : MonoBehaviour
     #endregion
 
     #region Private Methods
-    private int GetPhaseIndex(GamePhaseState phase)
+    private void PlayNextTurn()
     {
-        return phase switch
+        if (_turnQueue.Count == 0)
         {
-            GamePhaseState.StandbyPhase => 0,
-            GamePhaseState.MainPhase1 => 1,
-            GamePhaseState.MovementPhase => 2,
-            GamePhaseState.MainPhase2 => 3,
-            GamePhaseState.ResolutionPhase => 4,
-            GamePhaseState.EndPhase => 5,
-            _ => 0
-        };
+            FlushPendingPhase();   // 回合提示全部播完，才輪到等待中的階段提示
+            return;
+        }
+
+        _turnPopup.Play(_turnQueue.Dequeue(), PlayNextTurn);
     }
 
-    private void OnDestroy()
+    private void FlushPendingPhase()
     {
-        // 清理動畫
-        //_currentAnimation?.Kill();
+        if (_pendingPhaseMessage == null) return;
+
+        string message = _pendingPhaseMessage;
+        _pendingPhaseMessage = null;
+        _phasePopup.Play(message);
     }
     #endregion
 }
